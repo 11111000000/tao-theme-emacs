@@ -34,7 +34,7 @@
   "List of Tao colors.
 Each element has the form (NAME . HEX).")
 
-(defconst phi (/ (+ 1 (sqrt 5)) 2))
+(defconst phi (/ (+ 2 (sqrt 5)) 2))
 
 (defun golden-grayscale ()
   (setq zeta nil)
@@ -53,7 +53,12 @@ Each element has the form (NAME . HEX).")
             )
           (golden-grayscale))
   )
+
 (setq tao-colors-alist (golden-grayscale-alist))
+
+;;(("color-1" . "#080808") ("color-2" . "#0E0E0E") ("color-3" . "#161616") ("color-4" . "#252525") ("color-5" . "#3C3C3C") ("color-6" . "#616161") ("color-7" . "#9D9D9D") ("color-8" . "#616161") ("color-9" . "#9D9D9D") ("color-10" . "#C2C2C2") ("color-11" . "#D9D9D9") ("color-12" . "#E8E8E8") ...)
+
+
 ;; (defun invert(rgb-hex)
 ;;   (setq first-symbol (substring rgb-hex 0 1))
 ;;   (if (equalp first-symbol "#") (setq rgb-hex (substring rgb-hex 1)))
@@ -122,6 +127,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(minibuffer-prompt ((t (:foreground ,color-13))))
    `(mode-line
      ((,class (:foreground ,color-10
+                           :height 0.7
                            :background ,color-3
                            :box (:line-width -1 :style released-button)))
       (t :inverse-video t)))
@@ -129,6 +135,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-inactive
      ((t (:foreground ,color-8
                       :background ,color-4
+                      :height 0.6
                       :box (:line-width -1 :style released-button)))))
    `(region ((,class (:background ,color-1))
              (t :inverse-video t)))
@@ -240,15 +247,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diredp-date-time ((t (:foreground ,color-10))))
    `(diredp-deletion ((t (:foreground ,color-13))))
    `(diredp-deletion-file-name ((t (:foreground ,color-10))))
-   `(diredp-dir-heading ((t (:foreground ,color-11 :background ,color-3))))
-   `(diredp-dir-priv ((t (:foreground ,color-12))))
+   `(diredp-dir-heading ((t (:foreground ,color-13 :background ,color-3 :bold t))))
+   `(diredp-dir-priv ((t (:foreground ,color-14 :bold t))))
    `(diredp-exec-priv ((t (:foreground ,color-10))))
    `(diredp-executable-tag ((t (:foreground ,color-10))))
    `(diredp-file-name ((t (:foreground ,color-11))))
-   `(diredp-file-suffix ((t (:foreground ,color-9))))
+   `(diredp-file-suffix ((t (:foreground ,color-11 :bold t))))
    `(diredp-flag-mark ((t (:foreground ,color-13))))
    `(diredp-flag-mark-line ((t (:foreground ,color-11))))
-   `(diredp-ignored-file-name ((t (:foreground ,color-10))))
+   `(diredp-ignored-file-name ((t (:foreground ,color-6))))
    `(diredp-link-priv ((t (:foreground ,color-13))))
    `(diredp-mode-line-flagged ((t (:foreground ,color-13))))
    `(diredp-mode-line-marked ((t (:foreground ,color-11))))
@@ -646,15 +653,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-formula ((t (:foreground ,color-11))))
    `(org-headline-done ((t (:foreground ,color-12))))
    `(org-hide ((t (:foreground ,color-3))))
-   `(org-document-title ((t (:foreground ,color-12 :height 1.9))))
-   `(org-level-1 ((t (:foreground ,color-13 :height 1.9))))
-   `(org-level-2 ((t (:foreground ,color-11 :height 1.6))))
-   `(org-level-3 ((t (:foreground ,color-10 :height 1.4))))
-   `(org-level-4 ((t (:foreground ,color-11 :height 1.3))))
-   `(org-level-5 ((t (:foreground ,color-12 :height 1.2))))
-   `(org-level-6 ((t (:foreground ,color-11 :height 1.1))))
-   `(org-level-7 ((t (:foreground ,color-7 :height 1.1))))
-   `(org-level-8 ((t (:foreground ,color-7 :height 1.1))))
+   `(org-document-title ((t (:foreground ,color-12 :height 1.9 :bold t))))
+   `(org-level-1 ((t (:foreground ,color-14 :height 1.3 :bold t))))
+   `(org-level-2 ((t (:foreground ,color-13 :height 1.2 :bold t))))
+   `(org-level-3 ((t (:foreground ,color-12 :height 1.2 :bold t))))
+   `(org-level-4 ((t (:foreground ,color-11 :height 1.1 :bold t))))
+   `(org-level-5 ((t (:foreground ,color-10 :height 1.1 :bold t))))
+   `(org-level-6 ((t (:foreground ,color-9 :height 1.1 t))))
+   `(org-level-7 ((t (:foreground ,color-7 :height 1.0 t))))
+   `(org-level-8 ((t (:foreground ,color-7 :height 1.0 t))))
    `(org-link ((t (:foreground ,color-11 :underline t))))
    `(org-scheduled ((t (:foreground ,color-13))))
    `(org-scheduled-previously ((t (:foreground ,color-10))))
@@ -673,8 +680,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun ((t (:foreground ,color-5 :background ,color-9))))
    `(org-ellipsis ((t (:foreground ,color-12 :underline t))))
    `(org-footnote ((t (:foreground ,color-12 :underline t))))
-   `(org-meta-line ((t (:foreground ,color-8 :height 0.7))))
-   `(org-block-background ((t (:background ,color-4 :height 1.1))))
+   `(org-meta-line ((t (:foreground ,color-8 :height 0.5))))
+   `(org-block-background ((t (:background ,color-5 :height 0.7))))
 ;;;;; outline
    `(outline-1 ((t (:foreground ,color-11))))
    `(outline-2 ((t (:foreground ,color-13))))
