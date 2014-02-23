@@ -21,7 +21,7 @@ Now you can load the theme with the interactive function `load-theme` like this:
 
 ### Package.el
 
-Sometime tao will be available in both [Marmalade](http://marmalade-repo.org)
+Tao will be available in both [Marmalade](http://marmalade-repo.org)
 and [MELPA](http://melpa.milkbox.net).
 Keep in mind the fact the version in the Marmalade repo may not always
 be up-to-date.
