@@ -34,31 +34,40 @@
   "List of Tao colors.
 Each element has the form (NAME . HEX).")
 
-(defconst phi (/ (+ 2 (sqrt 5)) 2))
+(defconst phi (/ (+ 1 (sqrt 5)) 2))
 
 (defun golden-grayscale ()
-  (setq zeta nil)
-  (dotimes (i 7)
-    (setq delta (/ #xFF (expt phi (+ 1 i))))
-    (setq gamma (- #xFF delta))
-    (push (format "#%02X%02X%02X" delta delta delta) zeta)
-    (setq zeta (append zeta (list (format "#%02X%02X%02X" gamma gamma gamma))))
-    ) zeta )
+  (let ((zeta nil))
+    (dotimes (i 7)
+      (setq delta (/ #xFF (expt phi (+ 2 i))))
+      (setq gamma (- #xFF delta))
+      (push (format "#%02X%02X%02X" delta delta delta) zeta)
+      (setq zeta (append zeta (list (format "#%02X%02X%02X" gamma gamma gamma))))
+      ) zeta ))
 
 (defun golden-grayscale-alist ()  
-  (setq index 0)
-  (mapcar (lambda (x)
-            (setq index (+ 1 index))
-            (cons (concat "color-" (format "%d" index)) x)
-            )
-          (golden-grayscale))
-  )
+  (let ((index 0))
+    (mapcar (lambda (x)
+              (setq index (+ 1 index))
+              (cons (concat "color-" (format "%d" index)) x))
+            (golden-grayscale))))
+
+
+(setq tao-light-list '(9 10 11 13 10 9 5 4 2 3 5 4 6 4))
+
+(defun golden-grayscale-light-alist ()
+  (let ((index 0)
+        (grayscale (golden-grayscale)))
+    (mapcar (lambda (x)
+              (setq index (+ 1 index))
+              (cons (concat "color-" (format "%d" index)) (nth x grayscale)))
+            tao-light-list)))
 
 (setq tao-colors-alist (golden-grayscale-alist))
 
-;;(("color-1" . "#080808") ("color-2" . "#0E0E0E") ("color-3" . "#161616") ("color-4" . "#252525") ("color-5" . "#3C3C3C") ("color-6" . "#616161") ("color-7" . "#9D9D9D") ("color-8" . "#616161") ("color-9" . "#9D9D9D") ("color-10" . "#C2C2C2") ("color-11" . "#D9D9D9") ("color-12" . "#E8E8E8") ...)
-
-
+;;(setq tao-colors-alist (golden-grayscale-light-alist))
+      
+;;(("color-1" . "#050505") ("color-2" . "#080808") ("color-3" . "#0E0E0E") ("color-4" . "#161616") ("color-5" . "#252525") ("color-6" . "#3C3C3C") ("color-7" . "#616161") ("color-8" . "#9D9D9D") ("color-9" . "#C2C2C2") ("color-10" . "#D9D9D9") ("color-11" . "#E8E8E8") ("color-12" . "#F0F0F0") ...)
 ;; (defun invert(rgb-hex)
 ;;   (setq first-symbol (substring rgb-hex 0 1))
 ;;   (if (equalp first-symbol "#") (setq rgb-hex (substring rgb-hex 1)))
@@ -87,13 +96,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,color-13 :underline t :weight bold))))
    `(link-visited ((t (:foreground ,color-11 :underline t :weight normal))))
-   `(default ((t (:foreground ,color-13 :background ,color-5))))
+   `(default ((t (:foreground ,color-9 :background ,color-4))))
+   `(hl-paren-face ((t (:weight bold))))
    `(cursor ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph ((t (:foreground ,color-13 :bold t))))
-   `(fringe ((t (:foreground ,color-2 :background ,color-5))))
-   `(header-line ((t (:foreground ,color-13
-                                  :background ,color-3
-                                  :box (:line-width -1 :style released-button)))))
+   `(fringe ((t (:foreground ,color-2 :background ,color-4))))
+   ;; `(header-line ((t (:foreground ,color-13
+   ;;                                :background ,color-3
+   ;;                                :box (:line-width -1 :style released-button)))))
+   `(header-line ((t (:inherit mode-line))))
    `(highlight ((t (:background ,color-4))))
    `(success ((t (:foreground ,color-9 :weight bold))))
    `(warning ((t (:foreground ,color-11 :weight bold))))
@@ -118,44 +129,47 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(grep-hit-face ((t (:foreground ,color-11))))
    `(grep-match-face ((t (:foreground ,color-11 :weight bold))))
    `(match ((t (:background ,color-3 :foreground ,color-11 :weight bold))))
+;;;;; make
+   `(makefile-space ((t (:background ,color-4))))
+   
 ;;;;; isearch
    `(isearch ((t (:foreground ,color-11 :weight bold :background ,color-3))))
    `(isearch-fail ((t (:foreground ,color-13 :background ,color-7))))
    `(lazy-highlight ((t (:foreground ,color-11 :weight bold :background ,color-4))))
 
-   `(menu ((t (:foreground ,color-13 :background ,color-5))))
-   `(minibuffer-prompt ((t (:foreground ,color-13))))
+   `(menu ((t (:foreground ,color-13 :background ,color-4))))
+   `(minibuffer-prompt ((t (:foreground ,color-13 :color ,color-1))))
    `(mode-line
      ((,class (:foreground ,color-10
-                           :height 0.7
                            :background ,color-3
-                           :box (:line-width -1 :style released-button)))
+                           :height 86
+                           :box (:line-width 1 :style released-button)))
       (t :inverse-video t)))
-   `(mode-line-buffer-id ((t (:foreground ,color-13 :weight bold))))
    `(mode-line-inactive
      ((t (:foreground ,color-8
-                      :background ,color-4
-                      :height 0.6
+                      :background ,color-6
+                      :height 86
                       :box (:line-width -1 :style released-button)))))
-   `(region ((,class (:background ,color-1))
+   `(mode-line-buffer-id ((t (:foreground ,color-13 :weight bold))))
+   `(region ((,class (:background ,color-9 :foreground ,color-3))
              (t :inverse-video t)))
-   `(secondary-selection ((t (:background ,color-7))))
+   `(secondary-selection ((t (:background ,color-4))))
    `(trailing-whitespace ((t (:background ,color-10))))
-   `(vertical-border ((t (:foreground ,color-13 :background ,color-5))))
+   `(vertical-border ((t (:foreground ,color-7 :background ,color-4))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,color-13 :weight bold))))
-   `(font-lock-comment-face ((t (:foreground ,color-9))))
+   `(font-lock-comment-face ((t (:foreground ,color-7 :weight bold))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,color-8))))
    `(font-lock-constant-face ((t (:foreground ,color-13))))
-   `(font-lock-doc-face ((t (:foreground ,color-11))))
+   `(font-lock-doc-face ((t (:foreground ,color-7))))
    `(font-lock-function-name-face ((t (:foreground ,color-12))))
    `(font-lock-keyword-face ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-negation-char-face ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,color-9 :weight bold))))
-   `(font-lock-string-face ((t (:foreground ,color-10))))
-   `(font-lock-type-face ((t (:foreground ,color-10))))
+   `(font-lock-string-face ((t (:foreground ,color-8 :slant oblique))))
+   `(font-lock-type-face ((t (:foreground ,color-10 :underline t))))
    `(font-lock-variable-name-face ((t (:foreground ,color-11))))
    `(font-lock-warning-face ((t (:foreground ,color-11 :weight bold))))
 
@@ -179,11 +193,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-treeview-old-face ((t (:foreground ,color-8))))
    `(newsticker-treeview-selection-face ((t (:background ,color-3 :foreground ,color-13))))
 ;;;; Third-party
+;;;;; highlight-symbol
+   `(highlight-symbol-face ((t (:background ,color-4) )))
 ;;;;; ace-jump
    `(ace-jump-face-background
-     ((t (:foreground ,color-7 :background ,color-5 :inverse-video nil))))
+     ((t (:foreground ,color-7 :background ,color-4 :inverse-video nil))))
    `(ace-jump-face-foreground
-     ((t (:foreground ,color-11 :background ,color-5 :inverse-video nil))))
+     ((t (:foreground ,color-11 :background ,color-4 :inverse-video nil))))
 ;;;;; anzu
    `(anzu-mode-line ((t (:foreground ,color-12 :weight bold))))
 ;;;;; full-ack
@@ -202,10 +218,19 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; auto-complete
    `(ac-candidate-face ((t (:background ,color-8 :foreground ,color-2))))
    `(ac-selection-face ((t (:background ,color-7 :foreground ,color-13))))
+   `(ac-yasnippet-candidate-face ((t (:background ,color-8 :foreground ,color-3))))
+   `(ac-yasnippet-selection-face ((t (:background ,color-7 :foreground ,color-12))))
+   `(ac-slime-menu-face ((t (:background ,color-8 :foreground ,color-1))))
+   `(ac-slime-selection-face ((t (:background ,color-7 :foreground ,color-12))))
+   `(ac-gtags-candidate-face ((t (:background ,color-8 :foreground ,color-1))))
+   `(ac-gtags-selection-face ((t (:background ,color-7 :foreground ,color-12))))
+   `(ac-emmet-candidate-face ((t (:background ,color-8 :foreground ,color-2))))
+   `(ac-emmet-selection-face ((t (:background ,color-7 :foreground ,color-12))))
+   
    `(popup-tip-face ((t (:background ,color-11 :foreground ,color-2))))
    `(popup-scroll-bar-foreground-face ((t (:background ,color-6))))
    `(popup-scroll-bar-background-face ((t (:background ,color-3))))
-   `(popup-isearch-match ((t (:background ,color-5 :foreground ,color-13))))
+   `(popup-isearch-match ((t (:background ,color-4 :foreground ,color-13))))
 ;;;;; android mode
    `(android-mode-debug-face ((t (:foreground ,color-10))))
    `(android-mode-error-face ((t (:foreground ,color-11 :weight bold))))
@@ -214,8 +239,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(android-mode-warning-face ((t (:foreground ,color-13))))
 ;;;;; bm
    `(bm-face ((t (:background ,color-12 :foreground ,color-5))))
-   `(bm-fringe-face ((t (:background ,color-5 :foreground ,color-2))))
-   `(bm-fringe-persistent-face ((t (:background ,color-5 :foreground ,color-2))))
+   `(bm-fringe-face ((t (:background ,color-4 :foreground ,color-2))))
+   `(bm-fringe-persistent-face ((t (:background ,color-4 :foreground ,color-2))))
    `(bm-persistent-face ((t (:background ,color-8 :foreground ,color-5))))
 ;;;;; clojure-test-mode
    `(clojure-test-failure-face ((t (:foreground ,color-11 :weight bold :underline t))))
@@ -228,6 +253,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ctbl:face-continue-bar ((t (:background ,color-4 :foreground ,color-5))))
    `(ctbl:face-row-select ((t (:background ,color-12 :foreground ,color-5))))
 ;;;;; diff
+
    `(diff-added ((,class (:foreground ,color-13 :background nil))
                  (t (:foreground ,color-8 :background nil))))
    `(diff-changed ((t (:foreground ,color-13))))
@@ -284,8 +310,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ediff-odd-diff-B ((t (:background ,color-7))))
    `(ediff-odd-diff-C ((t (:background ,color-7))))
 ;;;;; ert
-   `(ert-test-result-expected ((t (:foreground ,color-13 :background ,color-5))))
-   `(ert-test-result-unexpected ((t (:foreground ,color-10 :background ,color-5))))
+   `(ert-test-result-expected ((t (:foreground ,color-13 :background ,color-4))))
+   `(ert-test-result-unexpected ((t (:foreground ,color-10 :background ,color-4))))
 ;;;;; eshell
    `(eshell-prompt ((t (:foreground ,color-13 :weight bold))))
    `(eshell-ls-archive ((t (:foreground ,color-9 :weight bold))))
@@ -303,19 +329,19 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; flycheck
    `(flycheck-error
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,color-9) :inherit unspecified))
+       (:underline (:style wave :color ,color-1) :inherit unspecified))
       (t (:foreground ,color-9 :weight bold :underline t))))
    `(flycheck-warning
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,color-13) :inherit unspecified))
+       (:underline (:style wave :color ,color-4) :inherit unspecified))
       (t (:foreground ,color-13 :weight bold :underline t))))
    `(flycheck-info
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,color-12) :inherit unspecified))
+       (:underline (:style wave :color ,color-4) :inherit unspecified))
       (t (:foreground ,color-12 :weight bold :underline t))))
-   `(flycheck-fringe-error ((t (:foreground ,color-9 :weight bold))))
-   `(flycheck-fringe-warning ((t (:foreground ,color-13 :weight bold))))
-   `(flycheck-fringe-info ((t (:foreground ,color-12 :weight bold))))
+   `(flycheck-fringe-error ((t (:foreground ,color-1 :weight bold))))
+   `(flycheck-fringe-warning ((t (:foreground ,color-4 :weight bold))))
+   `(flycheck-fringe-info ((t (:foreground ,color-4 :weight bold))))
 ;;;;; flymake
    `(flymake-errline
      ((((supports :underline (:style wave)))
@@ -358,7 +384,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(erc-nick-msg-face ((t (:inherit erc-default))))
    `(erc-notice-face ((t (:foreground ,color-9))))
    `(erc-pal-face ((t (:foreground ,color-11 :weight bold))))
-   `(erc-prompt-face ((t (:foreground ,color-11 :background ,color-5 :weight bold))))
+   `(erc-prompt-face ((t (:foreground ,color-11 :background ,color-4 :weight bold))))
    `(erc-timestamp-face ((t (:foreground ,color-13))))
    `(erc-underline-face ((t (:underline t))))
 ;;;;; git-gutter
@@ -438,7 +464,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; helm
    `(helm-header
      ((t (:foreground ,color-9
-                      :background ,color-5
+                      :background ,color-4
                       :underline nil
                       :box nil))))
    `(helm-source-header
@@ -451,39 +477,39 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-selection-line ((t (:background ,color-6))))
    `(helm-visible-mark ((t (:foreground ,color-5 :background ,color-11))))
    `(helm-candidate-number ((t (:foreground ,color-13 :background ,color-3))))
-   `(helm-separator ((t (:foreground ,color-10 :background ,color-5))))
-   `(helm-time-zone-current ((t (:foreground ,color-11 :background ,color-5))))
-   `(helm-time-zone-home ((t (:foreground ,color-10 :background ,color-5))))
-   `(helm-bookmark-addressbook ((t (:foreground ,color-11 :background ,color-5))))
+   `(helm-separator ((t (:foreground ,color-10 :background ,color-4))))
+   `(helm-time-zone-current ((t (:foreground ,color-11 :background ,color-4))))
+   `(helm-time-zone-home ((t (:foreground ,color-10 :background ,color-4))))
+   `(helm-bookmark-addressbook ((t (:foreground ,color-11 :background ,color-4))))
    `(helm-bookmark-directory ((t (:foreground nil :background nil :inherit helm-ff-directory))))
    `(helm-bookmark-file ((t (:foreground nil :background nil :inherit helm-ff-file))))
-   `(helm-bookmark-gnus ((t (:foreground ,color-10 :background ,color-5))))
-   `(helm-bookmark-info ((t (:foreground ,color-11 :background ,color-5))))
-   `(helm-bookmark-man ((t (:foreground ,color-13 :background ,color-5))))
-   `(helm-bookmark-w3m ((t (:foreground ,color-10 :background ,color-5))))
-   `(helm-buffer-not-saved ((t (:foreground ,color-10 :background ,color-5))))
-   `(helm-buffer-process ((t (:foreground ,color-12 :background ,color-5))))
-   `(helm-buffer-saved-out ((t (:foreground ,color-13 :background ,color-5))))
-   `(helm-buffer-size ((t (:foreground ,color-7 :background ,color-5))))
-   `(helm-ff-directory ((t (:foreground ,color-12 :background ,color-5 :weight bold))))
-   `(helm-ff-file ((t (:foreground ,color-13 :background ,color-5 :weight normal))))
-   `(helm-ff-executable ((t (:foreground ,color-11 :background ,color-5 :weight normal))))
-   `(helm-ff-invalid-symlink ((t (:foreground ,color-10 :background ,color-5 :weight bold))))
-   `(helm-ff-symlink ((t (:foreground ,color-13 :background ,color-5 :weight bold))))
+   `(helm-bookmark-gnus ((t (:foreground ,color-10 :background ,color-4))))
+   `(helm-bookmark-info ((t (:foreground ,color-11 :background ,color-4))))
+   `(helm-bookmark-man ((t (:foreground ,color-13 :background ,color-4))))
+   `(helm-bookmark-w3m ((t (:foreground ,color-10 :background ,color-4))))
+   `(helm-buffer-not-saved ((t (:foreground ,color-10 :background ,color-4))))
+   `(helm-buffer-process ((t (:foreground ,color-12 :background ,color-4))))
+   `(helm-buffer-saved-out ((t (:foreground ,color-13 :background ,color-4))))
+   `(helm-buffer-size ((t (:foreground ,color-7 :background ,color-4))))
+   `(helm-ff-directory ((t (:foreground ,color-12 :background ,color-4 :weight bold))))
+   `(helm-ff-file ((t (:foreground ,color-13 :background ,color-4 :weight normal))))
+   `(helm-ff-executable ((t (:foreground ,color-11 :background ,color-4 :weight normal))))
+   `(helm-ff-invalid-symlink ((t (:foreground ,color-10 :background ,color-4 :weight bold))))
+   `(helm-ff-symlink ((t (:foreground ,color-13 :background ,color-4 :weight bold))))
    `(helm-ff-prefix ((t (:foreground ,color-5 :background ,color-13 :weight normal))))
-   `(helm-grep-cmd-line ((t (:foreground ,color-12 :background ,color-5))))
-   `(helm-grep-file ((t (:foreground ,color-13 :background ,color-5))))
-   `(helm-grep-finish ((t (:foreground ,color-11 :background ,color-5))))
-   `(helm-grep-lineno ((t (:foreground ,color-7 :background ,color-5))))
+   `(helm-grep-cmd-line ((t (:foreground ,color-12 :background ,color-4))))
+   `(helm-grep-file ((t (:foreground ,color-13 :background ,color-4))))
+   `(helm-grep-finish ((t (:foreground ,color-11 :background ,color-4))))
+   `(helm-grep-lineno ((t (:foreground ,color-7 :background ,color-4))))
    `(helm-grep-match ((t (:foreground nil :background nil :inherit helm-match))))
-   `(helm-grep-running ((t (:foreground ,color-10 :background ,color-5))))
-   `(helm-moccur-buffer ((t (:foreground ,color-12 :background ,color-5))))
-   `(helm-mu-contacts-address-face ((t (:foreground ,color-7 :background ,color-5))))
-   `(helm-mu-contacts-name-face ((t (:foreground ,color-13 :background ,color-5))))
+   `(helm-grep-running ((t (:foreground ,color-10 :background ,color-4))))
+   `(helm-moccur-buffer ((t (:foreground ,color-12 :background ,color-4))))
+   `(helm-mu-contacts-address-face ((t (:foreground ,color-7 :background ,color-4))))
+   `(helm-mu-contacts-name-face ((t (:foreground ,color-13 :background ,color-4))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,color-4))
+   `(hl-line-face ((,class (:background ,color-3))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,color-4)) ; old emacsen
+   `(hl-line ((,class (:background ,color-3)) ; old emacsen
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,color-6))
@@ -496,13 +522,17 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; iedit-mode
    `(iedit-occurrence ((t (:background ,color-7 :weight bold))))
 ;;;;; js2-mode
-   `(js2-warning ((t (:underline ,color-11))))
+
+   `(js2-warning ((t (:underline ,color-3))))
    `(js2-error ((t (:foreground ,color-10 :weight bold))))
    `(js2-jsdoc-tag ((t (:foreground ,color-8))))
    `(js2-jsdoc-type ((t (:foreground ,color-11))))
    `(js2-jsdoc-value ((t (:foreground ,color-12))))
+   `(js2-jsdoc-html-tag-name ((t (:foreground ,color-11))))
+   `(js2-jsdoc-html-tag-delimiter ((t (:foreground ,color-12))))
    `(js2-function-param ((t (:foreground, color-12))))
    `(js2-external-variable ((t (:foreground ,color-11))))
+   
 ;;;;; jabber-mode
    `(jabber-roster-user-away ((t (:foreground ,color-11))))
    `(jabber-roster-user-online ((t (:foreground ,color-10))))
@@ -534,7 +564,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,color-11 :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,color-11 :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,color-11 :background ,color-5))))
+   `(linum ((t (:foreground ,color-11 :background ,color-4))))
 ;;;;; macrostep
    `(macrostep-gensym-1
      ((t (:foreground ,color-11 :background ,color-3))))
@@ -606,9 +636,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mew-face-eof-message ((t (:foreground ,color-9))))
    `(mew-face-eof-part ((t (:foreground ,color-13))))
 ;;;;; mic-paren
-   `(paren-face-match ((t (:foreground ,color-12 :background ,color-5 :weight bold))))
-   `(paren-face-mismatch ((t (:foreground ,color-5 :background ,color-10 :weight bold))))
-   `(paren-face-no-match ((t (:foreground ,color-5 :background ,color-10 :weight bold))))
+   `(paren-face-match ((t (:foreground ,color-12 :background ,color-3 ))))
+   `(paren-face-mismatch ((t (:foreground ,color-2 :background ,color-3 ))))
+   `(paren-face-no-match ((t (:foreground ,color-6 :background ,color-3 ))))
 ;;;;; mingus
    `(mingus-directory-face ((t (:foreground ,color-11))))
    `(mingus-pausing-face ((t (:foreground ,color-10))))
@@ -654,14 +684,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-headline-done ((t (:foreground ,color-12))))
    `(org-hide ((t (:foreground ,color-3))))
    `(org-document-title ((t (:foreground ,color-12 :height 1.9 :bold t))))
-   `(org-level-1 ((t (:foreground ,color-14 :height 1.3 :bold t))))
-   `(org-level-2 ((t (:foreground ,color-13 :height 1.2 :bold t))))
-   `(org-level-3 ((t (:foreground ,color-12 :height 1.2 :bold t))))
-   `(org-level-4 ((t (:foreground ,color-11 :height 1.1 :bold t))))
-   `(org-level-5 ((t (:foreground ,color-10 :height 1.1 :bold t))))
-   `(org-level-6 ((t (:foreground ,color-9 :height 1.1 t))))
-   `(org-level-7 ((t (:foreground ,color-7 :height 1.0 t))))
-   `(org-level-8 ((t (:foreground ,color-7 :height 1.0 t))))
+   `(org-level-1 ((t (:foreground ,color-14 :height 1.5))))
+   `(org-level-2 ((t (:foreground ,color-10 :height 1.2))))
+   `(org-level-3 ((t (:foreground ,color-9 :height 1.1))))
+   `(org-level-4 ((t (:foreground ,color-9 :height 1.0))))
+   `(org-level-5 ((t (:foreground ,color-9 :height 1.0))))
+   `(org-level-6 ((t (:foreground ,color-9 :height 1.0))))
+   `(org-level-7 ((t (:foreground ,color-9 :height 1.0))))
+   `(org-level-8 ((t (:foreground ,color-8 :height 1.0))))
    `(org-link ((t (:foreground ,color-11 :underline t))))
    `(org-scheduled ((t (:foreground ,color-13))))
    `(org-scheduled-previously ((t (:foreground ,color-10))))
@@ -681,7 +711,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-ellipsis ((t (:foreground ,color-12 :underline t))))
    `(org-footnote ((t (:foreground ,color-12 :underline t))))
    `(org-meta-line ((t (:foreground ,color-8 :height 0.5))))
-   `(org-block-background ((t (:background ,color-5 :height 0.7))))
+   `(org-block-background ((t (:background ,color-4 :height 0.7))))
+
 ;;;;; outline
    `(outline-1 ((t (:foreground ,color-11))))
    `(outline-2 ((t (:foreground ,color-13))))
@@ -704,10 +735,10 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; perspective
    `(persp-selected-face ((t (:foreground ,color-11 :inherit mode-line))))
 ;;;;; powerline
-   `(powerline-active1 ((t (:background ,color-4 :inherit mode-line))))
-   `(powerline-active2 ((t (:background ,color-7 :inherit mode-line))))
-   `(powerline-inactive1 ((t (:background ,color-6 :inherit mode-line-inactive))))
-   `(powerline-inactive2 ((t (:background ,color-8 :inherit mode-line-inactive))))
+   `(powerline-active1 ((t (:background ,color-6 :foreground ,color-11 :inherit mode-line))))
+   `(powerline-active2 ((t (:background ,color-8 :foreground ,color-1 :inherit mode-line))))
+   `(powerline-inactive1 ((t (:background ,color-6 :foreground ,color-4 :inherit mode-line-inactive))))
+   `(powerline-inactive2 ((t (:background ,color-5 :foreground ,color-3 :inherit mode-line-inactive))))
 ;;;;; proofgeneral
    `(proof-active-area-face ((t (:underline t))))
    `(proof-boring-face ((t (:foreground ,color-13 :background ,color-7))))
@@ -723,22 +754,22 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(proof-queue-face ((t (:background ,color-7))))
    `(proof-region-mouse-highlight-face ((t (:inherit proof-mouse-highlight-face))))
    `(proof-script-highlight-error-face ((t (:background ,color-9))))
-   `(proof-tacticals-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,color-5))))
-   `(proof-tactics-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,color-5))))
+   `(proof-tacticals-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,color-4))))
+   `(proof-tactics-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,color-4))))
    `(proof-warning-face ((t (:foreground ,color-5 :background ,color-12))))
 ;;;;; rainbow-delimiters
-   `(rainbow-delimiters-depth-1-face ((t (:foreground ,color-13))))
-   `(rainbow-delimiters-depth-2-face ((t (:foreground ,color-13))))
-   `(rainbow-delimiters-depth-3-face ((t (:foreground ,color-11))))
-   `(rainbow-delimiters-depth-4-face ((t (:foreground ,color-12))))
+   `(rainbow-delimiters-depth-1-face ((t (:foreground ,color-7))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground ,color-8))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground ,color-9))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground ,color-10))))
    `(rainbow-delimiters-depth-5-face ((t (:foreground ,color-11))))
-   `(rainbow-delimiters-depth-6-face ((t (:foreground ,color-11))))
-   `(rainbow-delimiters-depth-7-face ((t (:foreground ,color-12))))
-   `(rainbow-delimiters-depth-8-face ((t (:foreground ,color-10))))
-   `(rainbow-delimiters-depth-9-face ((t (:foreground ,color-9))))
-   `(rainbow-delimiters-depth-10-face ((t (:foreground ,color-11))))
-   `(rainbow-delimiters-depth-11-face ((t (:foreground ,color-9))))
-   `(rainbow-delimiters-depth-12-face ((t (:foreground ,color-6))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,color-12))))
+   `(rainbow-delimiters-depth-7-face ((t (:foreground ,color-13))))
+   `(rainbow-delimiters-depth-8-face ((t (:foreground ,color-14))))
+   `(rainbow-delimiters-depth-9-face ((t (:foreground ,color-14))))
+   `(rainbow-delimiters-depth-10-face ((t (:foreground ,color-14))))
+   `(rainbow-delimiters-depth-11-face ((t (:foreground ,color-14))))
+   `(rainbow-delimiters-depth-12-face ((t (:foreground ,color-14))))
 ;;;;; rcirc
    `(rcirc-my-nick ((t (:foreground ,color-11))))
    `(rcirc-other-nick ((t (:foreground ,color-11))))
@@ -775,11 +806,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc     ((t (:foreground ,color-13 :bold t))))
    `(sh-quoted-exec ((t (:foreground ,color-10))))
 ;;;;; show-paren
-   `(show-paren-mismatch ((t (:foreground ,color-11 :background ,color-8 :weight bold))))
-   `(show-paren-match ((t (:background ,color-8 :weight bold))))
+   `(show-paren-mismatch-face ((t (:foreground ,color-1 :background ,color-4 :weight bold))))
+   `(show-paren-match-face ((t (:foreground ,color-11 :background ,color-3  :weight bold))))
 ;;;;; smartparens
-   `(sp-show-pair-mismatch-face ((t (:foreground ,color-11 :background ,color-8 :weight bold))))
-   `(sp-show-pair-match-face ((t (:background ,color-8 :weight bold))))
+   `(sp-show-pair-mismatch-face ((t (:foreground ,color-14 :background ,color-4 :weight bold))))
+   `(sp-show-pair-match-face ((t (:weight bold :underline t))))
 ;;;;; sml-mode-line
    '(sml-modeline-end-face ((t :inherit default :width condensed)))
 ;;;;; SLIME
@@ -816,9 +847,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-tag-face ((t (:foreground ,color-13))))
 ;;;;; tabbar
    `(tabbar-button ((t (:foreground ,color-13
-                                    :background ,color-5))))
+                                    :background ,color-4))))
    `(tabbar-selected ((t (:foreground ,color-13
-                                      :background ,color-5
+                                      :background ,color-4
                                       :box (:line-width -1 :style pressed-button)))))
    `(tabbar-unselected ((t (:foreground ,color-13
                                         :background ,color-6
@@ -827,17 +858,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(term-color-black ((t (:foreground ,color-5
                                        :background ,color-3))))
    `(term-color-red ((t (:foreground ,color-9
-                                       :background ,color-7))))
+                                     :background ,color-7))))
    `(term-color-green ((t (:foreground ,color-9
                                        :background ,color-11))))
    `(term-color-yellow ((t (:foreground ,color-11
-                                       :background ,color-13))))
+                                        :background ,color-13))))
    `(term-color-blue ((t (:foreground ,color-10
                                       :background ,color-7))))
    `(term-color-magenta ((t (:foreground ,color-10
                                          :background ,color-10))))
    `(term-color-cyan ((t (:foreground ,color-12
-                                       :background ,color-11))))
+                                      :background ,color-11))))
    `(term-color-white ((t (:foreground ,color-13
                                        :background ,color-7))))
    '(term-default-fg-color ((t (:inherit term-color-white))))
@@ -859,7 +890,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(w3m-header-line-location-title ((t (:foreground ,color-13
                                                      :underline t :weight bold))))
    '(w3m-history-current-url ((t (:inherit match))))
-   `(w3m-lnum ((t (:foreground ,color-11 :background ,color-5))))
+   `(w3m-lnum ((t (:foreground ,color-11 :background ,color-4))))
    `(w3m-lnum-match ((t (:background ,color-3
                                      :foreground ,color-11
                                      :weight bold))))
@@ -883,7 +914,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-string-face ((t (:inherit ,font-lock-string-face))))
    `(web-mode-type-face ((t (:inherit ,font-lock-type-face))))
    `(web-mode-variable-name-face ((t (:inherit ,font-lock-variable-name-face))))
-   `(web-mode-server-background-face ((t (:background ,color-5))))
+   `(web-mode-server-background-face ((t (:background ,color-4))))
    `(web-mode-server-comment-face ((t (:inherit web-mode-comment-face))))
    `(web-mode-server-string-face ((t (:inherit web-mode-string-face))))
    `(web-mode-symbol-face ((t (:inherit font-lock-constant-face))))
@@ -895,7 +926,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(whitespace-tab ((t (:background ,color-9))))
    `(whitespace-newline ((t (:foreground ,color-6))))
    `(whitespace-trailing ((t (:background ,color-10))))
-   `(whitespace-line ((t (:background ,color-5 :foreground ,color-10))))
+   `(whitespace-line ((t (:background ,color-4 :foreground ,color-10))))
    `(whitespace-space-before-tab ((t (:background ,color-11 :foreground ,color-11))))
    `(whitespace-indentation ((t (:background ,color-13 :foreground ,color-10))))
    `(whitespace-empty ((t (:background ,color-13))))
@@ -934,6 +965,23 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(yascroll:thumb-text-area ((t (:background ,color-3))))
    `(yascroll:thumb-fringe ((t (:background ,color-3 :foreground ,color-3))))
    `(minimap-active-region-background ((t (:background ,color-6 :foreground ,color-7))))
+;;;;; html fold/unfold face
+   `(html-fold-unfolded-face ((t (:background ,color-4))))
+   `(html-fold-folded-face ((t (:foreground ,color-14 :bold t))))
+;;;;; markdown mode
+   `(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold :foreground ,color-5))))
+   `(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.5))))
+   `(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.3))))
+   `(markdown-header-face-3 ((t (:inherit markdown-header-face :underline t :height 1.2))))
+   `(markdown-header-face-4 ((t (:inherit markdown-header-face :underline t :height 1.1))))
+   `(markdown-header-face-5 ((t (:inherit markdown-header-face :underline t))))
+   `(markdown-header-face-6 ((t (:inherit markdown-header-face :underline t))))
+;;;; swoop
+   `(swoop-face-line-buffer-name ((t (:background ,color-9 :foreground ,color-1))))
+   `(swoop-face-target-line ((t (:background ,color-7 :foreground ,color-12))))
+   `(swoop-face-line-number ((t (:background ,color-4 :foreground ,color-6))))
+   `(swoop-face-header-format-line ((t (:background ,color-6 :foreground ,color-1))))
+   `(swoop-face-target-words ((t (:background ,color-6 :foreground ,color-13))))
    ))
 
 ;;; Theme Variables
@@ -969,6 +1017,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vc-annotate-background ,color-3)
    ))
 
+
 ;;; Rainbow Support
 
 (declare-function rainbow-mode 'rainbow-mode)
@@ -1003,10 +1052,10 @@ This requires library `rainbow-mode'.")
 
 ;;;###autoload
 (and load-file-name
-     (boundp 'custom-theme-load-path)
-     (add-to-list 'custom-theme-load-path
-                  (file-name-as-directory
-                   (file-name-directory load-file-name))))
+   (boundp 'custom-theme-load-path)
+   (add-to-list 'custom-theme-load-path
+                (file-name-as-directory
+                 (file-name-directory load-file-name))))
 
 (provide-theme 'tao)
 
