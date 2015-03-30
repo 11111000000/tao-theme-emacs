@@ -43,12 +43,18 @@ To load it automatically on Emacs startup add this to your init file:
 
 ## Light version
 
-Now there is no any external variable to turn it on, siply uncomment this in source:
+Now there is no any external variable to turn it on, simply uncomment in source:
 ```
-;; (setq tao-colors-alist (golden-grayscale-light-alist))
+ (setq tao-colors-alist (golden-grayscale-light-alist))
 ```
 
-then do `M-x powerline-reset` if you use Powerline
+then do
+
+`M-x eval-buffer`
+
+and
+
+`M-x powerline-reset` if you use Powerline
 
 ## Ugly colors in the terminal Emacs version
 
