@@ -1022,8 +1022,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 
 ;;; Rainbow Support
 
-(declare-function rainbow-mode 'rainbow-mode)
-(declare-function rainbow-colorize-by-assoc 'rainbow-mode)
+
 
 (defvar tao-add-font-lock-keywords nil
   "Whether to add font-lock keywords for tao color names.
@@ -1062,12 +1061,10 @@ This requires library `rainbow-mode'.")
 (provide-theme 'tao)
 
 ;;;###autoload
-(add-to-list 'safe-local-eval-forms
-             '(when (require 'rainbow-mode nil t) (rainbow-mode 1)))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; indent-tabs-mode: nil
-;; eval: (when (require 'rainbow-mode nil t) (rainbow-mode 1))
 ;; End:
 ;;; tao-theme.el ends here
