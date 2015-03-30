@@ -1,10 +1,10 @@
 # Tao for EMACS
 
-### Ing:
+### Ing
 
 ![089234537_full](https://cloud.githubusercontent.com/assets/977130/6906540/2dcc228e-d738-11e4-9c01-cffb23eb808a.png)
 
-### Yang:
+### Yang
 
 ![090000935_full](https://cloud.githubusercontent.com/assets/977130/6906836/e7f2da8a-d739-11e4-9564-b70b3b46cea3.png)
 
