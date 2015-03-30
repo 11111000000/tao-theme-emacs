@@ -53,7 +53,7 @@ Each element has the form (NAME . HEX).")
             (golden-grayscale))))
 
 
-(setq tao-light-list '(9 10 11 13 10 9 5 4 2 3 5 4 6 4))
+(setq tao-light-list '(8 10 9 11 5 6 7 5 4 3 2 1 1 1))
 
 (defun golden-grayscale-light-alist ()
   (let ((index 0)
@@ -65,7 +65,7 @@ Each element has the form (NAME . HEX).")
 
 (setq tao-colors-alist (golden-grayscale-alist))
 
-;;(setq tao-colors-alist (golden-grayscale-light-alist))
+;; (setq tao-colors-alist (golden-grayscale-light-alist))
       
 ;;(("color-1" . "#050505") ("color-2" . "#080808") ("color-3" . "#0E0E0E") ("color-4" . "#161616") ("color-5" . "#252525") ("color-6" . "#3C3C3C") ("color-7" . "#616161") ("color-8" . "#9D9D9D") ("color-9" . "#C2C2C2") ("color-10" . "#D9D9D9") ("color-11" . "#E8E8E8") ("color-12" . "#F0F0F0") ...)
 ;; (defun invert(rgb-hex)
@@ -133,9 +133,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(makefile-space ((t (:background ,color-4))))
    
 ;;;;; isearch
-   `(isearch ((t (:foreground ,color-11 :weight bold :background ,color-3))))
+   `(isearch ((t (:foreground ,color-11 :weight bold :background ,color-6))))
    `(isearch-fail ((t (:foreground ,color-13 :background ,color-7))))
-   `(lazy-highlight ((t (:foreground ,color-11 :weight bold :background ,color-4))))
+   `(lazy-highlight ((t (:foreground ,color-11 :weight bold :background ,color-5))))
 
    `(menu ((t (:foreground ,color-13 :background ,color-4))))
    `(minibuffer-prompt ((t (:foreground ,color-13 :color ,color-1))))
@@ -146,11 +146,11 @@ Also bind `class' to ((class color) (min-colors 89))."
                            :box (:line-width 1 :style released-button)))
       (t :inverse-video t)))
    `(mode-line-inactive
-     ((t (:foreground ,color-8
+     ((t (:foreground ,color-3
                       :background ,color-6
                       :height 86
-                      :box (:line-width -1 :style released-button)))))
-   `(mode-line-buffer-id ((t (:foreground ,color-13 :weight bold))))
+                      :box (:line-width 1 :style released-button)))))
+   `(mode-line-buffer-id ((t (:foreground ,color-1 :weight bold))))
    `(region ((,class (:background ,color-9 :foreground ,color-3))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,color-4))))
@@ -197,9 +197,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight-symbol-face ((t (:background ,color-4) )))
 ;;;;; ace-jump
    `(ace-jump-face-background
-     ((t (:foreground ,color-7 :background ,color-4 :inverse-video nil))))
+     ((t (:foreground ,color-6 :background ,color-2 :inverse-video nil))))
    `(ace-jump-face-foreground
-     ((t (:foreground ,color-11 :background ,color-4 :inverse-video nil))))
+     ((t (:foreground ,color-11 :background ,color-1 :inverse-video nil))))
 ;;;;; anzu
    `(anzu-mode-line ((t (:foreground ,color-12 :weight bold))))
 ;;;;; full-ack
@@ -216,8 +216,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-latex-string-face ((t (:inherit ,font-lock-string-face))))
    `(font-latex-math-face ((t (:foreground ,color-11))))
 ;;;;; auto-complete
-   `(ac-candidate-face ((t (:background ,color-8 :foreground ,color-2))))
-   `(ac-selection-face ((t (:background ,color-7 :foreground ,color-13))))
+   `(ac-candidate-face ((t (:background ,color-8 :foreground ,color-2 :underline nil))))
+   `(ac-selection-face ((t (:background ,color-7 :foreground ,color-13 :underline nil))))
    `(ac-yasnippet-candidate-face ((t (:background ,color-8 :foreground ,color-3))))
    `(ac-yasnippet-selection-face ((t (:background ,color-7 :foreground ,color-12))))
    `(ac-slime-menu-face ((t (:background ,color-8 :foreground ,color-1))))
@@ -737,8 +737,8 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; powerline
    `(powerline-active1 ((t (:background ,color-6 :foreground ,color-11 :inherit mode-line))))
    `(powerline-active2 ((t (:background ,color-8 :foreground ,color-1 :inherit mode-line))))
-   `(powerline-inactive1 ((t (:background ,color-6 :foreground ,color-4 :inherit mode-line-inactive))))
-   `(powerline-inactive2 ((t (:background ,color-5 :foreground ,color-3 :inherit mode-line-inactive))))
+   `(powerline-inactive1 ((t (:background ,color-5 :foreground ,color-3 :inherit mode-line-inactive))))
+   `(powerline-inactive2 ((t (:background ,color-6 :foreground ,color-4 :inherit mode-line-inactive))))
 ;;;;; proofgeneral
    `(proof-active-area-face ((t (:underline t))))
    `(proof-boring-face ((t (:foreground ,color-13 :background ,color-7))))
@@ -982,6 +982,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(swoop-face-line-number ((t (:background ,color-4 :foreground ,color-6))))
    `(swoop-face-header-format-line ((t (:background ,color-6 :foreground ,color-1))))
    `(swoop-face-target-words ((t (:background ,color-6 :foreground ,color-13))))
+   `(highlight-indentation-face ((t (:background ,color-5))))
+   `(highlight-indentation-current-column-face ((t (:background ,color-3))))
    ))
 
 ;;; Theme Variables
