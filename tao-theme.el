@@ -63,9 +63,9 @@ Each element has the form (NAME . HEX).")
               (cons (concat "color-" (format "%d" index)) (nth x grayscale)))
             tao-light-list)))
 
-;; (setq tao-colors-alist (golden-grayscale-alist))
+(setq tao-colors-alist (golden-grayscale-alist))
 
-(setq tao-colors-alist (golden-grayscale-light-alist))
+;; (setq tao-colors-alist (golden-grayscale-light-alist))
       
 ;;(("color-1" . "#050505") ("color-2" . "#080808") ("color-3" . "#0E0E0E") ("color-4" . "#161616") ("color-5" . "#252525") ("color-6" . "#3C3C3C") ("color-7" . "#616161") ("color-8" . "#9D9D9D") ("color-9" . "#C2C2C2") ("color-10" . "#D9D9D9") ("color-11" . "#E8E8E8") ("color-12" . "#F0F0F0") ...)
 ;; (defun invert(rgb-hex)
