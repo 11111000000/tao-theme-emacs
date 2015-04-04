@@ -1,4 +1,7 @@
 ;; Common tools and face assignment table for Tao Yin & Yang
+
+(require 'cl-lib)
+
 (defun tao-theme-golden-grayscale ()
   "Generate a golden mean based greyscale gradient."
   (let (zeta
