@@ -32,7 +32,7 @@
 (deftheme tao-yin "The Tao color theme dark")
 
 (tao-with-color-variables
-  tao-theme-golden-grayscale-yin-alist
+  tao-theme-golden-grayscale-yin-palette
   (tao-apply-custom-theme 'tao-yin))
 
 ;;; Footer
