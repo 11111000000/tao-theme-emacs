@@ -1,12 +1,12 @@
 ;;; tao-yang-theme.el --- A light golden mean grayscale color theme for Emacs.
 
-;; Copyright (C) 2014 Peter Kosov 11111000000@email.com
+;; Copyright (C) 2014 Peter  <11111000000 at email.com>
 ;; Author: Peter <11111000000@email.com>
 ;; Contributors: Jasonm23 <jasonm23@gmail.com>
 ;;
 ;; Original faces taken from Zenburn theme port (c) by Bozhidar Batsov
 ;;
-;; Color palette generated automatically by golden-ratio algorithm v1.0
+;; Color palette generated automatically from golden mean
 ;;
 ;; URL: http://github.com/11111000000/tao-theme-emacs
 ;; Version: 1.0
