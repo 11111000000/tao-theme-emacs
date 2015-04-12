@@ -18,7 +18,7 @@ Alternatively you can clone this repository, and then:
 
 ### Yin (Dark version)
 
-![089234537_full](https://cloud.githubusercontent.com/assets/977130/6906540/2dcc228e-d738-11e4-9c01-cffb23eb808a.png)
+![103022054_full](https://cloud.githubusercontent.com/assets/977130/7108099/c807c682-e183-11e4-8c10-9948685ca12b.png)
 
 `M-x load-theme tao-yin`
 
