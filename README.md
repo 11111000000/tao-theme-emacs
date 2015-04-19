@@ -28,21 +28,6 @@ Alternatively you can clone this repository, and then:
 
 `M-x load-theme tao-yang`
 
-## Ugly colors in the terminal Emacs version
-
-If your Emacs looks considerably uglier in a terminal (compared to the
-GUI version) try adding this to your `.bashrc` or `.zshrc`:
-
-```bash
-export TERM=xterm-256color
-```
-
-Source the `.bashrc`(`.zshrc`) file and start Emacs again.
-
-## TODO
-
-tune & external config
-
 ### Credits
 
 Original concept, design and development by Peter Kosov.  Additional
