@@ -16,7 +16,7 @@
 
 (defun tao-theme-golden-grayscale-yang-palette ()
   "Generate a light version of the golden gradient alist."
-  (cl-loop for value in '(8 10 9 11 5 6 7 5 4 3 2 1 1 1)
+  (cl-loop for value in '(8 10 9 11 8 7 6 5 4 3 2 1 1 1)
            count value into index
            collect (cons (concat "color-" (format "%d" index))
                          (nth value (tao-theme-golden-grayscale)))))
@@ -82,7 +82,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lazy-highlight                                   ((t (:foreground ,color-11 :weight bold :background ,color-5))))
    `(menu                                             ((t (:foreground ,color-13 :background ,color-4))))
    `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1))))
-   `(mode-line                                        ((,class (:foreground ,color-10 :background ,color-3 :height 86 :box (:line-width 1 :style released-button))) (t :inverse-video t)))
+   `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-8 :height 86 :box (:line-width 1 :style released-button))) (t :inverse-video t)))
    `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-6 :height 86 :box (:line-width 1 :style released-button)))))
    `(mode-line-buffer-id                              ((t (:foreground ,color-9 :weight bold))))
    `(region                                           ((,class (:background ,color-9 :foreground ,color-3)) (t :inverse-video t)))
@@ -616,9 +616,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(persp-selected-face                              ((t (:foreground ,color-11 :inherit mode-line))))
    ;; powerline
    `(powerline-active1                                ((t (:background ,color-6 :foreground ,color-11 :inherit mode-line))))
-   `(powerline-active2                                ((t (:background ,color-8 :foreground ,color-1 :inherit mode-line))))
-   `(powerline-inactive1                              ((t (:background ,color-5 :foreground ,color-3 :inherit mode-line-inactive))))
-   `(powerline-inactive2                              ((t (:background ,color-6 :foreground ,color-4 :inherit mode-line-inactive))))
+   `(powerline-active2                                ((t (:background ,color-4 :foreground ,color-8 :inherit mode-line))))
+   `(powerline-inactive1                              ((t (:background ,color-3 :foreground ,color-6 :inherit mode-line-inactive))))
+   `(powerline-inactive2                              ((t (:background ,color-2 :foreground ,color-7 :inherit mode-line-inactive))))
    ;; proofgeneral
    `(proof-active-area-face                           ((t (:underline t))))
    `(proof-boring-face                                ((t (:foreground ,color-13 :background ,color-7))))
