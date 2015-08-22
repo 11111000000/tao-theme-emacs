@@ -45,7 +45,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link                                             ((t (:foreground ,color-13 :underline t :weight bold))))
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-9 :background ,color-4))))
-   `(hl-paren-face                                    ((t (:weight bold))))
+   `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3 :wight bold))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
    `(fringe                                           ((t (:foreground ,color-2 :background ,color-4))))
@@ -82,8 +82,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lazy-highlight                                   ((t (:foreground ,color-11 :weight bold :background ,color-5))))
    `(menu                                             ((t (:foreground ,color-13 :background ,color-4))))
    `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1))))
-   `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-8 :height 86 :box (:line-width 1 :style released-button))) (t :inverse-video t)))
-   `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-6 :height 86 :box (:line-width 1 :style released-button)))))
+   `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-8 :height 86 :box nil )) (t :inverse-video t)))
+   `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-6 :height 86 :box nil))))
    `(mode-line-buffer-id                              ((t (:foreground ,color-9 :weight bold))))
    `(region                                           ((,class (:background ,color-9 :foreground ,color-3)) (t :inverse-video t)))
    `(secondary-selection                              ((t (:background ,color-4))))
@@ -192,10 +192,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diff-refine-removed                              ((t :inherit diff-removed :weight bold)))
    `(diff-header                                      ((,class (:background ,color-7)) (t (:background ,color-13 :foreground ,color-5))))
    `(diff-file-header                                 ((,class (:background ,color-7 :foreground ,color-13 :bold t)) (t (:background ,color-13 :foreground ,color-5 :bold t))))
-   ;; git-gutter
-   `(git-gutter:added                                 ((t ( :foreground ,color-2 ))))
-   `(git-gutter:deleted                               ((t ( :foreground ,color-1 ))))
-   `(git-gutter:modified                              ((t ( :foreground ,color-4 ))))
    ;; dired+
    `(diredp-display-msg                               ((t (:foreground ,color-11))))
    `(diredp-compressed-file-suffix                    ((t (:foreground ,color-11))))
@@ -290,10 +286,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(erc-timestamp-face                               ((t (:foreground ,color-13))))
    `(erc-underline-face                               ((t (:underline t))))
    ;; git-gutter
-   `(git-gutter:added                                 ((t (:foreground ,color-9 :weight bold :inverse-video t))))
-   `(git-gutter:deleted                               ((t (:foreground ,color-10 :weight bold :inverse-video t))))
-   `(git-gutter:modified                              ((t (:foreground ,color-10 :weight bold :inverse-video t))))
-   `(git-gutter:unchanged                             ((t (:foreground ,color-13 :weight bold :inverse-video t))))
+   `(git-gutter:added                                 ((t (:background ,color-4 :foreground ,color-1 :weight bold ))))
+   `(git-gutter:deleted                               ((t (:background ,color-4 :foreground ,color-1 :weight bold ))))
+   `(git-gutter:modified                              ((t (:background ,color-4 :foreground ,color-1 :weight bold ))))
+   `(git-gutter:unchanged                             ((t (:background ,color-4 :foreground ,color-1 :weight bold ))))
    ;; git-gutter-fr
    `(git-gutter-fr:added                              ((t (:foreground ,color-2 :weight bold))))
    `(git-gutter-fr:deleted                            ((t (:foreground ,color-2 :weight bold))))
@@ -615,8 +611,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; perspective
    `(persp-selected-face                              ((t (:foreground ,color-11 :inherit mode-line))))
    ;; powerline
-   `(powerline-active1                                ((t (:background ,color-6 :foreground ,color-11 :inherit mode-line))))
-   `(powerline-active2                                ((t (:background ,color-4 :foreground ,color-8 :inherit mode-line))))
+   `(powerline-active1                                ((t (:background ,color-6 :foreground ,color-11 :box nil :inherit mode-line ))))
+   `(powerline-active2                                ((t (:background ,color-3 :foreground ,color-8 :box nil :inherit mode-line ))))
    `(powerline-inactive1                              ((t (:background ,color-3 :foreground ,color-6 :inherit mode-line-inactive))))
    `(powerline-inactive2                              ((t (:background ,color-2 :foreground ,color-7 :inherit mode-line-inactive))))
    ;; proofgeneral
@@ -686,11 +682,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc                                       ((t (:foreground ,color-13 :bold t))))
    `(sh-quoted-exec                                   ((t (:foreground ,color-10))))
    ;; show-paren
-   `(show-paren-mismatch-face                         ((t (:foreground ,color-1 :background ,color-4 :weight bold))))
+   `(show-paren-mismatch-face                         ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
    `(show-paren-match-face                            ((t (:foreground ,color-11 :background ,color-3  :weight bold))))
    ;; smartparens
-   `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-4 :weight bold))))
-   `(sp-show-pair-match-face                          ((t (:weight bold :underline t))))
+   `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
+   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-3 :weight bold :underline t))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
@@ -733,11 +729,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; volatile-highlights
    `(vhl/default-face                                 ((t (:background ,color-4))))
    ;; emacs-w3m
-   `(w3m-anchor                                       ((t (:foreground ,color-13 :underline t :weight bold))))
-   `(w3m-arrived-anchor                               ((t (:foreground ,color-11 :underline t :weight normal))))
+   `(w3m-anchor                                       ((t (:foreground ,color-12 :background ,color-5 :underline t :weight bold))))
+   `(w3m-current-anchor                               ((t (:foreground ,color-11 :background ,color-3 :underline t :weight bold))))   
+   `(w3m-arrived-anchor-face                          ((t (:foreground ,color-7 :background ,color-5 :underline t :weight normal))))
+   `(w3m-image-anchor-face                            ((t (:foreground ,color-10  :background ,color-5 :underline t :weight normal))))   
+   `(w3m-image-face                                   ((t (:foreground ,color-11 :background ,color-5 :underline t :weight normal))))
    `(w3m-form                                         ((t (:foreground ,color-9 :underline t))))
-   `(w3m-header-line-location-title                   ((t (:foreground ,color-13 :underline t :weight bold))))
-   '(w3m-history-current-url                          ((t (:inherit match))))
+   `(w3m-header-line-location-title                   ((t (:foreground ,color-9 :background ,color-6 :underline t :weight bold))))
+   `(w3m-header-line-location-content                 ((t (:foreground ,color-13 :background ,color-6 :underline t :weight bold))))   
+   `(w3m-history-current-url                          ((t (:inherit match))))
+   `(w3m-tab-background                               ((t (:foreground ,color-1 :background ,color-9 :underline nil :weight normal))) )
+   `(w3m-tab-selected-background-face                 ((t (:foreground ,color-1 :background ,color-11 :underline nil :weight normal))) )   
    `(w3m-lnum                                         ((t (:foreground ,color-11 :background ,color-4))))
    `(w3m-lnum-match                                   ((t (:background ,color-3 :foreground ,color-11 :weight bold))))
    `(w3m-lnum-minibuffer-prompt                       ((t (:foreground ,color-13))))
@@ -821,6 +823,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(markdown-header-face-4                           ((t (:inherit markdown-header-face :underline t :height 1.1))))
    `(markdown-header-face-5                           ((t (:inherit markdown-header-face :underline t))))
    `(markdown-header-face-6                           ((t (:inherit markdown-header-face :underline t))))
+   `(markdown-link-face                               ((t (:underline t :foreground ,color-13))))
+   `(markdown-url-face                                ((t (:underline t :foreground ,color-12))))      
    ;; swoop
    `(swoop-face-line-buffer-name                      ((t (:background ,color-9 :foreground ,color-1))))
    `(swoop-face-target-line                           ((t (:background ,color-7 :foreground ,color-12))))
@@ -829,6 +833,22 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(swoop-face-target-words                          ((t (:background ,color-6 :foreground ,color-13))))
    `(highlight-indentation-face                       ((t (:background ,color-5))))
    `(highlight-indentation-current-column-face        ((t (:background ,color-3))))
+   ;; company
+   `(company-echo-common                              ((t (:foreground ,color-13))))
+   `(company-preview                                  ((t (:background ,color-3 :foreground ,color-11))))
+   `(company-preview-common                           ((t (:inherit company-preview :foreground ,color-13 :weight bold))))
+   `(company-scrollbar-fg                             ((t (:background ,color-7))))
+   `(company-tooltip                                  ((t (:background ,color-5 :foreground ,color-11))))
+   `(company-tooltip-annotation                       ((t (:inherit company-tooltip :foreground ,color-2))))
+   `(company-tooltip-common                           ((t (:inherit company-tooltip :foreground ,color-11))))
+   `(company-tooltip-common-selection                 ((t (:inherit company-tooltip-selection :foreground ,color-13))))
+   `(company-tooltip-selection                        ((t (:inherit company-tooltip :background ,color-6))))               
+   `(company-scrollbar-bg                             ((t (:inherit company-tooltip))))
+   ;; neotree
+   `(neo-dir-link-face                                ((t (:inherit diredp-dir-priv))))
+   `(neo-expand-btn-face                              ((t (:foreground ,color-11 :bold t))))      
+   `(neo-file-link-face                               ((t (:foreground ,color-9))))
+   `(neo-root-dir-face                                ((t (:foreground ,color-8 :background ,color-2))))
    )
 
   ;; Theme Variables
