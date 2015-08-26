@@ -18,13 +18,14 @@ Alternatively you can clone this repository, and then:
 
 ### Yin (Dark version)
 
-![103022054_full](https://cloud.githubusercontent.com/assets/977130/7108099/c807c682-e183-11e4-8c10-9948685ca12b.png)
+![238195518_full](https://cloud.githubusercontent.com/assets/977130/9500092/3134df24-4c2c-11e5-9646-9646a042b679.png)
 
 `M-x load-theme tao-yin`
 
 ### Yang (Light version)
 
-![090000935_full](https://cloud.githubusercontent.com/assets/977130/6906836/e7f2da8a-d739-11e4-9564-b70b3b46cea3.png)
+![238195728_full](https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png)
+
 
 `M-x load-theme tao-yang`
 
