@@ -84,7 +84,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1))))
    `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-8 :height 86 :box nil )) (t :inverse-video t)))
    `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-6 :height 86 :box nil))))
-   `(mode-line-buffer-id                              ((t (:foreground ,color-9 :weight bold))))
+   `(mode-line-buffer-id                              ((t (:foreground ,color-4 :weight bold))))
    `(region                                           ((,class (:background ,color-9 :foreground ,color-3)) (t :inverse-video t)))
    `(secondary-selection                              ((t (:background ,color-4))))
    `(cua-rectangle                                    ((t (:background ,color-4))))
