@@ -26,8 +26,11 @@ Alternatively you can clone this repository, and then:
 
 ![238195728_full](https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png)
 
-
 `M-x load-theme tao-yang`
+
+## Customisation
+
+[Here](https://github.com/11111000000/emacs-d) you can find `powerline-tao-theme` snippet.
 
 ### Credits
 
