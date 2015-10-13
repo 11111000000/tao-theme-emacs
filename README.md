@@ -33,11 +33,11 @@ Alternatively you can clone this repository, and then:
 `(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))` then you can use `tao-with-color-variables` like this:
 
 ```
-(tao-with-color-variables tao-palette (progn
-                                          (setq hl-paren-colors
-                                                (list color-14 color-11 color-9 color-7 color-6))
-                                          (setq hl-paren-background-colors
-                                                (list color-4 color-4 color-4 color-4 color-4))))
+(tao-with-color-variables tao-palette 
+  (progn
+    (setq 
+      hl-paren-colors (list color-14 color-11 color-9 color-7 color-6)
+      hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
 
 ```
 
