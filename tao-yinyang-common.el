@@ -598,7 +598,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-ellipsis                                     ((t (:foreground ,color-12 :underline t))))
    `(org-footnote                                     ((t (:foreground ,color-12 :underline t))))
    `(org-meta-line                                    ((t (:foreground ,color-8 :height 0.5))))
-   `(org-block-background                             ((t (:background ,color-4 :height 0.7))))
+   `(org-block-background                             ((t (:background ,color-4 :height 1))))
 
    ;; outline
    `(outline-1                                        ((t (:foreground ,color-11))))
