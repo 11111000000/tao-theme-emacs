@@ -6,7 +6,7 @@ Tao is a natural & beautiful grayscale color theme for Emacs. Its palette is gen
 
 ## Installation
 
-Tao will be available in [MELPA] (http://melpa.milkbox.net).
+Tao will be available in [MELPA] (https://melpa.org/).
 
 You can install `tao` with the following command:
 
