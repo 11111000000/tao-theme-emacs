@@ -857,11 +857,19 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(company-tooltip-common-selection                 ((t (:inherit company-tooltip-selection :foreground ,color-13))))
    `(company-tooltip-selection                        ((t (:inherit company-tooltip :background ,color-6))))
    `(company-scrollbar-bg                             ((t (:inherit company-tooltip))))
+   ;; eval-sexp-fu
+   `(eval-sexp-fu-flash                               ((t (:background ,color-5))))
+   `(eval-sexp-fu-flash-error                         ((t (:background ,color-11 :foreground ,color-1))))
    ;; neotree
    `(neo-dir-link-face                                ((t (:inherit diredp-dir-priv))))
    `(neo-expand-btn-face                              ((t (:foreground ,color-11 :bold t))))
    `(neo-file-link-face                               ((t (:foreground ,color-9))))
    `(neo-root-dir-face                                ((t (:foreground ,color-8 :background ,color-2))))
+   ;; geiser
+   `(geiser-font-lock-doc-link                        ((t (:foreground ,color-11 :underline t))))
+   `(geiser-font-lock-error-link                        ((t (:foreground ,color-11 :underline t))))
+   `(geiser-font-lock-autodoc-identifier              ((t (:foreground ,color-8 :bold t))))
+   `(compilation-error                                ((t (:foreground ,color-12 :underline t :bold t))))
    )
 
   ;; Theme Variables
