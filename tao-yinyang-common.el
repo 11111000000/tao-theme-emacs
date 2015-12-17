@@ -76,6 +76,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(match                                            ((t (:background ,color-3 :foreground ,color-11 :weight bold))))
    ;; make
    `(makefile-space                                   ((t (:background ,color-4))))
+   `(makefile-targets                                   ((t (:underline t))))
+   `(makefile-shell                                   ((t (:slant italic))))
    ;; isearch
    `(isearch                                          ((t (:foreground ,color-11 :weight bold :background ,color-6))))
    `(isearch-fail                                     ((t (:foreground ,color-13 :background ,color-7))))
@@ -94,7 +96,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-comment-face                           ((t (:foreground ,color-7 :weight bold))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-8))))
-   `(font-lock-constant-face                          ((t (:foreground ,color-13))))
+   `(font-lock-constant-face                          ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-7))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-12))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-13 :weight bold))))
@@ -104,7 +106,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-regexp-grouping-backslash              ((t (:foreground ,color-9 :weight bold))))
    `(font-lock-string-face                            ((t (:foreground ,color-8 :slant oblique))))
    `(font-lock-type-face                              ((t (:foreground ,color-10 :underline t))))
-   `(font-lock-variable-name-face                     ((t (:foreground ,color-11))))
+   `(font-lock-variable-name-face                     ((t (:foreground ,color-14 ))))
    `(font-lock-warning-face                           ((t (:foreground ,color-11 :weight bold))))
    `(c-annotation-face                                ((t (:inherit font-lock-constant-face))))
    ;; newsticker
@@ -428,6 +430,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-jsdoc-html-tag-name                          ((t (:foreground ,color-11))))
    `(js2-jsdoc-html-tag-delimiter                     ((t (:foreground ,color-12))))
    `(js2-function-param                               ((t (:foreground, color-12))))
+   `(js2-function-call                               ((t (:foreground, color-12 :underline t))))
+   `(js2-object-property                              ((t (:foreground, color-12  :slant italic))))
    `(js2-external-variable                            ((t (:foreground ,color-11))))
 
    ;; jabber-mode

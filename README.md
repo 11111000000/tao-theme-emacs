@@ -8,11 +8,9 @@ automatically generated using the golden ratio
 
 Tao in [MELPA](https://melpa.org/#/tao-theme).
 
-You can install `tao-theme` with the following command:
-
 `M-x package-install tao-theme`
 
-Alternatively you can clone this repository, and then:
+or alternatively:
 
 `M-x package-install-file tao-theme`
 
@@ -28,9 +26,9 @@ Alternatively you can clone this repository, and then:
 
 `M-x load-theme tao-yang`
 
-## Palette usage
+## Palette
 
-`(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))` then use `tao-with-color-variables` like this:
+k`(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))` then use `tao-with-color-variables` like this:
 
 ```
 (tao-with-color-variables tao-palette
