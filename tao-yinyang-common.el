@@ -430,9 +430,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-jsdoc-html-tag-name                          ((t (:foreground ,color-11))))
    `(js2-jsdoc-html-tag-delimiter                     ((t (:foreground ,color-12))))
    `(js2-function-param                               ((t (:foreground, color-12))))
-   `(js2-function-call                               ((t (:foreground, color-12 :underline t))))
+   `(js2-function-call                                ((t (:foreground, color-12 :underline t))))
    `(js2-object-property                              ((t (:foreground, color-12  :slant italic))))
-   `(js2-external-variable                            ((t (:foreground ,color-11))))
+   `(js2-external-variable                            ((t (:foreground ,color-7))))
 
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
@@ -700,8 +700,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(show-paren-mismatch                         ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
    `(show-paren-match                            ((t (:foreground ,color-11 :background ,color-3  :weight bold))))
    ;; smartparens
-   `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
-   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-3 :weight bold :underline t))))
+   `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-3))))
+   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-5 :underline nil))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
