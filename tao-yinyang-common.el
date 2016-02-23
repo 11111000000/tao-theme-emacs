@@ -874,6 +874,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(geiser-font-lock-error-link                        ((t (:foreground ,color-11 :underline t))))
    `(geiser-font-lock-autodoc-identifier              ((t (:foreground ,color-8 :bold t))))
    `(compilation-error                                ((t (:foreground ,color-12 :underline t :bold t))))
+   ;; tuareg
+   `(tuareg-font-lock-operator-face                   ((t (:inherit ,font-lock-variable-name-face))))
+   `(tuareg-font-lock-governing-face                  ((t (:inherit ,font-lock-keyword-face))))
    )
 
   ;; Theme Variables
