@@ -96,7 +96,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-comment-face                           ((t (:foreground ,color-7 :weight bold))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-8))))
-   `(font-lock-constant-face                          ((t (:foreground ,color-13 :weight bold))))
+   `(font-lock-constant-face                          ((t (:foreground ,color-8 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-7))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-12))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-13 :weight bold))))
