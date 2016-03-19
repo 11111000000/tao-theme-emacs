@@ -874,6 +874,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(geiser-font-lock-error-link                        ((t (:foreground ,color-11 :underline t))))
    `(geiser-font-lock-autodoc-identifier              ((t (:foreground ,color-8 :bold t))))
    `(compilation-error                                ((t (:foreground ,color-12 :underline t :bold t))))
+   ;; elixir
+   `(elixir-atom-face                                 ((t (:foreground ,color-12 :bold t))))
    )
 
   ;; Theme Variables
