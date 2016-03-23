@@ -876,6 +876,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-error                                ((t (:foreground ,color-12 :underline t :bold t))))
    ;; elixir
    `(elixir-atom-face                                 ((t (:foreground ,color-12 :bold t))))
+   ;; tuareg
+   `(tuareg-font-lock-operator-face                   ((t (:inherit ,font-lock-variable-name-face))))
+   `(tuareg-font-lock-governing-face                  ((t (:inherit ,font-lock-keyword-face))))
    )
 
   ;; Theme Variables
