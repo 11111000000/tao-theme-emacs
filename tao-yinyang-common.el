@@ -879,6 +879,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; tuareg
    `(tuareg-font-lock-operator-face                   ((t (:inherit ,font-lock-variable-name-face))))
    `(tuareg-font-lock-governing-face                  ((t (:inherit ,font-lock-keyword-face))))
+   ;; avy
+   `(avy-lead-face                                    ((t (:background ,color-8 :foreground ,color-1 :bold t))))
+   `(avy-lead-face-0                                  ((t (:background ,color-9  :foreground ,color-1  :bold t))))
+   `(avy-lead-face-1                                  ((t (:background ,color-10  :foreground ,color-1 :bold t))))
+   `(avy-lead-face-2                                  ((t (:background ,color-11  :foreground ,color-1 :bold t))))
+   `(avy-background-face                              ((t (:background ,color-3  :foreground ,color-7 :bold t))))
    )
 
   ;; Theme Variables
