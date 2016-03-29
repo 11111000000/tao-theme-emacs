@@ -833,7 +833,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(html-fold-unfolded-face                          ((t (:background ,color-4))))
    `(html-fold-folded-face                            ((t (:foreground ,color-14 :bold t))))
    ;; markdown mode
-   `(markdown-header-delimiter-face                   ((t (:inherit font-lock-function-name-face :weight bold :foreground ,color-5))))
+   `(markdown-header-delimiter-face                   ((t (:weight normal :foreground ,color-1))))
    `(markdown-header-face-1                           ((t (:inherit markdown-header-face :height 1.5))))
    `(markdown-header-face-2                           ((t (:inherit markdown-header-face :height 1.3))))
    `(markdown-header-face-3                           ((t (:inherit markdown-header-face :underline t :height 1.2))))
@@ -842,6 +842,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(markdown-header-face-6                           ((t (:inherit markdown-header-face :underline t))))
    `(markdown-link-face                               ((t (:underline t :foreground ,color-13))))
    `(markdown-url-face                                ((t (:underline t :foreground ,color-12))))
+   `(markdown-pre-face                                ((t (:foreground ,color-13 :height .8 ))))
+   `(markdown-bold-face                                ((t (:foreground ,color-8 :bold t ))))
+   `(markdown-italic-face                                ((t (:foreground ,color-8 :italic t ))))
+   `(markdown-list-face                               ((t (:foreground ,color-12))))
+   `(markdown-markup-face                             ((t (:foreground ,color-1 ))))
    ;; swoop
    `(swoop-face-line-buffer-name                      ((t (:background ,color-9 :foreground ,color-1))))
    `(swoop-face-target-line                           ((t (:background ,color-7 :foreground ,color-12))))
