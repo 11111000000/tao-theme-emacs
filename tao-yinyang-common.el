@@ -117,7 +117,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-feed-face                             ((t (:foreground ,color-13))))
    `(newsticker-immortal-item-face                    ((t (:foreground ,color-9))))
    `(newsticker-new-item-face                         ((t (:foreground ,color-11))))
-   `(newsticker-obsolete-item-face                    ((t (:foreground ,color-10))))
+   `(newstickerphone-obsolete-item-face                    ((t (:foreground ,color-10))))
    `(newsticker-old-item-face                         ((t (:foreground ,color-8))))
    `(newsticker-statistics-face                       ((t (:foreground ,color-13))))
    `(newsticker-treeview-face                         ((t (:foreground ,color-13))))
@@ -570,7 +570,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-checkbox                                     ((t (:background ,color-7 :foreground ,color-14 :box (:line-width 1 :style released-button)))))
    `(org-date                                         ((t (:foreground ,color-11 :underline t))))
    `(org-deadline-announce                            ((t (:foreground ,color-9))))
-   `(org-done                                         ((t (:bold t :weight bold :foreground ,color-12))))
    `(org-formula                                      ((t (:foreground ,color-11))))
    `(org-headline-done                                ((t (:foreground ,color-12))))
    `(org-hide                                         ((t (:foreground ,color-3))))
@@ -592,7 +591,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-table                                        ((t (:foreground ,color-11))))
    `(org-tag                                          ((t (:bold t :weight bold))))
    `(org-time-grid                                    ((t (:foreground ,color-11))))
-   `(org-todo                                         ((t (:bold t :foreground ,color-10 :weight bold))))
+   `(org-done                                         ((t (:bold t :background ,color-10 :foreground ,color-1 :weight bold))))
+   `(org-todo                                         ((t (:bold t  :background ,color-10  :foreground ,color-4 :weight bold))))
    `(org-upcoming-deadline                            ((t (:inherit font-lock-keyword-face))))
    `(org-warning                                      ((t (:bold t :foreground ,color-10 :weight bold :underline nil))))
    `(org-column                                       ((t (:background ,color-3))))
@@ -601,8 +601,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun                      ((t (:foreground ,color-5 :background ,color-9))))
    `(org-ellipsis                                     ((t (:foreground ,color-12 :underline t))))
    `(org-footnote                                     ((t (:foreground ,color-12 :underline t))))
-   `(org-meta-line                                    ((t (:foreground ,color-8 :height 0.5))))
-   `(org-block-background                             ((t (:background ,color-4 :height 1))))
+   `(org-meta-line                                    ((t (:foreground ,color-8 :height 1.0))))
+   `(org-block-background                             ((t (:background ,color-4 :height 1.0))))
+   `(org-block                                        ((t (:foreground ,color-7 :height 1.0))))
 
    ;; outline
    `(outline-1                                        ((t (:foreground ,color-11))))
@@ -701,7 +702,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(show-paren-match                            ((t (:foreground ,color-11 :background ,color-3  :weight bold))))
    ;; smartparens
    `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-3))))
-   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-5 :underline nil))))
+   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-6 :underline nil))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
@@ -749,6 +750,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(w3m-arrived-anchor-face                          ((t (:foreground ,color-7 :background ,color-5 :underline t :weight normal))))
    `(w3m-image-anchor-face                            ((t (:foreground ,color-10  :background ,color-5 :underline t :weight normal))))
    `(w3m-image-face                                   ((t (:foreground ,color-11 :background ,color-5 :underline t :weight normal))))
+   `(w3m-image-anchor                                 ((t (:foreground ,color-11 :background ,color-5 :underline t :weight normal))))
    `(w3m-form                                         ((t (:foreground ,color-9 :underline t))))
    `(w3m-header-line-location-title                   ((t (:foreground ,color-7 :background ,color-5 :underline nil :weight normal))))
    `(w3m-header-line-location-content                 ((t (:foreground ,color-13 :background ,color-5 :underline nil :weight normal))))
@@ -833,7 +835,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(html-fold-unfolded-face                          ((t (:background ,color-4))))
    `(html-fold-folded-face                            ((t (:foreground ,color-14 :bold t))))
    ;; markdown mode
-   `(markdown-header-delimiter-face                   ((t (:weight normal :foreground ,color-1))))
+   `(markdown-header-delimiter-face                   ((t (:weight normal :foreground ,color-6))))
    `(markdown-header-face-1                           ((t (:inherit markdown-header-face :height 1.5))))
    `(markdown-header-face-2                           ((t (:inherit markdown-header-face :height 1.3))))
    `(markdown-header-face-3                           ((t (:inherit markdown-header-face :underline t :height 1.2))))
@@ -846,7 +848,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(markdown-bold-face                                ((t (:foreground ,color-8 :bold t ))))
    `(markdown-italic-face                                ((t (:foreground ,color-8 :italic t ))))
    `(markdown-list-face                               ((t (:foreground ,color-12))))
-   `(markdown-markup-face                             ((t (:foreground ,color-1 ))))
+   `(markdown-markup-face                             ((t (:foreground ,color-6 ))))
    ;; swoop
    `(swoop-face-line-buffer-name                      ((t (:background ,color-9 :foreground ,color-1))))
    `(swoop-face-target-line                           ((t (:background ,color-7 :foreground ,color-12))))
@@ -857,14 +859,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight-indentation-current-column-face        ((t (:background ,color-3))))
    ;; company
    `(company-echo-common                              ((t (:foreground ,color-13))))
-   `(company-preview                                  ((t (:background ,color-3 :foreground ,color-11))))
+   `(company-preview                                  ((t (:background ,color-6 :foreground ,color-11))))
    `(company-preview-common                           ((t (:inherit company-preview :foreground ,color-13 :weight bold))))
    `(company-scrollbar-fg                             ((t (:background ,color-7))))
-   `(company-tooltip                                  ((t (:background ,color-5 :foreground ,color-11))))
+   `(company-tooltip                                  ((t (:background ,color-6 :foreground ,color-11))))
    `(company-tooltip-annotation                       ((t (:inherit company-tooltip :foreground ,color-2))))
    `(company-tooltip-common                           ((t (:inherit company-tooltip :foreground ,color-11))))
    `(company-tooltip-common-selection                 ((t (:inherit company-tooltip-selection :foreground ,color-13))))
-   `(company-tooltip-selection                        ((t (:inherit company-tooltip :background ,color-6))))
+   `(company-tooltip-selection                        ((t (:inherit company-tooltip :background ,color-8 :foreground ,color-1))))
    `(company-scrollbar-bg                             ((t (:inherit company-tooltip))))
    ;; eval-sexp-fu
    `(eval-sexp-fu-flash                               ((t (:background ,color-5))))
