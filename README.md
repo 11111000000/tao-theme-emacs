@@ -28,7 +28,7 @@ or alternatively:
 
 ## Palette
 
-k`(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))` then use `tao-with-color-variables` like this:
+`(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))` then use `tao-with-color-variables` like this:
 
 ```
 (tao-with-color-variables tao-palette
