@@ -1,4 +1,36 @@
-;; Common tools and face assignment table for Tao Yin & Yang
+;;; tao-yang-theme.el --- Two golden mean grayscale color themes.
+
+;; Copyright (C) 2014 Peter  <11111000000 at email.com>
+;; Author: Peter <11111000000@email.com>
+;; Contributors: Jasonm23 <jasonm23@gmail.com>
+;; Package-Requires: ((cl-lib "0.5"))
+;;
+;; Original faces taken from Zenburn theme port (c) by Bozhidar Batsov
+;;
+;; Color palette generated automatically from golden mean
+;;
+;; URL: http://github.com/11111000000/tao-theme-emacs
+;; Version: 1.0
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+;;
+;; This package provides two golden mean grayscale color theme for
+;; Emacs; a light and a dark variant.
+
+;;; Code:
 
 (require 'cl-lib)
 
@@ -945,4 +977,4 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vc-annotate-background ,color-3)
    ))
 
-(provide 'tao-yinyang-common)
+(provide 'tao-theme)
