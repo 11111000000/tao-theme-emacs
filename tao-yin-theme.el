@@ -1,9 +1,8 @@
-;;; tao-yin-theme.el --- A dark golden mean grayscale color theme for Emacs.
+;;; tao-yin-theme.el --- A dark golden mean grayscale color theme.
 
 ;; Copyright (C) 2014 Peter Kosov <11111000000 at email.com>
 ;; Author: Peter <11111000000 at email.com>
 ;; Contributors: Jasonm23 <jasonm23@gmail.com>
-;; Package-Requires:            ((cl-lib "0.5"))
 ;;
 ;; Original faces taken from Zenburn theme port (c) by Bozhidar Batsov
 ;;
@@ -26,9 +25,12 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
+
+;; A dark golden mean grayscale color theme for Emacs.
+
 ;;; Code:
 
-(require 'tao-yinyang-common)
+(require 'tao-theme)
 
 (deftheme tao-yin "The Tao color theme dark")
 
@@ -46,8 +48,6 @@
                    (file-name-directory load-file-name))))
 
 (provide-theme 'tao-yin)
-
-;;;###autoload
 
 ;; Local Variables:
 ;; no-byte-compile: t
