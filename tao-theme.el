@@ -37,7 +37,7 @@
 (defgroup tao-theme nil
   "tao-theme customization options")
 
-(defcustom tao-theme-use-height t
+(defcustom tao-theme-use-height nil
   "Non-nil means tao-theme is allowed to customize height"
   :type 'boolean
   :group 'tao-theme)
@@ -644,8 +644,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-column-title                                 ((t (:background ,color-3 :underline t :weight bold))))
    `(org-mode-line-clock                              ((t (:foreground ,color-13 :background ,color-3))))
    `(org-mode-line-clock-overrun                      ((t (:foreground ,color-5 :background ,color-9))))
-   `(org-ellipsis                                     ((t (:foreground ,color-12 :underline t))))
-   `(org-footnote                                     ((t (:foreground ,color-12 :underline t))))
+   `(org-ellipsis                                     ((t (:foreground ,color-12 ))))
+   `(org-footnote                                     ((t (:foreground ,color-12 ))))
    `(org-meta-line                                    ((t (:foreground ,color-8 :height ,(tao-theme-height 1.0)))))
    `(org-block-background                             ((t (:background ,color-4 :height ,(tao-theme-height 1.0)))))
    `(org-block                                        ((t (:foreground ,color-7 :height ,(tao-theme-height 1.0)))))
