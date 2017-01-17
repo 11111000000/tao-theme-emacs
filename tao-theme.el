@@ -521,6 +521,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(macrostep-macro-face                             ((t (:underline t))))
    ;; magit
    `(magit-section-title                              ((t (:foreground ,color-13 :weight bold))))
+   `(magit-section-highlight                          ((t (:foreground ,color-11 :weight bold))))
+   `(magit-section-heading-selection                  ((t (:foreground ,color-13 :weight bold))))
+   `(magit-section-heading                            ((t (:foreground ,color-13 :weight bold))))         
    `(magit-branch                                     ((t (:foreground ,color-11 :weight bold))))
    `(magit-item-highlight                             ((t (:background ,color-6 :bold nil))))
    ;; egg
@@ -619,6 +622,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-headline-done                                ((t (:foreground ,color-12))))
    `(org-hide                                         ((t (:foreground ,color-3))))
    `(org-document-title                               ((t (:foreground ,color-12 :height ,(tao-theme-height 1.9) :bold t))))
+   `(org-document-info                               ((t (:foreground ,color-7 :height ,(tao-theme-height 1)))))   
    `(org-level-1                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.5)))))
    `(org-level-2                                      ((t (:foreground ,color-10 :height ,(tao-theme-height 1.2)))))
    `(org-level-3                                      ((t (:foreground ,color-9 :height ,(tao-theme-height 1.1)))))
@@ -944,7 +948,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ivy-minibuffer-match-face-3                     ((t ( :foreground ,color-10 :bold t))))
    `(ivy-minibuffer-match-face-4                     ((t ( :foreground ,color-9 :bold t))))
    ;; info
-   `(info-menu-star                                 ((t (:foreground ,color-11 :bold t))))   
+   `(info-menu-star                                 ((t (:foreground ,color-11 :bold t))))
+   ;;hideshowvis
+   `(hs-face                                        ((t (:foreground ,color-12 :background ,color-4))))
+   `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))      
    )
 
   ;; Theme Variables
