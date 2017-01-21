@@ -951,7 +951,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(info-menu-star                                 ((t (:foreground ,color-11 :bold t))))
    ;;hideshowvis
    `(hs-face                                        ((t (:foreground ,color-12 :background ,color-4))))
-   `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))      
+   `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))
+   `(custom-variable-tag                            ((t (:foreground ,color-11 :bold t))))
    )
 
   ;; Theme Variables
