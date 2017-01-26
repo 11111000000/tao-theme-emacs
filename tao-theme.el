@@ -615,7 +615,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-agenda-date-today                            ((t (:foreground ,color-14 :slant italic :weight bold))) t)
    `(org-agenda-structure                             ((t (:inherit font-lock-comment-face))))
    `(org-archived                                     ((t (:foreground ,color-13 :weight bold))))
-   `(org-checkbox                                     ((t (:background ,color-7 :foreground ,color-14 :box (:line-width 1 :style released-button)))))
+   `(org-checkbox                                     ((t (:foreground ,color-14 :box (:line-width 1 :style released-button)))))
    `(org-date                                         ((t (:foreground ,color-11 :underline t))))
    `(org-deadline-announce                            ((t (:foreground ,color-9))))
    `(org-formula                                      ((t (:foreground ,color-11))))
