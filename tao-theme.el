@@ -1,4 +1,4 @@
-;;; tao-yang-theme.el --- Two golden mean grayscale color themes.
+;;; tao-theme.el --- Two golden mean grayscale color themes.
 
 ;; Copyright (C) 2014 Peter  <11111000000 at email.com>
 ;; Author: Peter <11111000000@email.com>
@@ -98,6 +98,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight                                        ((t (:background ,color-4))))
    `(success                                          ((t (:foreground ,color-9 :weight bold))))
    `(warning                                          ((t (:foreground ,color-11 :weight bold))))
+   `(error                                            ((t (:foreground ,color-14 :weight bold))))   
    ;; compilation
    `(compilation-column-face                          ((t (:foreground ,color-13))))
    `(compilation-enter-directory-face                 ((t (:foreground ,color-9))))
@@ -453,6 +454,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-mu-contacts-address-face                    ((t (:foreground ,color-7 :background ,color-4))))
    `(helm-mu-contacts-name-face                       ((t (:foreground ,color-13 :background ,color-4))))
    `(helm-M-x-key                                     ((t (:foreground ,color-12 :background ,color-4 :weight bold))))
+
+   `(helm-swoop-target-word-face                      ((t ( :foreground ,color-12 :background ,color-5))))
+   `(helm-swoop-target-line-face                      ((t ( :foreground ,color-12 :background ,color-3))))
+   `(helm-swoop-target-line-block-face                ((t ( :foreground ,color-12 :background ,color-2))))
+
    ;; hl-line-mode
    `(hl-line-face                                     ((,class (:background ,color-3)) (t :weight bold)))
    `(hl-line                                          ((,class (:background ,color-3)) (t :weight bold)))
@@ -621,16 +627,16 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-formula                                      ((t (:foreground ,color-11))))
    `(org-headline-done                                ((t (:foreground ,color-12))))
    `(org-hide                                         ((t (:foreground ,color-3))))
-   `(org-document-title                               ((t (:foreground ,color-12 :height ,(tao-theme-height 1.9) :bold t))))
-   `(org-document-info                               ((t (:foreground ,color-7 :height ,(tao-theme-height 1)))))   
-   `(org-level-1                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.8) ))))
-   `(org-level-2                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.4) ))))
-   `(org-level-3                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.2) ))))
-   `(org-level-4                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.1) ))))
-   `(org-level-5                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) ))))
-   `(org-level-6                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) ))))
-   `(org-level-7                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) ))))
-   `(org-level-8                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) ))))
+   `(org-document-title                               ((t (:foreground ,color-12 :height ,(tao-theme-height 0.8) :bold t))))
+   `(org-document-info                               ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))   `(org-document-info-keyword                       ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))   
+   `(org-level-1                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.8) :bold t ))))
+   `(org-level-2                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.6) :bold t))))
+   `(org-level-3                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.3) :bold t))))
+   `(org-level-4                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) :bold t))))
+   `(org-level-5                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) :bold t))))
+   `(org-level-6                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) :bold t))))
+   `(org-level-7                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) :bold t))))
+   `(org-level-8                                      ((t (:foreground ,color-14 :height ,(tao-theme-height 1.0) :bold t))))
    `(org-link                                         ((t (:foreground ,color-11 :underline t))))
    `(org-scheduled                                    ((t (:foreground ,color-13))))
    `(org-scheduled-previously                         ((t (:foreground ,color-10))))
@@ -650,9 +656,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun                      ((t (:foreground ,color-5 :background ,color-9))))
    `(org-ellipsis                                     ((t (:foreground ,color-8 ))))
    `(org-footnote                                     ((t (:foreground ,color-12 ))))
-   `(org-meta-line                                    ((t (:foreground ,color-6 :height ,(tao-theme-height 1.0)))))
-   `(org-block-background                             ((t (:background ,color-4 :height ,(tao-theme-height 1.0)))))
-   `(org-block                                        ((t (:foreground ,color-9 :height ,(tao-theme-height 1.0)))))
+   `(org-meta-line                                    ((t (:foreground ,color-6 :height ,(tao-theme-height 0.8)))))
+   `(org-block-background                             ((t (:background ,color-4 :height ,(tao-theme-height 0.8)))))
+   `(org-block                                        ((t (:foreground ,color-9 :height ,(tao-theme-height 0.8)))))
 
    ;; outline
    `(outline-1                                        ((t (:foreground ,color-11))))
