@@ -129,7 +129,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(isearch-fail                                     ((t (:foreground ,color-13 :background ,color-7))))
    `(lazy-highlight                                   ((t (:foreground ,color-11 :weight bold :background ,color-5))))
    `(menu                                             ((t (:foreground ,color-13 :background ,color-4))))
-   `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1))))
+   `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1 :height ,(tao-theme-height 1.3)))))
    `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-8 :box nil )) (t :inverse-video t)))
    `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-6 :box nil))))
    `(mode-line-buffer-id                              ((t (:foreground ,color-4 :weight bold))))
