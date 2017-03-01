@@ -142,8 +142,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-comment-face                           ((t (:foreground ,color-7 :weight bold))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-8))))
-   `(font-lock-constant-face                          ((t (:foreground ,color-8 :weight bold))))
-   `(font-lock-doc-face                               ((t (:foreground ,color-7))))
+   `(font-lock-constant-face                          ((t (:foreground ,color-13 :weight bold))))
+   `(font-lock-doc-face                               ((t (:foreground ,color-7 :weight bold :italic t))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-12))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-13 :weight bold))))
@@ -657,9 +657,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun                      ((t (:foreground ,color-5 :background ,color-9))))
    `(org-ellipsis                                     ((t (:foreground ,color-8 ))))
    `(org-footnote                                     ((t (:foreground ,color-12 ))))
-   `(org-meta-line                                    ((t (:foreground ,color-6 :height ,(tao-theme-height 0.8)))))
-   `(org-block-background                             ((t (:background ,color-4 :height ,(tao-theme-height 0.8)))))
-   `(org-block                                        ((t (:foreground ,color-9 :height ,(tao-theme-height 0.8)))))
+   `(org-meta-line                                    ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))
+   `(org-block-background                             ((t (:background ,color-10 :height ,(tao-theme-height 0.8)))))
+   `(org-block                                        ((t (:foreground ,color-11 :height ,(tao-theme-height 0.8)))))
 
    ;; outline
    `(outline-1                                        ((t (:foreground ,color-11))))
