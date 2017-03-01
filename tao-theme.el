@@ -918,11 +918,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(company-preview                                  ((t (:background ,color-6 :foreground ,color-11))))
    `(company-preview-common                           ((t (:inherit company-preview :foreground ,color-13 :weight bold))))
    `(company-scrollbar-fg                             ((t (:background ,color-7))))
-   `(company-tooltip                                  ((t (:background ,color-6 :foreground ,color-11))))
+   `(company-tooltip                                  ((t (:background ,color-5 :foreground ,color-11))))
    `(company-tooltip-annotation                       ((t (:inherit company-tooltip :foreground ,color-2))))
    `(company-tooltip-common                           ((t (:inherit company-tooltip :foreground ,color-11))))
    `(company-tooltip-common-selection                 ((t (:inherit company-tooltip-selection :foreground ,color-13))))
-   `(company-tooltip-selection                        ((t (:inherit company-tooltip :background ,color-8 :foreground ,color-1))))
+   `(company-tooltip-selection                        ((t (:inherit company-tooltip :background ,color-7 :foreground ,color-1))))
    `(company-scrollbar-bg                             ((t (:inherit company-tooltip))))
    ;; eval-sexp-fu
    `(eval-sexp-fu-flash                               ((t (:background ,color-5))))
