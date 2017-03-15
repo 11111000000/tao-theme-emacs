@@ -39,7 +39,7 @@ or alternatively:
 
 ```
 
-[Here](https://github.com/11111000000/emacs-d), for example `powerline-tao-theme` snippet.
+[Here](https://gist.github.com/11111000000/a0d3500bd2613dfa7883b70c0e59959e), for example `powerline-tao-theme` snippet.
 
 ### Credits
 
