@@ -285,6 +285,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ediff-fine-diff-Ancestor                         ((t (:foreground ,color-13 :background ,color-7 ))))
    `(ediff-fine-diff-B                                ((t (:foreground ,color-13 :background ,color-7 ))))
    `(ediff-fine-diff-C                                ((t (:foreground ,color-13 :background ,color-7  ))))
+   ;; elfeed
+   `(elfeed-search-date-face                          ((t (:foreground ,color-8))))
+   `(elfeed-search-feed-face                          ((t (:foreground ,color-9))))
+   `(elfeed-search-tag-face                           ((t (:foreground ,color-8))))
+   `(elfeed-search-unread-count-face                  ((t (:foreground ,color-2))))
    ;; ert
    `(ert-test-result-expected                         ((t (:foreground ,color-13 :background ,color-4))))
    `(ert-test-result-unexpected                       ((t (:foreground ,color-10 :background ,color-4))))
