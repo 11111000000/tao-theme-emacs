@@ -90,7 +90,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link                                             ((t (:foreground ,color-13 :underline t :weight bold))))
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-9 :background ,color-4))))
-   `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3 :wight bold))))
+   `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3 :weight bold))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
    `(fringe                                           ((t (:foreground ,color-2 :background ,color-4))))
