@@ -9,7 +9,7 @@
 
 ** Installation
 
-Tao in [MELPA](https://melpa.org/#/tao-theme).
+Tao in [[https://melpa.org/#/tao-theme][MELPA]]
 
 `M-x package-install tao-theme`
 
@@ -47,15 +47,16 @@ or alternatively:
 
 TODO: Update this
 
-![238195518_full](https://cloud.githubusercontent.com/assets/977130/9500092/3134df24-4c2c-11e5-9646-9646a042b679.png)
+[[https://cloud.githubusercontent.com/assets/977130/9500092/3134df24-4c2c-11e5-9646-9646a042b679.png]]
 
-![238195728_full](https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png)
+[[https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png]]
 
-** Release Notes
-*** Fix and simplify original code
-*** Remove dirty hacks
-*** Add other hacks
+** Release Notes 
+*** 1.0.1
+  - [X] Fix and simplify original code
+  - [X] Remove dirty hacks
+  - [X] Add other hacks
 ** Roadmap
-*** color scales: equal temperation, just intonation, etc;
-*** support for ~frame-background-mode~
-*** simplicity
+  - [ ] color scales: equal temperation, just intonation, etc;
+  - [ ] support for ~frame-background-mode~
+  - [X] simplicity
