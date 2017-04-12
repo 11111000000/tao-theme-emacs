@@ -1,8 +1,11 @@
 #+BEGIN_QUOTE
+
  	Colors blind people's eyes;
 
          -- Lao Tzu, Tao Te Ching, Ch. 12	Sentence 1
+
 #+END_QUOTE
+
 * Tao theme 1.0.1
 
  Two uncoloured color themes for Emacs: tao-yin and tao-yang.
@@ -51,6 +54,9 @@ TODO: Update this
 
 [[https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png]]
 
+** New screenshots
+[[,/images/tao-theme-1.0.1b.png]]
+[[./images/tao-theme-1.0.1c.png]]
 ** Release Notes 
 *** 1.0.1
   - [X] Fix and simplify original code
