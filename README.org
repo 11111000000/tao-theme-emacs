@@ -46,16 +46,10 @@ or alternatively:
       hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
 
 #+END_SRC
-** Old screenshots
-
-TODO: Update this
-
-[[https://cloud.githubusercontent.com/assets/977130/9500092/3134df24-4c2c-11e5-9646-9646a042b679.png]]
-
-[[https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png]]
-
-** New screenshots
-[[,/images/tao-theme-1.0.1b.png]]
+** Screenshots
+*** yin
+[[./images/tao-theme-1.0.1b.png]]
+*** yang
 [[./images/tao-theme-1.0.1c.png]]
 ** Release Notes 
 *** 1.0.1
