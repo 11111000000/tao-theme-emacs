@@ -46,10 +46,10 @@ or alternatively:
       hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
 
 #+END_SRC
-** Screenshots
+** Screenshots (with some useful colors from ~color-identifiers~ and ~all-the-icons~)
 *** yin
 [[./images/tao-theme-1.0.1b.png]]
-*** yang
+*** yang 
 [[./images/tao-theme-1.0.1c.png]]
 ** Release Notes 
 *** 1.0.1
