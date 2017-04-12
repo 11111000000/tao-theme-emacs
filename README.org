@@ -6,7 +6,7 @@
 
 #+END_QUOTE
 
-* Tao theme 1.0.1
+* Tao theme
 
  Two uncoloured color themes for Emacs: tao-yin and tao-yang.
 
