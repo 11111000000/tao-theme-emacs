@@ -1,4 +1,4 @@
 (define-package
-  "tao-theme"
-  "0.1.1"
-  "Light & dark themes with greyscale palettes generated from the golden mean")
+  "tao-theme"  
+  "1.0.1"
+  "This package provides two parametrized uncoloured color themes for Emacs: tao-yin and tao-yang.")

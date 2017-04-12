@@ -1,16 +1,16 @@
-;;; tao-theme.el --- Two golden mean grayscale color themes.
+;;; tao-theme.el --- Tao of EMACS grayscale color theme
 
-;; Copyright (C) 2014 Peter  <11111000000 at email.com>
-;; Author: Peter <11111000000@email.com>
-;; Contributors: Jasonm23 <jasonm23@gmail.com>
+;; Copyright © 2014 2015 2016 2017 Peter Kosov  <11111000000@email.com>
+
+;; Author: Peter Kosov <11111000000@email.com>
+;;
+;; Contributors: Jasonm23 <jasonm23@gmail.com>, Steve Purcell (purcell), Jonas Bernoulli (tarsius), Guilherme G. (semente), Tanner Hobson (player1537), Syohei YOSHIDA (syohex), Thibault (thblt)
+;;
 ;; Package-Requires: ((cl-lib "0.5"))
 ;;
-;; Original faces taken from Zenburn theme port (c) by Bozhidar Batsov
-;;
-;; Color palette generated automatically from golden mean
-;;
 ;; URL: http://github.com/11111000000/tao-theme-emacs
-;; Version: 1.0
+;;
+;; Version: 1.0.1
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,12 +27,27 @@
 
 ;;; Commentary:
 ;;
-;; This package provides two golden mean grayscale color theme for
-;; Emacs; a light and a dark variant.
-
+;; Colors blind people’s eyes;
+;;
+;;         Lao Tzu - Tao Te Ching (Ch. 12	Sentence 1)
+;;
+;; This package provides two parametrized uncoloured color themes for Emacs: tao-yin and tao-yang.
+;;
+;; Default tao-theme-scale-fn is tao-theme-golden-scale, and produce following colors:
+;;
+;; #FCFCFC #FAFAFA #F6F6F6 #F1F1F1 #E8E8E8 #DADADA #C3C3C3 #9E9E9E #616161 #3C3C3C #252525 #171717 #0E0E0E #090909 #050505
+;;
+;; You can customize:
+;;
+;; tao-theme-scale-fn, that returns 16 2-digit numbers
+;; tao-theme-scale-filter-fn, for edge filter
+;; tao-theme-use-height, nil by default
+;; 
 ;;; Code:
 
 (require 'cl-lib)
+(eval-when-compile
+  (require 'cl))
 
 (defgroup tao-theme nil
   "tao-theme customization options")
@@ -42,35 +57,58 @@
   :type 'boolean
   :group 'tao-theme)
 
+(defcustom tao-theme-scale-fn 'tao-theme-golden-scale
+  "gen alist of two-digit numbers"
+  :type 'funcall
+  :group 'tao-theme)
+
+(defun tao-theme-taiji-fn (scale)
+  (mapcar (lambda (it) (- #xFF it)) scale))
+
 (defun tao-theme-height (height)
   (if tao-theme-use-height
-      height
-    1.0))
+      height 1.0))
 
-(defun tao-theme-golden-grayscale ()
-  "Generate a golden mean based greyscale gradient."
-  (let (zeta
-        (phi (/ (+ 1 (sqrt 5)) 2)))
-    (dotimes (n 7)
-      (let* ((delta (/ #xFF (expt phi (+ 2 n))))
-             (gamma (- #xFF delta)))
-             (push (format "#%02X%02X%02X" delta delta delta) zeta)
-             (setq zeta (append zeta (list (format "#%02X%02X%02X" gamma gamma gamma))))
-             ))
-    zeta))
+(defun tao-theme-scale-to-colors (scale)
+    "Create grayscale from colors alist"
+    (mapcar (lambda (it) (format "#%02X%02X%02X" it it it)) scale))
 
-(defun tao-theme-golden-grayscale-yang-palette ()
-  "Generate a light version of the golden gradient alist."
-  (cl-loop for value in '(8 10 9 11 8 7 6 5 4 3 2 1 1 1)
-           count value into index
-           collect (cons (concat "color-" (format "%d" index))
-                         (nth value (tao-theme-golden-grayscale)))))
-
-(defun tao-theme-golden-grayscale-yin-palette ()
-  "Generate a dark version of the golden gradient alist."
-  (cl-loop for value in (tao-theme-golden-grayscale)
+(defun tao-theme-colors-to-palette (colors)
+  "Create palette of named colors from alist of colors"
+  (cl-loop for value in colors
            count value into index
            collect (cons (concat "color-" (format "%d" index)) value)))
+
+(defun tao-theme-scale-filter-fn (input-scale)
+  "Scale filter function"
+  (remove-duplicates
+   (remove-if (lambda (it) (or (< it #x05) (> it #xFC)))
+              input-scale )))
+
+(defun tao-theme-scale-to-palette (scale)
+  "Create palette from scale"
+  (tao-theme-colors-to-palette
+   (tao-theme-scale-to-colors
+    (tao-theme-scale-filter-fn scale))))
+
+(defun tao-theme-golden-scale ()
+  "Generate a golden mean based greyscale gradient."
+  (let ((golden-scale nil)
+        (phi (/ (+ 1 (sqrt 5)) 2)))
+    (dotimes (n 16)
+      (let* ((alpha (round (/ #xFF (expt phi (+ n 1))))))
+        (push alpha golden-scale)
+        (push (- #xFF alpha) golden-scale)))
+    (sort golden-scale '<)))
+
+
+(defun tao-theme-yin-palette ()
+  "Generate a dark version of the golden gradient alist."  
+  (tao-theme-scale-to-palette (funcall tao-theme-scale-fn)))
+
+(defun tao-theme-yang-palette ()
+  "Generate a light version of the golden gradient alist."
+  (tao-theme-scale-to-palette (tao-theme-taiji-fn (funcall tao-theme-scale-fn))))
 
 (defmacro tao-with-color-variables (tao-colors &rest body)
   "`let' bind all colors defined in TAO-COLORS around BODY.
@@ -89,7 +127,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(button                                           ((t (:underline t))))
    `(link                                             ((t (:foreground ,color-13 :underline t :weight bold))))
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
-   `(default                                          ((t (:foreground ,color-9 :background ,color-4))))
+   `(default                                          ((t (:foreground ,color-10 :background ,color-4))))
+   `(variable-pitch                                          ((t (:foreground ,color-9 :background ,color-4))))   
    `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3 :weight bold))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
@@ -130,8 +169,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lazy-highlight                                   ((t (:foreground ,color-11 :weight bold :background ,color-5))))
    `(menu                                             ((t (:foreground ,color-13 :background ,color-4))))
    `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1 :height ,(tao-theme-height 1.1)))))
-   `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-8 :box nil :height ,(tao-theme-height 0.8) )) (t :inverse-video t)))
-   `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-6 :box nil :height ,(tao-theme-height 0.8)))))
+   `(mode-line                                        ((,class (:foreground ,color-2 :background ,color-9 :box nil :height ,(tao-theme-height 0.8))) (t :inverse-video t)))
+   `(mode-line-inactive                               ((t (:foreground ,color-3 :background ,color-8 :box nil :height ,(tao-theme-height 0.8)))))
    `(mode-line-buffer-id                              ((t (:foreground ,color-4 :weight bold))))
    `(region                                           ((,class (:background ,color-9 :foreground ,color-3)) (t :inverse-video t)))
    `(secondary-selection                              ((t (:background ,color-4))))
@@ -140,17 +179,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :weight bold))))
-   `(font-lock-comment-face                           ((t (:foreground ,color-7 :weight bold))))
+   `(font-lock-comment-face                           ((t (:foreground ,color-9 ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-8))))
    `(font-lock-constant-face                          ((t (:foreground ,color-13 :weight bold))))
-   `(font-lock-doc-face                               ((t (:foreground ,color-7 :weight bold :italic t))))
+   `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight bold :italic t))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-12))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct              ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-regexp-grouping-backslash              ((t (:foreground ,color-9 :weight bold))))
-   `(font-lock-string-face                            ((t (:foreground ,color-8 :slant oblique))))
+   `(font-lock-string-face                            ((t (:foreground ,color-9 :slant oblique))))
    `(font-lock-type-face                              ((t (:foreground ,color-10 :underline t))))
    `(font-lock-variable-name-face                     ((t (:foreground ,color-14 ))))
    `(font-lock-warning-face                           ((t (:foreground ,color-11 :weight bold))))
@@ -205,7 +244,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ac-gtags-selection-face                          ((t (:background ,color-7 :foreground ,color-12))))
    `(ac-emmet-candidate-face                          ((t (:background ,color-8 :foreground ,color-2))))
    `(ac-emmet-selection-face                          ((t (:background ,color-7 :foreground ,color-12))))
-
    `(popup-tip-face                                   ((t (:background ,color-11 :foreground ,color-2))))
    `(popup-scroll-bar-foreground-face                 ((t (:background ,color-6))))
    `(popup-scroll-bar-background-face                 ((t (:background ,color-3))))
@@ -241,17 +279,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diff-header                                      ((,class (:background ,color-7)) (t (:background ,color-13 :foreground ,color-5))))
    `(diff-file-header                                 ((,class (:background ,color-7 :foreground ,color-13 :bold t)) (t (:background ,color-13 :foreground ,color-5 :bold t))))
    ;; dired
-   `(dired-directory                                  ((t (:foreground ,color-14 :bold t))))
+   `(dired-directory                                  ((t (:foreground ,color-9 :bold t))))
    ;; dired+
    `(diredp-display-msg                               ((t (:foreground ,color-11))))
    `(diredp-compressed-file-suffix                    ((t (:foreground ,color-11))))
    `(diredp-date-time                                 ((t (:foreground ,color-10))))
    `(diredp-deletion                                  ((t (:foreground ,color-13))))
    `(diredp-deletion-file-name                        ((t (:foreground ,color-10))))
-   `(diredp-dir-heading                               ((t (:foreground ,color-13 :background ,color-3 :bold t))))
-   `(diredp-dir-priv                                  ((t (:foreground ,color-14 :bold t))))
-   `(diredp-dir-name                                  ((t (:foreground ,color-14 :bold t))))
-   `(diredp-exec-priv                                 ((t (:foreground ,color-10))))
+   `(diredp-dir-heading                               ((t (:foreground ,color-10 :bold t))))
+   `(diredp-dir-priv                                  ((t (:foreground ,color-10 :bold t))))
+   `(diredp-dir-name                                  ((t (:foreground ,color-12 :bold t))))
+   `(diredp-exec-priv                                 ((t (:foreground ,color-9))))
    `(diredp-executable-tag                            ((t (:foreground ,color-10))))
    `(diredp-file-name                                 ((t (:foreground ,color-11))))
    `(diredp-file-suffix                               ((t (:foreground ,color-11 :bold t))))
@@ -488,7 +526,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-function-param                               ((t (:foreground, color-12))))
    `(js2-function-call                                ((t (:foreground, color-12 :underline t))))
    `(js2-object-property                              ((t (:foreground, color-12  :slant italic))))
-   `(js2-external-variable                            ((t (:foreground ,color-7))))
+   `(js2-external-variable                            ((t (:foreground ,color-10 :italic t))))
 
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
@@ -662,7 +700,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun                      ((t (:foreground ,color-5 :background ,color-9))))
    `(org-ellipsis                                     ((t (:foreground ,color-8 ))))
    `(org-footnote                                     ((t (:foreground ,color-12 ))))
-   `(org-meta-line                                    ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))
+   `(org-meta-line                                    ((t (:foreground ,color-8 :height ,(tao-theme-height 0.8)))))
    `(org-block-background                             ((t (:background ,color-10 :height ,(tao-theme-height 0.8)))))
    `(org-block                                        ((t (:foreground ,color-11 :height ,(tao-theme-height 0.8)))))
 
@@ -689,9 +727,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(persp-selected-face                              ((t (:foreground ,color-11 :inherit mode-line))))
    ;; powerline
    `(powerline-active1                                ((t (:background ,color-6 :foreground ,color-11 :box nil :inherit mode-line ))))
-   `(powerline-active2                                ((t (:background ,color-3 :foreground ,color-8 :box nil :inherit mode-line ))))
-   `(powerline-inactive1                              ((t (:background ,color-3 :foreground ,color-6 :inherit mode-line-inactive))))
-   `(powerline-inactive2                              ((t (:background ,color-2 :foreground ,color-7 :inherit mode-line-inactive))))
+   `(powerline-active2                                ((t (:background ,color-3 :foreground ,color-10 :box nil :inherit mode-line ))))
+   `(powerline-inactive1                              ((t (:background ,color-3 :foreground ,color-8 :inherit mode-line-inactive))))
+   `(powerline-inactive2                              ((t (:background ,color-2 :foreground ,color-8 :inherit mode-line-inactive))))
    ;; proofgeneral
    `(proof-active-area-face                           ((t (:underline t))))
    `(proof-boring-face                                ((t (:foreground ,color-13 :background ,color-7))))
@@ -759,8 +797,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc                                       ((t (:foreground ,color-13 :bold t))))
    `(sh-quoted-exec                                   ((t (:foreground ,color-10))))
    ;; show-paren
-   `(show-paren-mismatch                         ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
-   `(show-paren-match                            ((t (:foreground ,color-11 :background ,color-3  :weight bold))))
+   `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
+   `(show-paren-match                                 ((t (:foreground ,color-11 :background ,color-3  :weight bold))))
    ;; smartparens
    `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-3))))
    `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-6 :underline nil))))

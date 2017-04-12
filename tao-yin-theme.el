@@ -1,15 +1,16 @@
-;;; tao-yin-theme.el --- A dark golden mean grayscale color theme.
+;;; tao-yin-theme.el --- A dark uncoloured color theme.
 
-;; Copyright (C) 2014 Peter Kosov <11111000000 at email.com>
-;; Author: Peter <11111000000 at email.com>
-;; Contributors: Jasonm23 <jasonm23@gmail.com>
+;; Copyright © 2014 2015 2016 2017 Peter Kosov  <11111000000@email.com>
+
+;; Author: Peter Kosov <11111000000@email.com>
 ;;
-;; Original faces taken from Zenburn theme port (c) by Bozhidar Batsov
+;; Contributors: Jasonm23 <jasonm23@gmail.com>, Steve Purcell (purcell), Jonas Bernoulli (tarsius), Guilherme G. (semente), Tanner Hobson (player1537), Syohei YOSHIDA (syohex), Thibault (thblt)
 ;;
-;; Color palette generated automatically by golden-ratio algorithm v1.0
+;; Package-Requires: ((cl-lib "0.5"))
 ;;
 ;; URL: http://github.com/11111000000/tao-theme-emacs
-;; Version: 1.0
+;;
+;; Version: 1.0.1
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,7 +27,7 @@
 
 ;;; Commentary:
 
-;; A dark golden mean grayscale color theme for Emacs.
+;; A dark uncoloured color theme for Emacs.
 
 ;;; Code:
 
@@ -35,7 +36,7 @@
 (deftheme tao-yin "The Tao color theme dark")
 
 (tao-with-color-variables
-  tao-theme-golden-grayscale-yin-palette
+  tao-theme-yin-palette
   (tao-apply-custom-theme 'tao-yin))
 
 ;;; Footer

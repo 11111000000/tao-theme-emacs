@@ -1,0 +1,61 @@
+#+BEGIN_QUOTE
+ 	Colors blind people's eyes;
+
+         -- Lao Tzu, Tao Te Ching, Ch. 12	Sentence 1
+#+END_QUOTE
+* Tao theme 1.0.1
+
+ Two uncoloured color themes for Emacs: tao-yin and tao-yang.
+
+** Installation
+
+Tao in [MELPA](https://melpa.org/#/tao-theme).
+
+`M-x package-install tao-theme`
+
+or alternatively:
+
+`M-x package-install-file tao-theme`
+
+** Customization
+
+ - By default ~tao-theme-scale-fn~ is ~tao-theme-golden-scale~, and produce following colors:
+
+#+BEGIN_EXAMPLE
+ #FCFCFC #FAFAFA #F6F6F6 #F1F1F1 #E8E8E8 #DADADA #C3C3C3 #9E9E9E #616161 #3C3C3C #252525 #171717 #0E0E0E #090909 #050505
+#+END_EXAMPLE
+
+ You can change that: 
+ - ~tao-theme-scale-fn~ should return 16 2-digit numbers
+ - ~tao-theme-scale-filter-fn~ scale filter
+ - ~tao-theme-use-height~ nil by default
+
+** Integration 
+
+~(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))~, then use ~tao-with-color-variables~ like this:
+
+#+BEGIN_SRC emacs-lisp 
+
+(tao-with-color-variables tao-palette
+  (progn
+    (setq
+      hl-paren-colors (list color-14 color-11 color-9 color-7 color-6)
+      hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
+
+#+END_SRC
+** Old screenshots
+
+TODO: Update this
+
+![238195518_full](https://cloud.githubusercontent.com/assets/977130/9500092/3134df24-4c2c-11e5-9646-9646a042b679.png)
+
+![238195728_full](https://cloud.githubusercontent.com/assets/977130/9500093/3137dbfc-4c2c-11e5-87b4-27603fa676d2.png)
+
+** Release Notes
+*** Fix and simplify original code
+*** Remove dirty hacks
+*** Add other hacks
+** Roadmap
+*** color scales: equal temperation, just intonation, etc;
+*** support for ~frame-background-mode~
+*** simplicity
