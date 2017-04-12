@@ -61,5 +61,5 @@ With some useful colors from ~color-identifiers~ and ~all-the-icons~:
   - [X] Add other hacks
 ** Roadmap
   - [ ] color scales: equal temperation, just intonation, etc;
-  - [ ] support for ~frame-background-mode~
+  - [ ] support for ~frame-background-mode~ and terminal
   - [X] simplicity
