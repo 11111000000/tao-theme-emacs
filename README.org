@@ -51,7 +51,7 @@ or alternatively:
 With some useful colors from ~color-identifiers~ and ~all-the-icons~:
 
 *** yin
-[[./images/tao-theme-1.0.1b.png]]
+[[./images/tao-theme-yin.png]]
 *** yang 
 [[./images/tao-theme-1.0.1c.png]]
 ** Release Notes 
