@@ -687,7 +687,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-scheduled-previously                         ((t (:foreground ,color-10))))
    `(org-scheduled-today                              ((t (:foreground ,color-11))))
    `(org-sexp-date                                    ((t (:foreground ,color-11 :underline t))))
-   `(org-special-keyword                              ((t (:inherit font-lock-comment-face))))
    `(org-table                                        ((t (:foreground ,color-11))))
    `(org-tag                                          ((t (:bold t :weight bold))))
    `(org-time-grid                                    ((t (:foreground ,color-11))))
@@ -702,8 +701,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-ellipsis                                     ((t (:foreground ,color-8 ))))
    `(org-footnote                                     ((t (:foreground ,color-12 ))))
    `(org-meta-line                                    ((t (:foreground ,color-8 :height ,(tao-theme-height 0.8)))))
-   `(org-block-background                             ((t (:background ,color-10 :height ,(tao-theme-height 0.8)))))
-   `(org-block                                        ((t (:foreground ,color-11 :height ,(tao-theme-height 0.8)))))
+   `(org-special-keyword                              ((t (:inherit org-meta-line))))
+   `(org-property-value                               ((t (:foreground ,color-9 :height ,(tao-theme-height 0.8)))))
+   `(org-block-background                             ((t (:background ,color-5 :foreground ,color-5 :height ,(tao-theme-height 0.8)))))
+   `(org-block                                        ((t (:background ,color-5 :foreground ,color-9 :height ,(tao-theme-height 0.8)))))
 
    ;; outline
    `(outline-1                                        ((t (:foreground ,color-11))))
