@@ -46,8 +46,6 @@
 ;;; Code:
 
 (require 'cl-lib)
-(eval-when-compile
-  (require 'cl))
 
 (defgroup tao-theme nil
   "tao-theme customization options")
@@ -81,8 +79,8 @@
 
 (defun tao-theme-scale-filter-fn (input-scale)
   "Scale filter function"
-  (remove-duplicates
-   (remove-if (lambda (it) (or (< it #x05) (> it #xFC)))
+  (cl-remove-duplicates
+   (cl-remove-if (lambda (it) (or (< it #x05) (> it #xFC)))
               input-scale )))
 
 (defun tao-theme-scale-to-palette (scale)
