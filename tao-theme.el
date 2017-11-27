@@ -344,9 +344,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; flx
    `(flx-highlight-face                               ((t (:foreground ,color-11 :weight bold))))
    ;; flycheck
-   `(flycheck-error                                   ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-7) :inherit unspecified)) (t (:foreground ,color-13 :weight bold :underline t))))
-   `(flycheck-warning                                 ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-6) :inherit unspecified)) (t (:foreground ,color-11 :weight bold :underline t))))
-   `(flycheck-info                                    ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-5) :inherit unspecified)) (t (:foreground ,color-10 :weight bold :underline t))))
+   `(flycheck-error                                   ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-10) :inherit unspecified)) (t (:foreground ,color-7 :weight bold :underline t))))
+   `(flycheck-warning                                 ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-9) :inherit unspecified)) (t (:foreground ,color-9 :weight bold :underline t))))
+   `(flycheck-info                                    ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-8) :inherit unspecified)) (t (:foreground ,color-10 :weight bold :underline t))))
    `(flycheck-fringe-error                            ((t (:inherit error))))
    `(flycheck-fringe-warning                          ((t (:inherit fringe))))
    `(flycheck-fringe-info                             ((t (:inherit fringe))))
@@ -526,6 +526,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-object-property                              ((t (:foreground, color-12  :slant italic))))
    `(js2-external-variable                            ((t (:foreground ,color-10 :italic t))))
 
+   ;; jsx
+   `(rjsx-tag                                          ((t (:foreground, color-9 :bold t))))
+   `(rjsx-attr                                          ((t (:foreground, color-9 ))))
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
    `(jabber-roster-user-online                        ((t (:foreground ,color-10))))
@@ -861,6 +864,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(w3m-lnum                                         ((t (:foreground ,color-11 :background ,color-4))))
    `(w3m-lnum-match                                   ((t (:background ,color-3 :foreground ,color-11 :weight bold))))
    `(w3m-lnum-minibuffer-prompt                       ((t (:foreground ,color-13))))
+   ;; css-mode
+   `(css-property                                     ((t (:foreground ,color-13))))
    ;; web-mode
    `(web-mode-builtin-face                            ((t (:inherit ,font-lock-builtin-face))))
    `(web-mode-comment-face                            ((t (:inherit ,font-lock-comment-face))))
