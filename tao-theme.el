@@ -166,7 +166,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(isearch-fail                                     ((t (:foreground ,color-13 :background ,color-7))))
    `(lazy-highlight                                   ((t (:foreground ,color-11 :weight bold :background ,color-5))))
    `(menu                                             ((t (:foreground ,color-13 :background ,color-4))))
-   `(minibuffer-prompt                                ((t (:foreground ,color-13 :color ,color-1 :height ,(tao-theme-height 1.1)))))
+   `(minibuffer-prompt                                ((t (:foreground ,color-1 :background ,color-9 ))))
    `(mode-line                                        ((,class (:foreground ,color-12 :background ,color-1 :box nil :height ,(tao-theme-height 0.8)))))
    `(mode-line-inactive                               ((t (:foreground ,color-9 :background ,color-6 :box nil :height ,(tao-theme-height 0.8)))))
    `(mode-line-buffer-id                              ((t (:foreground ,color-14 :weight bold))))
@@ -862,7 +862,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(w3m-tab-unselected-retrieving                    ((t (:foreground ,color-1 :background ,color-9 :underline nil :weight normal))))
    `(w3m-tab-selected-background-face                 ((t (:foreground ,color-1 :background ,color-11 :underline nil :weight bold))))
    `(w3m-tab-selected-retrieving                      ((t (:foreground ,color-1 :background ,color-11 :underline nil :weight bold))))
-   `(w3m-lnum                                         ((t (:foreground ,color-14 :background ,color-4 :underline nil :bold t :height ,(tao-theme-height 0.7)))))
+   `(w3m-lnum                                         ((t (:foreground ,color-1 :background ,color-9 :underline nil :bold t ))))
    `(w3m-lnum-match                                   ((t (:background ,color-3 :foreground ,color-11 :weight bold))))
    `(w3m-lnum-minibuffer-prompt                       ((t (:foreground ,color-13))))
    ;; css-mode
