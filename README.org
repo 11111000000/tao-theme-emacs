@@ -68,6 +68,9 @@ With some useful colors from ~color-identifiers~ and ~all-the-icons~:
   - [X] Syntax improvement
   - [X] :box-es
   - [X] Good Markdown faces
+*** 1.1.1
+  - [X] Fix Readability
+  - [X] Sepia scale (thank you @terlar)
 ** Roadmap
   - [ ] color scales: equal temperation, just intonation, etc;
   - [ ] support for ~frame-background-mode~ and terminal
