@@ -82,6 +82,7 @@
   (if tao-theme-use-height
       height 1.0))
 
+;; TODO refactor that into two `tao-theme-scale-to-colors` and `tao-sepia-filter`
 (defun tao-theme-scale-to-colors (scale)
   "Create grayscale from colors alist"
   (mapcar (lambda (it)
