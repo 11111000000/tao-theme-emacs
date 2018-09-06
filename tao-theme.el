@@ -504,6 +504,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; hl-line-mode
    `(hl-line-face                                     ((,class (:background ,color-5 :foreground ,color-11))))
    `(hl-line                                          ((,class (:background ,color-5 :foreground ,color-11))))
+   ;;
+   `(idle-highlight                                   ((,class (:background ,color-7 :foreground ,color-11))))   
    ;; hl-sexp
    `(hl-sexp-face                                     ((,class (:background ,color-6)) (t :weight bold)))
    ;; ido-mode
