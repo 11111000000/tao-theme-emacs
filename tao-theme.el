@@ -4,7 +4,7 @@
 
 ;; Author: Peter Kosov <11111000000@email.com>
 ;;
-;; Contributors: Jasonm23 <jasonm23@gmail.com>, Steve Purcell (purcell), Jonas Bernoulli (tarsius), Guilherme G. (semente), Tanner Hobson (player1537), Syohei YOSHIDA (syohex), Thibault (thblt)
+;; Contributors: Jasonm23 <jasonm23@gmail.com>, Steve Purcell (purcell), Jonas Bernoulli (tarsius), Guilherme G. (semente), Tanner Hobson (player1537), Syohei YOSHIDA (syohex), Thibault (thblt), Terje Larsen (terlar), Tang Xinfa (tangxinfa)
 ;;
 ;; Package-Requires: ((cl-lib "0.5"))
 ;;
