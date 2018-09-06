@@ -938,7 +938,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(wl-highlight-summary-refiled-face                ((t (:foreground ,color-13))))
    `(wl-highlight-summary-displaying-face             ((t (:underline t :weight bold))))
    ;; which-func-mode
-   `(which-func                                       ((t (:foreground ,color-2))))
+   `(which-func                                       ((t (:foreground ,color-11 :bold t :underline t))))
    ;; yascroll
    `(yascroll:thumb-text-area                         ((t (:background ,color-3))))
    `(yascroll:thumb-fringe                            ((t (:background ,color-3 :foreground ,color-3))))
