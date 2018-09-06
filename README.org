@@ -29,9 +29,13 @@ or alternatively:
 #+END_EXAMPLE
 
  You can change that: 
- - ~tao-theme-scale-fn~ should return 16 2-digit numbers
- - ~tao-theme-scale-filter-fn~ scale filter
- - ~tao-theme-use-height~ nil by default
+ - ~tao-theme-scale-fn~ should return 16 2-digit numbers /tao-theme-golden-scale/
+ - ~tao-theme-scale-filter-fn~ scale filter (/by default filter (< it #x05) (> it #xFC)/)
+ - ~tao-theme-use-height~ (/nil/)
+ - ~tao-theme-use-sepia~ (/nil/)
+ - ~tao-theme-sepia-depth~ (/10/)
+ - ~tao-theme-sepia-saturation~ (/1.03/)
+
 
 ** Integration 
 
