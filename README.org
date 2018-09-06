@@ -59,6 +59,13 @@ With some useful colors from ~color-identifiers~ and ~all-the-icons~:
   - [X] Fix and simplify original code
   - [X] Remove dirty hacks
   - [X] Add other hacks
+** 1.1.0
+  - [X] Readability
+  - [X] Variable/Fixed pitch
+  - [X] Fix org headings size
+  - [X] Syntax improvement
+  - [X] :box-es
+  - [X] Good Markdown faces
 ** Roadmap
   - [ ] color scales: equal temperation, just intonation, etc;
   - [ ] support for ~frame-background-mode~ and terminal
