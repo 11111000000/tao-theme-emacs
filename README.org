@@ -46,8 +46,10 @@ or alternatively:
       hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
 
 #+END_SRC
-** Screenshots 
+** TODO Screenshots 
  
+(needs to be updated)
+
 With some useful colors from ~color-identifiers~ and ~all-the-icons~:
 
 *** yin
