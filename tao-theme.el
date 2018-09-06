@@ -55,6 +55,21 @@
   :type 'boolean
   :group 'tao-theme)
 
+(defcustom tao-theme-use-sepia nil
+  "Non-nil means tao-theme should use sepia tones for grayscale"
+  :type 'boolean
+  :group 'tao-theme)
+
+(defcustom tao-theme-sepia-depth 10
+  "The depth to use for the sepia scale if enabled"
+  :type 'integer
+  :group 'tao-theme)
+
+(defcustom tao-theme-sepia-saturation 1.03
+  "The saturation to use for the sepia scale if enabled"
+  :type 'float
+  :group 'tao-theme)
+
 (defcustom tao-theme-scale-fn 'tao-theme-golden-scale
   "gen alist of two-digit numbers"
   :type 'funcall
@@ -68,8 +83,20 @@
       height 1.0))
 
 (defun tao-theme-scale-to-colors (scale)
-    "Create grayscale from colors alist"
-    (mapcar (lambda (it) (format "#%02X%02X%02X" it it it)) scale))
+  "Create grayscale from colors alist"
+  (mapcar (lambda (it)
+            (let ((r it)
+                  (g it)
+                  (b it))
+              (if tao-theme-use-sepia
+                  (setq r (+ r (* tao-theme-sepia-depth 1.8))
+                        g (+ g (* tao-theme-sepia-depth 1.5))
+                        b (* b tao-theme-sepia-saturation)))
+              (format "#%02X%02X%02X"
+                      (if (> r 255) 255 r)
+                      (if (> g 255) 255 g)
+                      (if (> b 255) 255 b))))
+          scale))
 
 (defun tao-theme-colors-to-palette (colors)
   "Create palette of named colors from alist of colors"
