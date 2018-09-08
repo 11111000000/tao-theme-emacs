@@ -839,11 +839,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc                                       ((t (:foreground ,color-13 :bold t))))
    `(sh-quoted-exec                                   ((t (:foreground ,color-10))))
    ;; show-paren
-   `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-7 :weight bold))))
-   `(show-paren-match                                 ((t (:foreground ,color-14 :background ,color-5 :box ,color-7))))
+   `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-5 :weight bold))))
+   `(show-paren-match                                 ((t (:background ,color-5))))
    ;; smartparens
-   `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-3))))
-   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :background ,color-6 :underline nil))))
+   `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-5 :weight bold))))
+   `(sp-show-pair-match-face                          ((t (:background ,color-6 :foreground ,color-14))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
