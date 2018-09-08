@@ -694,6 +694,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mumamo-background-chunk-submode2                 ((t (:background ,color-7))))
    `(mumamo-background-chunk-submode3                 ((t (:background ,color-8))))
    `(mumamo-background-chunk-submode4                 ((t (:background ,color-6))))
+   `(holiday                                          ((t (:background ,color-5 :weight bold :box t))) t)
    ;; org-mode
    `(org-agenda-date-today                            ((t (:foreground ,color-14 :slant italic :weight bold))) t)
    `(org-agenda-clocking                              ((t (:foreground ,color-14 :weight bold))) t)
