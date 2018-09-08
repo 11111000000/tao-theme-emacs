@@ -204,7 +204,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(trailing-whitespace                              ((t (:background ,color-10))))
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
-   `(font-lock-builtin-face                           ((t (:foreground ,color-14 ))))
+   `(font-lock-builtin-face                           ((t (:foreground ,color-13 ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-9 :bold t ))))
    `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
@@ -739,11 +739,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun                      ((t (:foreground ,color-5 :background ,color-9))))
    `(org-ellipsis                                     ((t (:foreground ,color-8 ))))
    `(org-footnote                                     ((t (:foreground ,color-12 ))))
-   `(org-meta-line                                    ((t (:background ,color-5 :foreground ,color-8 :height ,(tao-theme-height 0.8) :inherit fixed-pitch :box ,color-6))))
+   `(org-meta-line                                    ((t (:background ,color-4 :foreground ,color-9 :height ,(tao-theme-height 0.8) :inherit fixed-pitch :box ,color-6))))
    `(org-block-begin-line                             ((t (:background ,color-5 :foreground ,color-8 :height ,(tao-theme-height 0.8) :inherit fixed-pitch :box (:color ,color-1 :line-width 1 :style released-button )))))
    `(org-block-end-line                               ((t (:background ,color-5 :foreground ,color-8 :height ,(tao-theme-height 0.8) :inherit fixed-pitch :box (:color ,color-1 :line-width 1 :style released-button )))))      
-   `(org-special-keyword                              ((t (:inherit org-meta-line))))
-   `(org-property-value                               ((t (:foreground ,color-9 :inherit fixed-pitch))))
+   `(org-special-keyword                              ((t (:inherit org-meta-line :foreground ,color-9))))
+   `(org-property-value                               ((t (:inherit org-meta-line :foreground ,color-8 ))))
    `(org-block-background                             ((t (:foreground ,color-3 :height ,(tao-theme-height 0.8) :inherit fixed-pitch))))
    `(org-block                                        ((t (:background ,color-3  :height ,(tao-theme-height 0.8) :inherit fixed-pitch))))
 
@@ -844,7 +844,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(show-paren-match                                 ((t (:background ,color-5))))
    ;; smartparens
    `(sp-show-pair-mismatch-face                       ((t (:foreground ,color-14 :background ,color-5 :weight bold))))
-   `(sp-show-pair-match-face                          ((t (:background ,color-6 :foreground ,color-14))))
+   `(sp-show-pair-match-face                          ((t (:background ,color-6 :foreground ,color-9))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
