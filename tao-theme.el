@@ -204,7 +204,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(trailing-whitespace                              ((t (:background ,color-10))))
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
-   `(font-lock-builtin-face                           ((t (:foreground ,color-14 :bold t ))))
+   `(font-lock-builtin-face                           ((t (:foreground ,color-14 ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-9 :bold t ))))
    `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
@@ -556,7 +556,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-function-call                                ((t (:foreground ,color-11 :underline t))))
    `(js2-object-property                              ((t (:foreground ,color-10 ))))
    `(js2-object-property-access                       ((t (:foreground ,color-10 :box ,color-6))))
-   `(js2-external-variable                            ((t (:foreground ,color-10 :bold t ))))
+   `(js2-external-variable                            ((t (:foreground ,color-14 :italic t ))))
 
    ;; jsx
    `(rjsx-tag                                          ((t (:foreground, color-8 :bold t))))
