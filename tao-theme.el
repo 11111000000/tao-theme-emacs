@@ -483,7 +483,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; helm
    `(helm-header                                      ((t (:foreground ,color-9 :background ,color-4 :underline nil :box nil))))
    `(helm-source-header                               ((t (:foreground ,color-8 :background ,color-5 :underline nil :box (:color ,color-1 :line-width 1 :style released-button ) ))))
-   `(helm-selection                                   ((t (:background ,color-6 :foreground ,color-14 :underline nil))))
+   `(helm-selection                                   ((t (:background ,color-6 :foreground ,color-14))))
    `(helm-selection-line                              ((t (:background ,color-6))))
    `(helm-visible-mark                                ((t (:foreground ,color-5 :background ,color-11))))
    `(helm-candidate-number                            ((t (:foreground ,color-13 :background ,color-3))))
@@ -516,7 +516,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-grep-cmd-line                               ((t (:foreground ,color-12 :background ,color-4))))
    `(helm-grep-file                                   ((t (:foreground ,color-13 :background ,color-4))))
    `(helm-grep-finish                                 ((t (:foreground ,color-11 :background ,color-4))))
-   `(helm-grep-lineno                                 ((t (:foreground ,color-7 :background ,color-4))))
+   `(helm-grep-lineno                                 ((t (:foreground ,color-5 :background ,color-4))))
    `(helm-match                                       ((t (:foreground ,color-14 :background ,color-5 :bold t))))
    `(helm-grep-match                                  ((t (:inherit helm-match))))
    `(helm-grep-running                                ((t (:foreground ,color-10 :background ,color-4))))
@@ -526,8 +526,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-M-x-key                                     ((t (:foreground ,color-12 :background ,color-4 :weight bold))))
 
    `(helm-swoop-target-word-face                      ((t (:foreground ,color-14 :background ,color-5 :weight bold))))
-   `(helm-swoop-target-line-face                      ((t ( :foreground ,color-12 :background ,color-5))))
-   `(helm-swoop-target-line-block-face                ((t ( :foreground ,color-10 :background ,color-5))))
+   `(helm-swoop-target-line-face                      ((t ( :foreground ,color-9 :background ,color-5))))
+   `(helm-swoop-target-line-block-face                ((t ( :foreground ,color-10 :background ,color-6))))
 
    ;; hl-line-mode
    `(hl-line-face                                     ((,class (:background ,color-5 :foreground ,color-11))))
