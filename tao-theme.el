@@ -164,6 +164,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link                                             ((t (:foreground ,color-13 :underline t :weight bold))))
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-10 :background ,color-4 ))))
+   `(italic                                          ((t (:italic t ))))
    `(variable-pitch                                   ((t (:foreground ,color-9 :background ,color-4 :height ,(tao-theme-height 1.0)))))   
    `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
@@ -731,7 +732,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-level-6                                      ((t ( :height ,(tao-theme-height 1.2) :inherit org-heading))))
    `(org-level-7                                      ((t ( :height ,(tao-theme-height 1.2) :inherit org-heading))))
    `(org-level-8                                      ((t ( :height ,(tao-theme-height 1.2) :inherit org-heading))))
-   `(org-link                                         ((t (:foreground ,color-10 :underline ,color-8))))
+   `(org-link                                         ((t (:foreground ,color-8
+                                                                       :underline ,color-7))))
    `(org-scheduled                                    ((t (:foreground ,color-13))))
    `(org-scheduled-previously                         ((t (:foreground ,color-10))))
    `(org-scheduled-today                              ((t (:foreground ,color-11))))
