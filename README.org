@@ -1,9 +1,7 @@
 #+BEGIN_QUOTE
-
  	Colors blind people's eyes;
 
          -- Lao Tzu, Tao Te Ching, Ch. 12	Sentence 1
-
 #+END_QUOTE
 
 * Tao theme
@@ -29,42 +27,35 @@ or alternatively:
 #+END_EXAMPLE
 
  You can change that: 
- - ~tao-theme-scale-fn~ should return 16 2-digit numbers /tao-theme-golden-scale/
+
+ - ~tao-theme-scale-fn~ should return 16 2-digit numbers (/tao-theme-golden-scale/)
  - ~tao-theme-scale-filter-fn~ scale filter (/by default filter (< it #x05) (> it #xFC)/)
  - ~tao-theme-use-height~ (/nil/)
  - ~tao-theme-use-sepia~ (/nil/)
+ - ~tao-theme-use-boxes~ (/t/)
  - ~tao-theme-sepia-depth~ (/10/)
  - ~tao-theme-sepia-saturation~ (/1.03/)
 
-
 ** Integration 
 
-~(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))~, then use ~tao-with-color-variables~ like this:
+~(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))~, then you can use ~tao-with-color-variables~ macro:
 
 #+BEGIN_SRC emacs-lisp 
-
 (tao-with-color-variables tao-palette
   (progn
     (setq
       hl-paren-colors (list color-14 color-11 color-9 color-7 color-6)
       hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
-
 #+END_SRC
+
 ** TODO Screenshots 
- 
-(needs to be updated)
 
-With some useful colors from ~color-identifiers~ and ~all-the-icons~:
-
-*** yin
-[[./images/tao-theme-yin.png]]
-*** yang 
-[[./images/tao-theme-1.0.1c.png]]
 ** Release Notes 
 *** 1.0.1
   - [X] Fix and simplify original code
   - [X] Remove dirty hacks
   - [X] Add other hacks
+
 *** 1.1.0
   - [X] Readability
   - [X] Variable/Fixed pitch
@@ -72,9 +63,13 @@ With some useful colors from ~color-identifiers~ and ~all-the-icons~:
   - [X] Syntax improvement
   - [X] :box-es
   - [X] Good Markdown faces
+
 *** 1.1.1
-  - [X] Fix Readability
+  - [X] Fix readability
   - [X] Sepia scale (thank you @terlar)
+  - [X] Many new faces
+  - [X] New options
+
 ** Roadmap
   - [ ] color scales: equal temperation, just intonation, etc;
   - [ ] support for ~frame-background-mode~ and terminal
