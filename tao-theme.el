@@ -55,7 +55,7 @@
   :type 'boolean
   :group 'tao-theme)
 
-(defcustom tao-theme-use-boxes nil
+(defcustom tao-theme-use-boxes t
   "Non-nil means tao-theme is allowed to use borders"
   :type 'boolean
   :group 'tao-theme)
