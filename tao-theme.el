@@ -1072,6 +1072,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))
    `(custom-variable-tag                            ((t (:foreground ,color-11 :bold t))))
    `(origami-fold-replacement-face                  ((t (:foreground ,color-8 :bold t))))
+   ;; circe
+   `(circe-highlight-nick-face                      ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
+   `(circe-prompt-face                              ((t (:foreground ,color-1 :background ,color-9 :inherit fixed-pitch))))
+   `(circe-server-face                              ((t (:foreground ,color-8 :italic t))))
+   ;; lui
+   `(lui-time-stamp-face                            ((t (:foreground ,color-11 :background ,color-4))))
+   `(lui-button-face                                ((t (:inherit hover-highlight))))
    )
 
   ;; Theme Variables
