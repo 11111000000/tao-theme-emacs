@@ -570,9 +570,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-external-variable                            ((t (:foreground ,color-14 :italic t ))))
 
    ;; jsx
-   `(rjsx-tag                                          ((t (:foreground, color-8 :bold t))))
-   `(rjsx-tag-bracket-face                                          ((t (:foreground, color-8 :bold t))))   
-   `(rjsx-attr                                          ((t (:foreground, color-8 :bold nil :italic nil ))))
+   `(rjsx-tag                                         ((t (:foreground, color-8 :bold t))))
+   `(rjsx-tag-bracket-face                            ((t (:foreground, color-8 :bold t))))   
+   `(rjsx-attr                                        ((t (:foreground, color-9 :bold nil :italic nil ))))
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
    `(jabber-roster-user-online                        ((t (:foreground ,color-10))))
@@ -615,7 +615,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(macrostep-macro-face                             ((t (:underline t))))
    ;; magit
    `(magit-section-title                              ((t (:foreground ,color-13 :weight bold))))
-   `(magit-section-highlight                          ((t (:foreground ,color-11 :weight bold))))
+   `(magit-section-highlight                          ((t (:foreground ,color-15 :weight normal))))
    `(magit-section-heading-selection                  ((t (:foreground ,color-13 :weight bold))))
    `(magit-section-heading                            ((t (:foreground ,color-13 :weight bold))))         
    `(magit-branch                                     ((t (:foreground ,color-11 :weight bold))))
@@ -852,11 +852,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc                                       ((t (:foreground ,color-13 :bold t))))
    `(sh-quoted-exec                                   ((t (:foreground ,color-10))))
    ;; show-paren
-   `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-5 :weight bold))))
-   `(show-paren-match                                 ((t (:background ,color-6 :foreground ,color-9))))
+   `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-14 :weight bold))))
+   `(show-paren-match                                 ((t (:background ,color-5 :foreground ,color-14))))
    ;; smartparens
-   `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-1 :bold t))))
-   `(sp-show-pair-match-face                          ((t (:background ,color-6 :foreground ,color-14))))
+   `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-14 :bold t :underline t))))
+   `(sp-show-pair-match-face                          ((t (:background ,color-5 :foreground ,color-14))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
