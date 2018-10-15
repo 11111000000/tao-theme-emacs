@@ -221,8 +221,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
    `(font-lock-constant-face                          ((t (:foreground ,color-8 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight normal :italic t))))
-   `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-8) :background ,color-5))))
-   `(font-lock-variable-name-face                     ((t (:box ,(tao-boxed color-7) ))))
+   `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-9) :background ,color-4))))
+   `(font-lock-variable-name-face                     ((t (:italic t))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-14))))
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct              ((t (:foreground ,color-13 :weight bold))))
@@ -493,7 +493,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(guide-key/prefix-command-face                    ((t (:foreground ,color-10))))
    ;; helm
    `(helm-header                                      ((t (:foreground ,color-9 :background ,color-4 :underline nil :box nil))))
-   `(helm-source-header                               ((t (:foreground ,color-8 :background ,color-5 :underline nil :box (:color ,color-1 :line-width 1 :style released-button ) ))))
+   `(helm-source-header                               ((t (:foreground ,color-8 :background ,color-5 :underline nil :box (:color ,color-1 :line-width 1 :style released-button )))))
    `(helm-selection                                   ((t (:background ,color-6 :foreground ,color-14))))
    `(helm-selection-line                              ((t (:background ,color-6))))
    `(helm-visible-mark                                ((t (:foreground ,color-5 :background ,color-11))))
@@ -563,10 +563,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-jsdoc-value                                  ((t (:foreground ,color-9))))
    `(js2-jsdoc-html-tag-name                          ((t (:foreground ,color-10))))
    `(js2-jsdoc-html-tag-delimiter                     ((t (:foreground ,color-9))))
-   `(js2-function-param                               ((t (:foreground ,color-9 :box ,(tao-boxed color-7)))))
-   `(js2-function-call                                ((t (:foreground ,color-12 :underline ,color-8))))
+   `(js2-function-param                               ((t (:foreground ,color-10))))
+   `(js2-function-call                                ((t (:foreground ,color-12 :underline nil :box ,(tao-boxed color-6)))))
    `(js2-object-property                              ((t (:foreground ,color-10 ))))
-   `(js2-object-property-access                       ((t (:foreground ,color-10 :box ,(tao-boxed color-6)))))
+   `(js2-object-property-access                       ((t (:foreground ,color-10 ))))
    `(js2-external-variable                            ((t (:foreground ,color-14 :italic t ))))
 
    ;; jsx
@@ -856,7 +856,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(show-paren-match                                 ((t (:background ,color-5 :foreground ,color-14))))
    ;; smartparens
    `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-14 :bold t :underline t))))
-   `(sp-show-pair-match-face                          ((t (:background ,color-5 :foreground ,color-14))))
+   `(sp-show-pair-match-face                          ((t (:background ,color-5 :foreground ,color-14 :box ,(tao-boxed color-8)))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
