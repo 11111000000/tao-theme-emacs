@@ -1059,6 +1059,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(avy-lead-face-1                                  ((t (:background ,color-10  :foreground ,color-1 :bold t))))
    `(avy-lead-face-2                                  ((t (:background ,color-11  :foreground ,color-1 :bold t))))
    `(avy-background-face                              ((t (:background ,color-3  :foreground ,color-7 :bold t))))
+   ;; ace-window
+   `(aw-leading-char-face                             ((t (:background ,color-8 :foreground ,color-1 :bold t))))
+   `(aw-background-face                               ((t (:background ,color-3 :foreground ,color-7 :bold t))))
       ;; ivy
    `(ivy-current-match                               ((t ( :background ,color-8  :foreground ,color-1))))
    `(ivy-minibuffer-match-face-1                     ((t ( :foreground ,color-12))))
