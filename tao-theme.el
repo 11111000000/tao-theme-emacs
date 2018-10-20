@@ -60,7 +60,7 @@
   :type 'boolean
   :group 'tao-theme)
 
-(defcustom tao-theme-use-sepia nil
+(defcustom tao-theme-use-sepia t
   "Non-nil means tao-theme should use sepia tones for grayscale"
   :type 'boolean
   :group 'tao-theme)
@@ -91,23 +91,22 @@
   (if tao-theme-use-boxes
       color nil))
 
+(defun tao-theme-scale-to-colors (scale)	
+    "Create grayscale from colors alist"	  
+    (mapcar (lambda (it) (format "#%02X%02X%02X" it it it)) scale))
 
 ;; TODO refactor that into two `tao-theme-scale-to-colors` and `tao-sepia-filter`
-(defun tao-theme-scale-to-colors (scale)
+(defun tao-theme-scale-to-colors-sepia (scale)
   "Create grayscale from colors alist"
-  (mapcar (lambda (it)
-            (let ((r it)
-                  (g it)
-                  (b it))
-              (if tao-theme-use-sepia
-                  (setq r (+ r (* tao-theme-sepia-depth 1.8))
-                        g (+ g (* tao-theme-sepia-depth 1.5))
-                        b (* b tao-theme-sepia-saturation)))
-              (format "#%02X%02X%02X"
-                      (if (> r 255) 255 r)
-                      (if (> g 255) 255 g)
-                      (if (> b 255) 255 b))))
-          scale))
+  (mapcar (lambda (it)            
+              (let ((r (+ it (* tao-theme-sepia-depth 1.8)))
+                    (g (+ it (* tao-theme-sepia-depth 1.5)))
+                    (b (* it tao-theme-sepia-saturation)))                  
+                (format "#%02X%02X%02X"
+                        (if (> r 255) 255 r)
+                        (if (> g 255) 255 g)
+                        (if (> b 255) 255 b))))
+              scale))
 
 (defun tao-theme-colors-to-palette (colors)
   "Create palette of named colors from alist of colors"
@@ -124,8 +123,11 @@
 (defun tao-theme-scale-to-palette (scale)
   "Create palette from scale"
   (tao-theme-colors-to-palette
-   (tao-theme-scale-to-colors
-    (tao-theme-scale-filter-fn scale))))
+   (if tao-theme-use-sepia
+       (tao-theme-scale-to-colors-sepia
+        (tao-theme-scale-filter-fn scale))
+     (tao-theme-scale-to-colors
+      (tao-theme-scale-filter-fn scale)))))
 
 (defun tao-theme-golden-scale ()
   "Generate a golden mean based greyscale gradient."
@@ -165,7 +167,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-10 :background ,color-4 ))))
    `(italic                                          ((t (:italic t ))))
-   `(variable-pitch                                   ((t (:foreground ,color-9 :background ,color-4 :height ,(tao-theme-height 1.0)))))   
+   `(variable-pitch                                   ((t (:foreground ,color-9 :height ,(tao-theme-height 1.0)))))   
    `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
@@ -215,20 +217,20 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(trailing-whitespace                              ((t (:background ,color-10))))
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
-   `(font-lock-builtin-face                           ((t (:foreground ,color-13 ))))
-   `(font-lock-keyword-face                           ((t (:foreground ,color-9 :bold t ))))
+   `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic t ))))
+   `(font-lock-keyword-face                           ((t (:foreground ,color-8 :bold t ))))
    `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
    `(font-lock-constant-face                          ((t (:foreground ,color-8 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight normal :italic t))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-9) :background ,color-4))))
-   `(font-lock-variable-name-face                     ((t (:italic t))))
+   `(font-lock-variable-name-face                     ((t (:foreground ,color-11))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-14))))
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct              ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-regexp-grouping-backslash              ((t (:foreground ,color-9 :weight bold))))
    `(font-lock-string-face                            ((t (:foreground ,color-9 :italic nil))))
-   `(font-lock-type-face                              ((t (:foreground ,color-8 :italic t :bold t))))
+   `(font-lock-type-face                              ((t (:foreground ,color-9 :italic t :bold t))))
    `(font-lock-warning-face                           ((t (:inherit warning))))
    `(c-annotation-face                                ((t (:inherit font-lock-constant-face))))
    ;; newsticker
@@ -567,7 +569,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-function-call                                ((t (:foreground ,color-12 :underline nil :box ,(tao-boxed color-6)))))
    `(js2-object-property                              ((t (:foreground ,color-10 ))))
    `(js2-object-property-access                       ((t (:foreground ,color-10 ))))
-   `(js2-external-variable                            ((t (:foreground ,color-14 :italic t ))))
+   `(js2-external-variable                            ((t (:foreground ,color-14 :italic t :underline t ))))
 
    ;; jsx
    `(rjsx-tag                                         ((t (:foreground, color-8 :bold t))))
@@ -672,7 +674,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mew-face-eof-message                             ((t (:foreground ,color-9))))
    `(mew-face-eof-part                                ((t (:foreground ,color-13))))
    ;; mic-paren
-   `(paren-face-match                                 ((t (:foreground ,color-14 :box ,(tao-boxed color-8) ))))
+   `(paren-face-match                                 ((t (:foreground ,color-14 :box ,(tao-boxed color-8)))))
    `(paren-face-mismatch                              ((t (:foreground ,color-1 :background ,color-6 ))))
    `(paren-face-no-match                              ((t (:foreground ,color-14 :background ,color-6 ))))
    ;; mingus
@@ -856,7 +858,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(show-paren-match                                 ((t (:background ,color-5 :foreground ,color-14))))
    ;; smartparens
    `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-14 :bold t :underline t))))
-   `(sp-show-pair-match-face                          ((t (:background ,color-5 :foreground ,color-14 :box ,(tao-boxed color-8)))))
+   `(sp-show-pair-match-face                          ((t (:background ,color-3 :foreground ,color-14 :box ,(tao-boxed color-8)))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
