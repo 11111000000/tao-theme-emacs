@@ -1061,6 +1061,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(avy-lead-face-1                                  ((t (:background ,color-10  :foreground ,color-1 :bold t))))
    `(avy-lead-face-2                                  ((t (:background ,color-11  :foreground ,color-1 :bold t))))
    `(avy-background-face                              ((t (:background ,color-3  :foreground ,color-7 :bold t))))
+   ;; ace-window
+   `(aw-leading-char-face                             ((t (:background ,color-8 :foreground ,color-1 :bold t))))
+   `(aw-background-face                               ((t (:background ,color-3 :foreground ,color-7 :bold t))))
       ;; ivy
    `(ivy-current-match                               ((t ( :background ,color-8  :foreground ,color-1))))
    `(ivy-minibuffer-match-face-1                     ((t ( :foreground ,color-12))))
@@ -1074,6 +1077,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))
    `(custom-variable-tag                            ((t (:foreground ,color-11 :bold t))))
    `(origami-fold-replacement-face                  ((t (:foreground ,color-8 :bold t))))
+   ;; circe
+   `(circe-highlight-nick-face                      ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
+   `(circe-prompt-face                              ((t (:foreground ,color-1 :background ,color-9 :inherit fixed-pitch))))
+   `(circe-server-face                              ((t (:foreground ,color-8 :italic t))))
+   ;; lui
+   `(lui-time-stamp-face                            ((t (:foreground ,color-11 :background ,color-4))))
+   `(lui-button-face                                ((t (:inherit hover-highlight))))
    )
 
   ;; Theme Variables
