@@ -208,8 +208,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lazy-highlight                                   ((t (:foreground ,color-11 :weight bold :background ,color-5))))
    `(menu                                             ((t (:foreground ,color-13 :background ,color-4))))
    `(minibuffer-prompt                                ((t (:foreground ,color-1 :background ,color-9 :inherit fixed-pitch ))))
-   `(mode-line                                        ((,class (:foreground ,color-12 :background ,color-1 :box nil :height ,(tao-theme-height 0.8)))))
-   `(mode-line-inactive                               ((t (:foreground ,color-9 :background ,color-6 :box nil :height ,(tao-theme-height 0.8)))))
+   `(mode-line                                        ((,class (:foreground ,color-12 :background ,color-1 :box nil :height ,(tao-theme-height 1)))))
+   `(mode-line-inactive                               ((t (:foreground ,color-9 :background ,color-6 :box nil :height ,(tao-theme-height 1)))))
    `(mode-line-buffer-id                              ((t (:foreground ,color-14 :weight bold))))
    `(region                                           ((,class (:background ,color-9 :foreground ,color-3)) (t :inverse-video t)))
    `(secondary-selection                              ((t (:background ,color-5))))
@@ -219,9 +219,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic t ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-8 :bold t ))))
-   `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t ))))
+   `(font-lock-comment-face                           ((t (:foreground ,color-7 :italic t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
-   `(font-lock-constant-face                          ((t (:foreground ,color-8 :weight bold))))
+   `(font-lock-constant-face                          ((t (:foreground ,color-9 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight normal :italic t))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-9) :background ,color-4))))
    `(font-lock-variable-name-face                     ((t (:foreground ,color-11))))
@@ -572,8 +572,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-external-variable                            ((t (:foreground ,color-14 :italic t :underline t ))))
 
    ;; jsx
-   `(rjsx-tag                                         ((t (:foreground, color-8 :bold t))))
-   `(rjsx-tag-bracket-face                            ((t (:foreground, color-8 :bold t))))   
+   `(rjsx-tag                                         ((t (:foreground, color-8 :italic t))))
+   `(rjsx-tag-bracket-face                            ((t (:foreground, color-8 :italic t))))   
    `(rjsx-attr                                        ((t (:foreground, color-9 :bold nil :italic nil ))))
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
@@ -621,6 +621,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-section-heading-selection                  ((t (:foreground ,color-13 :weight bold))))
    `(magit-section-heading                            ((t (:foreground ,color-13 :weight bold))))         
    `(magit-branch                                     ((t (:foreground ,color-11 :weight bold))))
+   `(magit-log-author                                 ((t (:foreground ,color-8 :italic t))))
+   `(magit-tag                                        ((t (:foreground ,color-13 :bold t))))   
    `(magit-item-highlight                             ((t (:background ,color-6 :bold nil))))
    ;; egg
    `(egg-text-base                                    ((t (:foreground ,color-13))))
@@ -1076,6 +1078,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hs-face                                        ((t (:foreground ,color-12 :background ,color-4))))
    `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))
    `(custom-variable-tag                            ((t (:foreground ,color-11 :bold t))))
+   `(custom-group-tag                               ((t (:foreground ,color-11 :bold t))))
+   `(custom-link                                    ((t (:foreground ,color-13 :bold nil :underline t))))   
+   `(custom-face-tag                               ((t (:foreground ,color-13 :bold nil :italic nil))))   
+   `(custom-button                                  ((t (:foreground ,color-11 :box t))))   
    `(origami-fold-replacement-face                  ((t (:foreground ,color-8 :bold t))))
    ;; circe
    `(circe-highlight-nick-face                      ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
