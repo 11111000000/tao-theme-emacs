@@ -20,7 +20,7 @@ or alternatively:
 
 ** Customization
 
- - By default ~tao-theme-scale-fn~ is ~tao-theme-golden-scale~, and produce following colors:
+ By default ~tao-theme-scale-fn~ is ~tao-theme-golden-scale~, and produce following colors:
 
 #+BEGIN_EXAMPLE
  #FCFCFC #FAFAFA #F6F6F6 #F1F1F1 #E8E8E8 #DADADA #C3C3C3 #9E9E9E #616161 #3C3C3C #252525 #171717 #0E0E0E #090909 #050505
@@ -70,7 +70,7 @@ or alternatively:
   - [X] Many new faces
   - [X] New options
 
-** Roadmap
+** Roadmap [1/3]
   - [ ] color scales: equal temperation, just intonation, etc;
   - [ ] support for ~frame-background-mode~ and terminal
   - [X] simplicity
