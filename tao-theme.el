@@ -218,12 +218,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic t ))))
-   `(font-lock-keyword-face                           ((t (:foreground ,color-8 :bold t ))))
+   `(font-lock-keyword-face                           ((t (:foreground ,color-14 ))))
    `(font-lock-comment-face                           ((t (:foreground ,color-7 :italic t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
    `(font-lock-constant-face                          ((t (:foreground ,color-9 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight normal :italic t))))
-   `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-9) :background ,color-4))))
+   `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-9) ))))
    `(font-lock-variable-name-face                     ((t (:foreground ,color-11))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-14))))
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
@@ -1090,6 +1090,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; lui
    `(lui-time-stamp-face                            ((t (:foreground ,color-11 :background ,color-4))))
    `(lui-button-face                                ((t (:inherit hover-highlight))))
+   ;; racket
+   `(racket-keyword-argument-face                   ((t (:inherit ,font-lock-keyword-face))))
+   `(racket-selfeval-face                           ((t (:inherit ,font-lock-constant-face))))
    )
 
   ;; Theme Variables
