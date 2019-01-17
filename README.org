@@ -48,7 +48,9 @@ or alternatively:
       hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
 #+END_SRC
 
-** TODO Screenshots 
+** Screenshots 
+![Yin](https://i.imgur.com/KuUQoDM.png "Yin")
+![Yang](https://i.imgur.com/ikdx7vl.png "Yang")
 
 ** Release Notes 
 *** 1.0.1
