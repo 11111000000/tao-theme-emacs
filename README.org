@@ -49,10 +49,10 @@ or alternatively:
 #+END_SRC
 
 ** Screenshots 
-*** Yin
-[[https://i.imgur.com/KuUQoDM.png]]
 *** Yang
 [[https://i.imgur.com/ikdx7vl.png]])
+*** Yin
+[[https://i.imgur.com/KuUQoDM.png]]
 
 ** Release Notes 
 *** 1.0.1
