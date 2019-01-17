@@ -49,8 +49,10 @@ or alternatively:
 #+END_SRC
 
 ** Screenshots 
-![Yin](https://i.imgur.com/KuUQoDM.png "Yin")
-![Yang](https://i.imgur.com/ikdx7vl.png "Yang")
+*** Yin
+[[https://i.imgur.com/KuUQoDM.png]]
+*** Yang
+[[https://i.imgur.com/ikdx7vl.png]])
 
 ** Release Notes 
 *** 1.0.1
