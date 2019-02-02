@@ -168,7 +168,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(default                                          ((t (:foreground ,color-10 :background ,color-4 ))))
    `(italic                                          ((t (:italic t ))))
    `(variable-pitch                                   ((t (:foreground ,color-9 :height ,(tao-theme-height 1.0)))))   
-   `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3))))
+   `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-3 :italic t))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
    `(header-line                                      ((t (:inherit mode-line))))
@@ -574,7 +574,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; jsx
    `(rjsx-tag                                         ((t (:foreground, color-8 :italic t))))
    `(rjsx-tag-bracket-face                            ((t (:foreground, color-8 :italic t))))   
-   `(rjsx-attr                                        ((t (:foreground, color-9 :bold nil :italic nil ))))
+   `(rjsx-attr                                        ((t (:foreground, color-8 :italic t :bold nil))))
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
    `(jabber-roster-user-online                        ((t (:foreground ,color-10))))
@@ -857,7 +857,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec                                   ((t (:foreground ,color-10))))
    ;; show-paren
    `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-14 :weight bold))))
-   `(show-paren-match                                 ((t (:background ,color-5 :foreground ,color-14))))
+   `(show-paren-match                                 ((t (:foreground ,color-11 :underline t))))
    ;; smartparens
    `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-14 :bold t :underline t))))
    `(sp-show-pair-match-face                          ((t (:background ,color-3 :foreground ,color-14 :box ,(tao-boxed color-8)))))
