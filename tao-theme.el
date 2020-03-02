@@ -77,7 +77,7 @@
 
 (defcustom tao-theme-scale-fn 'tao-theme-golden-scale
   "gen alist of two-digit numbers"
-  :type 'funcall
+  :type 'function
   :group 'tao-theme)
 
 (defun tao-theme-taiji-fn (scale)
