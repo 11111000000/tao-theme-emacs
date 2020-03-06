@@ -758,10 +758,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-ellipsis                                     ((t (:foreground ,color-8 ))))
    `(org-footnote                                     ((t (:foreground ,color-12 ))))
    `(org-meta-line                                    ((t (:background ,color-4 :foreground ,color-7 :height ,(tao-theme-height 0.7) :inherit fixed-pitch :box nil))))
+   `(org-drawer                                    ((t (:background ,color-4 :foreground ,color-7 :height ,(tao-theme-height 0.7) :inherit fixed-pitch :box nil))))
    `(org-block-begin-line                             ((t (:background ,color-4 :foreground ,color-7 :height ,(tao-theme-height 0.7) :inherit fixed-pitch :box nil))))
    `(org-block-end-line                               ((t (:background ,color-4 :foreground ,color-7 :height ,(tao-theme-height 0.7) :inherit fixed-pitch))))
-   `(org-special-keyword                              ((t (:inherit org-meta-line :foreground ,color-9))))
-   `(org-property-value                               ((t (:inherit org-meta-line :foreground ,color-8 ))))
+   `(org-special-keyword                              ((t (:inherit org-meta-line :foreground ,color-8 :italic nil))))
+   `(org-property-value                               ((t (:inherit org-meta-line :foreground ,color-8 :italic t ))))
    `(org-block-background                             ((t (:foreground ,color-4 :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    `(org-block                                        ((t (:background ,color-4  :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    ;; outline   
