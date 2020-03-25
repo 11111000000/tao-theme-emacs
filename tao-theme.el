@@ -221,7 +221,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic t ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-14 ))))
-   `(font-lock-comment-face                           ((t (:foreground ,color-7 :italic t :variable-pitch t ))))
+   `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t :variable-pitch t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
    `(font-lock-constant-face                          ((t (:foreground ,color-9 :weight bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-8 :weight normal :italic t))))
@@ -243,7 +243,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-feed-face                             ((t (:foreground ,color-13))))
    `(newsticker-immortal-item-face                    ((t (:foreground ,color-9))))
    `(newsticker-new-item-face                         ((t (:foreground ,color-11))))
-   `(newstickerphone-obsolete-item-face                    ((t (:foreground ,color-10))))
+   `(newstickerphone-obsolete-item-face               ((t (:foreground ,color-10))))
    `(newsticker-old-item-face                         ((t (:foreground ,color-8))))
    `(newsticker-statistics-face                       ((t (:foreground ,color-13))))
    `(newsticker-treeview-face                         ((t (:foreground ,color-13))))
@@ -255,7 +255,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-treeview-selection-face               ((t (:background ,color-3 :foreground ,color-13))))
    ;; Third-party
    ;; highlight-symbol
-   `(highlight-symbol-face                            ((t (:background ,color-4) )))
+   `(highlight-symbol-face                            ((t (:background ,color-4))))
    ;; ace-jump
    `(ace-jump-face-background                         ((t (:foreground ,color-6 :background ,color-2 :inverse-video nil))))
    `(ace-jump-face-foreground                         ((t (:foreground ,color-11 :background ,color-1 :inverse-video nil))))
@@ -360,10 +360,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ediff-odd-diff-Ancestor                          ((t (:background ,color-5))))
    `(ediff-odd-diff-B                                 ((t (:background ,color-5))))
    `(ediff-odd-diff-C                                 ((t (:background ,color-5))))
-   `(ediff-fine-diff-A                                ((t (:foreground ,color-13 :background ,color-7 ))))
-   `(ediff-fine-diff-Ancestor                         ((t (:foreground ,color-13 :background ,color-7 ))))
-   `(ediff-fine-diff-B                                ((t (:foreground ,color-13 :background ,color-7 ))))
-   `(ediff-fine-diff-C                                ((t (:foreground ,color-13 :background ,color-7  ))))
+   `(ediff-fine-diff-A                                ((t (:foreground ,color-13 :background ,color-7))))
+   `(ediff-fine-diff-Ancestor                         ((t (:foreground ,color-13 :background ,color-7))))
+   `(ediff-fine-diff-B                                ((t (:foreground ,color-13 :background ,color-7))))
+   `(ediff-fine-diff-C                                ((t (:foreground ,color-13 :background ,color-7))))
    ;; elfeed
    `(elfeed-search-date-face                          ((t (:foreground ,color-8))))
    `(elfeed-search-feed-face                          ((t (:foreground ,color-9))))
