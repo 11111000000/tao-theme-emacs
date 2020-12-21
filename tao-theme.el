@@ -89,8 +89,7 @@
 
 (defun tao-boxed (color)
   (if tao-theme-use-boxes
-      `(:color ,color  :line-width 1) nil))
-
+      `(:color ,color  :line-width -1) nil))
 
 (defun tao-theme-colors-to-palette (colors)
   "Create palette of named colors from alist of colors"
