@@ -1105,7 +1105,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lsp-headerline-breadcrumb-path-error-face     ((t (:underline (:style wave :color  ,color-9)))))
    `(lsp-headerline-breadcrumb-path-warning-face   ((t (:underline (:style wave :color  ,color-8)))))
    `(lsp-headerline-breadcrumb-path-info-face      ((t (:underline (:style wave :color  ,color-7)))))
-   `(lsp-headerline-breadcrumb-path-hint-face      ((t (:underline (:style wave :color  ,color-6)))))   
+   `(lsp-headerline-breadcrumb-path-hint-face      ((t (:underline (:style wave :color  ,color-6)))))
+   ;; typescript   
+   `(typescript-primitive-face                              ((t (:foreground ,color-8 :italic t :bold nil))))
   
    )
 
