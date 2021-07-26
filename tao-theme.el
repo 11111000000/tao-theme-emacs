@@ -220,10 +220,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic t ))))
-   `(font-lock-keyword-face                           ((t (:foreground ,color-14 :weight semi-bold))))
+   `(font-lock-keyword-face                           ((t (:foreground ,color-8 :weight semi-bold))))
    `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t :variable-pitch t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
-   `(font-lock-constant-face                          ((t (:foreground ,color-9 :weight bold))))
+   `(font-lock-constant-face                          ((t (:foreground ,color-9 :weight semi-bold))))
    `(font-lock-doc-face                               ((t (:foreground ,color-8 :weight normal :italic t))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-8) ))))
    `(font-lock-variable-name-face                     ((t (:foreground ,color-11))))
@@ -231,8 +231,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct              ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-regexp-grouping-backslash              ((t (:foreground ,color-2))))
-   `(font-lock-string-face                            ((t (:foreground ,color-9 :italic t))))
-   `(font-lock-type-face                              ((t (:foreground ,color-8 :italic t :bold nil))))
+   `(font-lock-string-face                            ((t (:foreground ,color-8))))
+   `(font-lock-type-face                              ((t (:foreground ,color-8 :italic t))))
    `(font-lock-warning-face                           ((t (:inherit warning))))
    `(c-annotation-face                                ((t (:inherit font-lock-constant-face))))
    ;; newsticker
@@ -620,7 +620,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(macrostep-macro-face                             ((t (:underline t))))
    ;; magit
    `(magit-section-title                              ((t (:foreground ,color-13 :weight bold))))
-   `(magit-section-highlight                          ((t (:foreground ,color-15 :weight normal))))
+   `(magit-section-highlight                          ((t (:foreground ,color-14 :weight normal))))
    `(magit-section-heading-selection                  ((t (:foreground ,color-13 :weight bold))))
    `(magit-section-heading                            ((t (:foreground ,color-13 :weight bold))))         
    `(magit-branch                                     ((t (:foreground ,color-11 :weight bold))))
@@ -1107,7 +1107,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lsp-headerline-breadcrumb-path-info-face      ((t (:underline (:style wave :color  ,color-7)))))
    `(lsp-headerline-breadcrumb-path-hint-face      ((t (:underline (:style wave :color  ,color-6)))))
    ;; typescript   
-   `(typescript-primitive-face                              ((t (:foreground ,color-8 :italic t :bold nil))))
+   `(typescript-primitive-face                     ((t (:foreground ,color-8 :italic t))))
+   `(typescript-this-face                          ((t (:foreground ,color-9 :weight semi-bold :italic t))))
   
    )
 
