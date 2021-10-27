@@ -1109,7 +1109,31 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; typescript   
    `(typescript-primitive-face                     ((t (:foreground ,color-8 :italic t))))
    `(typescript-this-face                          ((t (:foreground ,color-9 :weight semi-bold :italic t))))
-  
+   ;; notmuch
+   `(notmuch-crypto-decryption                     ((t (:foreground ,color-10 :weight bold))))
+   `(notmuch-crypto-part-header                    ((t (:foreground ,color-14 :weight bold))))
+   `(notmuch-crypto-signature-bad                  ((t (:inherit error))))
+   `(notmuch-crypto-signature-good                 ((t (:inherit success))))
+   `(notmuch-crypto-signature-good-key             ((t (:inherit success))))
+   `(notmuch-crypto-signature-unknown              ((t (:inherit warning))))
+   `(notmuch-search-count                          ((t (:foreground ,color-8))))
+   `(notmuch-search-unread-face                    ((t (:foreground ,color-9 :weight bold))))
+   `(notmuch-search-date                           ((t (:foreground ,color-10))))
+   `(notmuch-search-non-matching-authors           ((t (:foreground ,color-8))))
+   `(notmuch-search-subject                        ((t (:foreground ,color-10))))
+   `(notmuch-tag-added                             ((t (:foreground ,color-10 :underline ,color-8))))
+   `(notmuch-tag-deleted                           ((t (:foreground ,color-8 :strike-through ,color-14))))
+   `(notmuch-tag-face                              ((t (:foreground ,color-8))))
+   `(notmuch-tag-flagged                           ((t (:foreground ,color-8 :box ,(tao-boxed color-8)))))
+   `(notmuch-tag-unread                            ((t (:box ,(tao-boxed color-9)))))
+   `(notmuch-tree-match-author-face                ((t (:foreground ,color-9))))
+   `(notmuch-tree-match-subject-face               ((t (:foreground ,color-9))))
+   `(notmuch-tree-match-date-face                  ((t (:foreground ,color-8))))
+   `(notmuch-tree-match-tag-face                   ((t (:foreground ,color-8))))
+   `(notmuch-tree-no-match-face                    ((t (:foreground ,color-8))))
+   `(notmuch-tree-no-match-date-face               ((t (:foreground ,color-8))))
+   `(notmuch-wash-cited-text                       ((t (:inherit message-cited-text-1))))
+
    )
 
   ;; Theme Variables
