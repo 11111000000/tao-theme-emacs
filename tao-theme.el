@@ -1133,6 +1133,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(notmuch-tree-no-match-face                    ((t (:foreground ,color-8))))
    `(notmuch-tree-no-match-date-face               ((t (:foreground ,color-8))))
    `(notmuch-wash-cited-text                       ((t (:inherit message-cited-text-1))))
+   ;; corfu
+   `(corfu-current                                 ((t (:inherit company-tooltip :background ,color-7 :foreground ,color-1))))
 
    )
 
