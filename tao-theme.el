@@ -1134,6 +1134,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(notmuch-tree-no-match-date-face               ((t (:foreground ,color-8))))
    `(notmuch-wash-cited-text                       ((t (:inherit message-cited-text-1))))
    `(corfu-current                                 ((t (:inherit company-tooltip :background ,color-7 :foreground ,color-1))))
+   `(completions-common-part                       ((t (:inherit company-tooltip-selection :foreground ,color-13))))
    `(vertico-current                               ((t ( :background ,color-8  :foreground ,color-1))))
    `(orderless-match-face-0                        ((t ( :foreground ,color-12))))
    `(orderless-match-face-1                        ((t ( :foreground ,color-11 :bold t))))
