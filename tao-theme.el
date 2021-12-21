@@ -1133,9 +1133,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(notmuch-tree-no-match-face                    ((t (:foreground ,color-8))))
    `(notmuch-tree-no-match-date-face               ((t (:foreground ,color-8))))
    `(notmuch-wash-cited-text                       ((t (:inherit message-cited-text-1))))
-   ;; corfu
    `(corfu-current                                 ((t (:inherit company-tooltip :background ,color-7 :foreground ,color-1))))
-
+   `(vertico-current                               ((t ( :background ,color-8  :foreground ,color-1))))
+   `(orderless-match-face-0                        ((t ( :foreground ,color-12))))
+   `(orderless-match-face-1                        ((t ( :foreground ,color-11 :bold t))))
+   `(orderless-match-face-2                        ((t ( :foreground ,color-10 :bold t))))
+   `(orderless-match-face-3                        ((t ( :foreground ,color-9 :bold t))))
    )
 
   ;; Theme Variables
