@@ -163,7 +163,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    theme-name
    ;; Built-in
    `(button                                           ((t (:underline t))))
-   `(link                                             ((t (:foreground ,color-13 :underline t :weight bold))))
+   `(link                                             ((t (:foreground ,color-13 :underline t :weight normal))))
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-10 :background ,color-4 ))))
    `(italic                                           ((t (:italic t ))))
@@ -173,7 +173,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
    `(header-line                                      ((t (:inherit mode-line))))
-   `(fringe                                           ((t (:foreground ,color-7 :weight bold))))
+   `(fringe                                           ((t (:foreground ,color-7 :weight normal))))
    `(highlight                                        ((t (:background ,color-4 :foreground ,color-14))))
    `(success                                          ((t (:foreground ,color-9 :weight bold))))
    `(warning                                          ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
@@ -222,16 +222,16 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-keyword-face                           ((t (:foreground ,color-9 :weight semi-bold))))
    `(font-lock-comment-face                           ((t (:foreground ,color-8 :italic t :variable-pitch t ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-9))))
-   `(font-lock-constant-face                          ((t (:foreground ,color-8 :weight semi-bold))))
+   `(font-lock-constant-face                          ((t (:foreground ,color-11 :weight normal :italic nil))))
    `(font-lock-doc-face                               ((t (:foreground ,color-8 :weight normal :italic t))))
-   `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-8) ))))
-   `(font-lock-variable-name-face                     ((t (:foreground ,color-11))))
+   `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-8) :italic nil :weight normal  ))))
+   `(font-lock-variable-name-face                     ((t (:foreground ,color-9 :italic nil :slant normal))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-14))))
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct              ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-regexp-grouping-backslash              ((t (:foreground ,color-2))))
-   `(font-lock-string-face                            ((t (:foreground ,color-9))))
-   `(font-lock-type-face                              ((t (:foreground ,color-8 :italic t))))
+   `(font-lock-string-face                            ((t (:foreground ,color-9 :italic t))))
+   `(font-lock-type-face                              ((t (:foreground ,color-9 :italic t))))
    `(font-lock-warning-face                           ((t (:inherit warning))))
    `(c-annotation-face                                ((t (:inherit font-lock-constant-face))))
    ;; newsticker
@@ -571,7 +571,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-function-call                                ((t (:foreground ,color-12 :underline nil :box ,(tao-boxed color-6)))))
    `(js2-object-property                              ((t (:foreground ,color-10 ))))
    `(js2-object-property-access                       ((t (:foreground ,color-10 ))))
-   `(js2-external-variable                            ((t (:foreground ,color-14 :italic t ))))
+   `(js2-external-variable                            ((t (:foreground ,color-14 :italic nil ))))
 
    ;; jsx
    `(rjsx-tag                                         ((t (:foreground, color-10))))
@@ -725,12 +725,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-deadline-announce                            ((t (:foreground ,color-9))))
    `(org-formula                                      ((t (:foreground ,color-11))))
    `(org-macro                                        ((t (:foreground ,color-11 :italic t))))
-   `(org-headline-done                                ((t (:foreground ,color-12))))
+   `(org-headline-done                                ((t (:foreground ,color-8 :strike-through t))))
    `(org-hide                                         ((t (:foreground ,color-4))))
    `(org-document-title                               ((t (:foreground ,color-12 :height ,(tao-theme-height 0.8) :bold nil))))
    `(org-document-info                                ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))
-   `(org-document-info-keyword                       ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))   
-   `(org-heading                                      ((t (:foreground ,color-14 :bold nil :variable-pitch t ))))
+   `(org-document-info-keyword                        ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))   
+   `(org-checkbox-statistics-done                     ((t (:foreground ,color-14 :weight normal))))
+   `(org-checkbox-statistics-todo                     ((t (:foreground ,color-14 :weight normal))))
+   `(org-heading                                      ((t (:foreground ,color-14 :weight normal :variable-pitch t ))))
    `(org-level-1                                      ((t ( :height ,(tao-theme-height 1.5) :inherit org-heading))))
    `(org-level-2                                      ((t ( :height ,(tao-theme-height 1.1) :inherit org-heading))))
    `(org-level-3                                      ((t ( :height ,(tao-theme-height 1.1) :inherit org-heading))))
@@ -747,8 +749,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-table                                        ((t (:foreground ,color-11 :inherit fixed-pitch))))
    `(org-tag                                          ((t (:bold t :weight normal :italic nil :foreground ,color-8))))
    `(org-time-grid                                    ((t (:foreground ,color-11))))
-   `(org-done                                         ((t (:bold t :background ,color-6 :foreground ,color-12 :weight normal))))
-   `(org-todo                                         ((t (:bold t  :background ,color-9  :foreground ,color-2 :weight normal))))
+   `(org-done                                         ((t (:bold nil :foreground ,color-8 :weight normal :box t))))
+   `(org-todo                                         ((t (:bold nil :foreground ,color-9 :weight normal :box t))))
    `(org-upcoming-deadline                            ((t (:inherit font-lock-keyword-face))))
    `(org-warning                                      ((t (:bold t :foreground ,color-10 :weight bold :underline nil))))
    `(org-column                                       ((t (:background ,color-3))))
@@ -859,10 +861,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec                                   ((t (:foreground ,color-10))))
    ;; show-paren
    `(show-paren-mismatch                              ((t (:foreground ,color-1 :background ,color-14 :weight bold))))
-   `(show-paren-match                                 ((t (:foreground ,color-11 :underline t :weight bold))))
+   `(show-paren-match                                 ((t (:foreground ,color-14 :weight bold))))
    ;; smartparens
-   `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-14 :underline t))))
-   `(sp-show-pair-match-face                          ((t (:background ,color-3 :foreground ,color-14 :weight bold))))
+   `(sp-show-pair-mismatch-face                       ((t (:background ,color-6 :foreground ,color-14))))
+   `(sp-show-pair-match-face                          ((t (:foreground ,color-14 :weight bold))))
    ;; sml-mode-line
    '(sml-modeline-end-face                            ((t :inherit default :width condensed)))
    ;; SLIME
@@ -886,14 +888,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(tabbar-selected                                  ((t (:foreground ,color-13 :background ,color-4 :box (:line-width -1 :style pressed-button)))))
    `(tabbar-unselected                                ((t (:foreground ,color-13 :background ,color-6 :box (:line-width -1 :style released-button)))))
    ;; term
-   `(term-color-black                                 ((t (:foreground ,color-5 :background ,color-3))))
-   `(term-color-red                                   ((t (:foreground ,color-9 :background ,color-7))))
-   `(term-color-green                                 ((t (:foreground ,color-9 :background ,color-11))))
-   `(term-color-yellow                                ((t (:foreground ,color-11 :background ,color-13))))
-   `(term-color-blue                                  ((t (:foreground ,color-10 :background ,color-7))))
+   `(term-color-black                                 ((t (:foreground "#000000" :background "#000000"))))
+   `(term-color-red                                   ((t (:foreground ,color-7 :background ,color-7))))
+   `(term-color-green                                 ((t (:foreground ,color-8 :background ,color-8))))
+   `(term-color-yellow                                ((t (:foreground ,color-9 :background ,color-9))))
+   `(term-color-blue                                  ((t (:foreground ,color-11 :background ,color-11))))
    `(term-color-magenta                               ((t (:foreground ,color-10 :background ,color-10))))
-   `(term-color-cyan                                  ((t (:foreground ,color-12 :background ,color-11))))
-   `(term-color-white                                 ((t (:foreground ,color-13 :background ,color-7))))
+   `(term-color-cyan                                  ((t (:foreground ,color-12 :background ,color-12))))
+   `(term-color-white                                 ((t (:foreground "#ffffff" :background "#ffffff"))))
    '(term-default-fg-color                            ((t (:inherit term-color-white))))
    '(term-default-bg-color                            ((t (:inherit term-color-black))))
    ;; undo-tree
@@ -1099,13 +1101,24 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(racket-keyword-argument-face                   ((t (:inherit ,font-lock-keyword-face))))
    `(racket-selfeval-face                           ((t (:inherit ,font-lock-constant-face))))
    `(highlight-thing                                ((t (:background ,color-5))))
-;;    lsp
+   ;;    lsp
    `(lsp-face-highlight-read                       ((t (:background ,color-5))))
-      
+   
    `(lsp-headerline-breadcrumb-path-error-face     ((t (:underline (:style wave :color  ,color-10)))))
    `(lsp-headerline-breadcrumb-path-warning-face   ((t (:underline (:style wave :color  ,color-8)))))
    `(lsp-headerline-breadcrumb-path-info-face      ((t (:underline (:style wave :color  ,color-7)))))
    `(lsp-headerline-breadcrumb-path-hint-face      ((t (:underline (:style wave :color  ,color-6)))))
+   `(lsp-headerline-breadcrumb-symbols-error-face      ((t (:underline (:style wave :color  ,color-10)))))
+   `(lsp-headerline-breadcrumb-symbols-hint-face      ((t (:underline (:style wave :color  ,color-3)))))
+   `(lsp-headerline-breadcrumb-symbols-info-face      ((t (:underline (:style wave :color  ,color-5)))))
+   `(lsp-headerline-breadcrumb-symbols-warning-face      ((t (:underline (:style wave :color  ,color-12)))))
+   
+   `(lsp-ui-sideline-symbol ((t (:background ,color-4 :foreground ,color-8 :weight normal :italic t))))
+   `(lsp-ui-sideline-current-symbol ((t (:background ,color-4  :foreground ,color-9 :box ,(tao-boxed color-8)))))
+   `(lsp-ui-sideline-symbol-info ((t (:background ,color-4 :foreground ,color-7 :weight normal :italic t))))
+   `(lsp-ui-sideline-global ((t (:background ,color-4 :foreground ,color-7 :weight semi-bold :italic t))))
+   `(lsp-ui-sideline-code-action ((t (:background ,color-3  :foreground ,color-8  :weight normal :box ,(tao-boxed color-6)))))
+
    ;; typescript   
    `(typescript-primitive-face                     ((t (:foreground ,color-8 :italic t))))
    `(typescript-this-face                          ((t (:foreground ,color-9 :weight semi-bold :italic t))))
@@ -1180,6 +1193,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vc-annotate-very-old-color ,color-10)
    `(vc-annotate-background ,color-3)
    )
-)
+  )
 
 (provide 'tao-theme)
