@@ -42,7 +42,7 @@
 ;; tao-theme-scale-fn, that returns 16 2-digit numbers
 ;; tao-theme-scale-filter-fn, for edge filter
 ;; tao-theme-use-height, nil by default
-;; 
+;;
 ;;; Code:
 
 (require 'cl-lib)
@@ -122,17 +122,17 @@
         (push (- #xFF alpha) golden-scale)))
     (sort golden-scale '<)))
 
-(defun tao-theme-scale-to-colors (scale)	
-  "Create grayscale from colors alist"	  
+(defun tao-theme-scale-to-colors (scale)
+  "Create grayscale from colors alist"
   (mapcar (lambda (it) (format "#%02X%02X%02X" it it it)) scale))
 
 ;; TODO refactor that into two `tao-theme-scale-to-colors` and `tao-sepia-filter`
 (defun tao-theme-scale-to-colors-sepia (scale)
   "Create grayscale from colors alist"
-  (mapcar (lambda (it)            
+  (mapcar (lambda (it)
             (let ((r (+ it (* tao-theme-sepia-depth 1.8)))
                   (g (+ it (* tao-theme-sepia-depth 1.5)))
-                  (b (* it tao-theme-sepia-saturation)))                  
+                  (b (* it tao-theme-sepia-saturation)))
               (format "#%02X%02X%02X"
                       (if (> r 255) 255 r)
                       (if (> g 255) 255 g)
@@ -141,7 +141,7 @@
 
 
 (defun tao-theme-yin-palette ()
-  "Generate a dark version of the golden gradient alist."  
+  "Generate a dark version of the golden gradient alist."
   (tao-theme-scale-to-palette (funcall tao-theme-scale-fn)))
 
 (defun tao-theme-yang-palette ()
@@ -167,7 +167,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-10 :background ,color-4 ))))
    `(italic                                           ((t (:italic t ))))
-   `(variable-pitch                                   ((t (:foreground ,color-9 :height ,(tao-theme-height 1.0) :variable-pitch t))))   
+   `(variable-pitch                                   ((t (:foreground ,color-9 :height ,(tao-theme-height 1.0) :variable-pitch t))))
    `(parenthesis                                      ((t (:foreground ,color-7))))
    `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-4))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
@@ -177,7 +177,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight                                        ((t (:background ,color-4 :foreground ,color-14))))
    `(success                                          ((t (:foreground ,color-9 :weight bold))))
    `(warning                                          ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
-   `(error                                            ((t (:foreground ,color-14 :background ,color-5 :weight bold))))   
+   `(error                                            ((t (:foreground ,color-14 :background ,color-5 :weight bold))))
    ;; compilation
    `(compilation-column-face                          ((t (:foreground ,color-13))))
    `(compilation-enter-directory-face                 ((t (:foreground ,color-9))))
@@ -318,6 +318,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diff-refine-removed                              ((t :inherit diff-removed :weight bold)))
    `(diff-header                                      ((,class (:background ,color-7)) (t (:background ,color-13 :foreground ,color-5))))
    `(diff-file-header                                 ((,class (:background ,color-7 :foreground ,color-13 :bold t)) (t (:background ,color-13 :foreground ,color-5 :bold t))))
+   ;; diff-hl
+   `(diff-hl-insert                                   ((,class (:background ,color-13)) (t (:background ,color-8))))
+   `(diff-hl-change                                   ((t (:background ,color-13))))
+   `(diff-hl-delete                                   ((,class (:background ,color-10)) (t (:background ,color-8))))
+   `(diff-hl-dired-insert                             ((,class (:background ,color-13)) (t (:background ,color-8))))
+   `(diff-hl-dired-change                             ((t (:background ,color-13))))
+   `(diff-hl-dired-delete                             ((,class (:background ,color-10)) (t (:background ,color-8))))
    ;; dired
    `(dired-directory                                  ((t (:foreground ,color-9 :bold t))))
    ;; dired+
@@ -548,7 +555,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hl-line-face                                     ((,class (:background ,color-5 :foreground ,color-11))))
    `(hl-line                                          ((,class (:background ,color-5 :foreground ,color-11))))
    ;;
-   `(idle-highlight                                   ((,class (:background ,color-7 :foreground ,color-11))))   
+   `(idle-highlight                                   ((,class (:background ,color-7 :foreground ,color-11))))
    ;; hl-sexp
    `(hl-sexp-face                                     ((,class (:background ,color-6)) (t :weight bold)))
    ;; ido-mode
@@ -575,7 +582,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;; jsx
    `(rjsx-tag                                         ((t (:foreground, color-10))))
-   `(rjsx-tag-bracket-face                            ((t (:foreground, color-8 ))))   
+   `(rjsx-tag-bracket-face                            ((t (:foreground, color-8 ))))
    `(rjsx-attr                                        ((t (:foreground, color-8 :bold nil))))
    ;; jabber-mode
    `(jabber-roster-user-away                          ((t (:foreground ,color-11))))
@@ -621,10 +628,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-section-title                              ((t (:foreground ,color-13 :weight bold))))
    `(magit-section-highlight                          ((t (:foreground ,color-14 :weight normal))))
    `(magit-section-heading-selection                  ((t (:foreground ,color-13 :weight bold))))
-   `(magit-section-heading                            ((t (:foreground ,color-13 :weight bold))))         
+   `(magit-section-heading                            ((t (:foreground ,color-13 :weight bold))))
    `(magit-branch                                     ((t (:foreground ,color-11 :weight bold))))
    `(magit-log-author                                 ((t (:foreground ,color-8 :italic t))))
-   `(magit-tag                                        ((t (:foreground ,color-13 :bold t))))   
+   `(magit-tag                                        ((t (:foreground ,color-13 :bold t))))
    `(magit-item-highlight                             ((t (:background ,color-6 :bold nil))))
    `(magit-diff-file-heading-highlight                ((t (:background ,color-6 :bold nil))))
    ;; egg
@@ -713,14 +720,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mumamo-background-chunk-submode3                 ((t (:background ,color-8))))
    `(mumamo-background-chunk-submode4                 ((t (:background ,color-6))))
    `(holiday                                          ((t (:background ,color-5 :weight bold))) t)
-   `(diary                                          ((t (:background ,color-4 :box ,(tao-boxed color-7)))) t)   
+   `(diary                                          ((t (:background ,color-4 :box ,(tao-boxed color-7)))) t)
    ;; org-mode
    `(org-agenda-date-today                            ((t (:foreground ,color-14 :slant italic :weight bold))) t)
    `(org-agenda-clocking                              ((t (:foreground ,color-14 :weight bold))) t)
    `(org-agenda-structure                             ((t (:inherit font-lock-comment-face))))
    `(org-archived                                     ((t (:foreground ,color-13 :weight bold))))
    `(org-checkbox                                     ((t (:foreground ,color-10 :background ,color-4 :bold t :inherit fixed-pitch))))
-   `(org-checkbox-statistics-todo                     ((t (:foreground ,color-10 :background ,color-4 :bold t :inherit fixed-pitch))))   
+   `(org-checkbox-statistics-todo                     ((t (:foreground ,color-10 :background ,color-4 :bold t :inherit fixed-pitch))))
    `(org-date                                         ((t (:foreground ,color-11 :underline t))))
    `(org-deadline-announce                            ((t (:foreground ,color-9))))
    `(org-formula                                      ((t (:foreground ,color-11))))
@@ -729,7 +736,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-hide                                         ((t (:foreground ,color-4))))
    `(org-document-title                               ((t (:foreground ,color-12 :height ,(tao-theme-height 0.8) :bold nil))))
    `(org-document-info                                ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))
-   `(org-document-info-keyword                        ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))   
+   `(org-document-info-keyword                        ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))
    `(org-checkbox-statistics-done                     ((t (:foreground ,color-14 :weight normal))))
    `(org-checkbox-statistics-todo                     ((t (:foreground ,color-14 :weight normal))))
    `(org-heading                                      ((t (:foreground ,color-14 :weight normal :variable-pitch t ))))
@@ -767,7 +774,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-property-value                               ((t (:inherit org-meta-line :foreground ,color-8 :italic t ))))
    `(org-block-background                             ((t (:foreground ,color-4 :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    `(org-block                                        ((t (:background ,color-4  :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
-   ;; outline   
+   ;; outline
    `(outline-1                                        ((t ( :height ,(tao-theme-height 1.5) :italic t :inherit org-heading))))
    `(outline-2                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
    `(outline-3                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
@@ -940,7 +947,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-html-attr-name-face                     ((t (:foreground ,color-8 :italic t))))
    `(web-mode-html-attr-value-face                    ((t (:foreground ,color-8 ))))
    `(web-mode-html-tag-face                           ((t (:foreground ,color-9))))
-   `(web-mode-html-tag-bracket-face                   ((t (:foreground ,color-7))))   
+   `(web-mode-html-tag-bracket-face                   ((t (:foreground ,color-7))))
    `(web-mode-keyword-face                            ((t (:inherit ,font-lock-keyword-face))))
    `(web-mode-preprocessor-face                       ((t (:inherit ,font-lock-preprocessor-face))))
    `(web-mode-string-face                             ((t (:inherit ,font-lock-string-face))))
@@ -1001,7 +1008,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(html-fold-folded-face                            ((t (:foreground ,color-14 :bold t))))
    ;; markdown mode
    `(markdown-header-delimiter-face                   ((t (:weight normal :foreground ,color-6))))
-   `(markdown-header-face                           ((t (:bold nil :foreground ,color-14))))   
+   `(markdown-header-face                           ((t (:bold nil :foreground ,color-14))))
    `(markdown-header-face-1                           ((t (:inherit org-level-1 :foreground ,color-14))))
    `(markdown-header-face-2                           ((t (:inherit org-level-2 :foreground ,color-14))))
    `(markdown-header-face-3                           ((t (:inherit org-level-3 :foreground ,color-14))))
@@ -1018,7 +1025,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(markdown-list-face                               ((t (:foreground ,color-12))))
    `(markdown-markup-face                             ((t (:foreground ,color-6 :inherit fixed-pitch))))
    `(markdown-html-attr-name-face                     ((t (:foreground ,color-9 :inherit fixed-pitch))))
-   `(markdown-html-attr-value-face                 ((t (:foreground ,color-8 :inherit fixed-pitch))))            
+   `(markdown-html-attr-value-face                 ((t (:foreground ,color-8 :inherit fixed-pitch))))
    `(markdown-html-tag-delimiter-face                 ((t (:foreground ,color-8 :inherit fixed-pitch))))
    `(markdown-html-tag-name-face                 ((t (:foreground ,color-9 :inherit fixed-pitch))))
    `(markdown-table-face                              ((t (:inherit fixed-pitch :height ,(tao-theme-height 0.8)))))
@@ -1083,12 +1090,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hs-fringe-face                                 ((t (:foreground ,color-12  :background ,color-4))))
    `(custom-variable-tag                            ((t (:foreground ,color-11 :bold t))))
    `(custom-group-tag                               ((t (:foreground ,color-11 :bold t))))
-   `(custom-link                                    ((t (:foreground ,color-13 :bold nil :underline t))))   
-   `(custom-face-tag                                ((t (:foreground ,color-13 :bold nil :italic nil))))   
-   `(custom-button                                  ((t (:foreground ,color-11 :box t))))   
-   `(custom-state                                   ((t (:foreground ,color-7))))   
+   `(custom-link                                    ((t (:foreground ,color-13 :bold nil :underline t))))
+   `(custom-face-tag                                ((t (:foreground ,color-13 :bold nil :italic nil))))
+   `(custom-button                                  ((t (:foreground ,color-11 :box t))))
+   `(custom-state                                   ((t (:foreground ,color-7))))
    `(custom-comment                                 ((t (:foreground ,color-8 :italic t :background ,color-4))))
-   `(widget-field                                   ((t (:foreground ,color-8 :italic t :background ,color-4 :box (:color ,color-6)))))      
+   `(widget-field                                   ((t (:foreground ,color-8 :italic t :background ,color-4 :box (:color ,color-6)))))
    `(origami-fold-replacement-face                  ((t (:foreground ,color-9 :bold nil))))
    ;; circe
    `(circe-highlight-nick-face                      ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
@@ -1103,7 +1110,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight-thing                                ((t (:background ,color-5))))
    ;;    lsp
    `(lsp-face-highlight-read                       ((t (:background ,color-5))))
-   
+
    `(lsp-headerline-breadcrumb-path-error-face     ((t (:underline (:style wave :color  ,color-10)))))
    `(lsp-headerline-breadcrumb-path-warning-face   ((t (:underline (:style wave :color  ,color-8)))))
    `(lsp-headerline-breadcrumb-path-info-face      ((t (:underline (:style wave :color  ,color-7)))))
@@ -1112,14 +1119,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lsp-headerline-breadcrumb-symbols-hint-face      ((t (:underline (:style wave :color  ,color-3)))))
    `(lsp-headerline-breadcrumb-symbols-info-face      ((t (:underline (:style wave :color  ,color-5)))))
    `(lsp-headerline-breadcrumb-symbols-warning-face      ((t (:underline (:style wave :color  ,color-12)))))
-   
+
    `(lsp-ui-sideline-symbol ((t (:background ,color-4 :foreground ,color-8 :weight normal :italic t))))
    `(lsp-ui-sideline-current-symbol ((t (:background ,color-4  :foreground ,color-9 :box ,(tao-boxed color-8)))))
    `(lsp-ui-sideline-symbol-info ((t (:background ,color-4 :foreground ,color-7 :weight normal :italic t))))
    `(lsp-ui-sideline-global ((t (:background ,color-4 :foreground ,color-7 :weight semi-bold :italic t))))
    `(lsp-ui-sideline-code-action ((t (:background ,color-3  :foreground ,color-8  :weight normal :box ,(tao-boxed color-6)))))
 
-   ;; typescript   
+   ;; typescript
    `(typescript-primitive-face                     ((t (:foreground ,color-8 :italic t))))
    `(typescript-this-face                          ((t (:foreground ,color-9 :weight semi-bold :italic t))))
    ;; notmuch
