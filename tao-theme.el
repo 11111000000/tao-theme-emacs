@@ -1203,3 +1203,5 @@ Also bind `class' to ((class color) (min-colors 89))."
   )
 
 (provide 'tao-theme)
+
+;;; tao-theme.el ends here
