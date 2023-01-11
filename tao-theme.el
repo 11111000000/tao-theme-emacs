@@ -10,7 +10,7 @@
 ;;
 ;; URL: http://github.com/11111000000/tao-theme-emacs
 ;;
-;; Version: 1.1.2
+;; Version: 1.1.3
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -1213,3 +1213,5 @@ Also bind `class' to ((class color) (min-colors 89))."
   )
 
 (provide 'tao-theme)
+
+;;; tao-theme.el ends here
