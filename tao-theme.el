@@ -60,7 +60,7 @@
   :type 'boolean
   :group 'tao-theme)
 
-(defcustom tao-theme-use-sepia t
+(defcustom tao-theme-use-sepia nil
   "Non-nil means tao-theme should use sepia tones for grayscale"
   :type 'boolean
   :group 'tao-theme)
@@ -899,10 +899,21 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-selected-face                           ((t (:foreground ,color-10))))
    `(speedbar-separator-face                          ((t (:foreground ,color-5 :background ,color-10))))
    `(speedbar-tag-face                                ((t (:foreground ,color-13))))
+   ;; top tabs bar
+   `(tab-bar                                    ((t ( :background ,color-3))))
+   `(tab-bar-tab                                  ((t (:inherit default))))
+   `(tab-bar-tab-inactive                                ((t (:foreground ,color-9 :background ,color-7 ))))
+   
    ;; tabbar
+   `(tabbar-default                                    ((t ( :background ,color-3))))
    `(tabbar-button                                    ((t (:foreground ,color-13 :background ,color-4))))
-   `(tabbar-selected                                  ((t (:foreground ,color-13 :background ,color-4 :box (:line-width -1 :style pressed-button)))))
-   `(tabbar-unselected                                ((t (:foreground ,color-13 :background ,color-6 :box (:line-width -1 :style released-button)))))
+   `(tabbar-selected                                  ((t (:inherit default))))
+   `(tabbar-unselected                                ((t (:foreground ,color-9 :background ,color-6 ))))
+;;centaur-tabs
+   `(centaur-tabs-default                             ((t (:foreground ,color-13 :background ,color-4))))
+   `(centaur-tabs-selected                            ((t (:foreground ,color-13 :background ,color-4 :underline nil))))
+   `(centaur-tabs-unselected                          ((t (:foreground ,color-8 :background ,color-5))))
+   
    ;; term
    `(term-color-black                                 ((t (:foreground "#000000" :background "#000000"))))
    `(term-color-red                                   ((t (:foreground ,color-7 :background ,color-7))))
