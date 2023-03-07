@@ -310,9 +310,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ctbl:face-continue-bar                           ((t (:background ,color-4 :foreground ,color-5))))
    `(ctbl:face-row-select                             ((t (:background ,color-12 :foreground ,color-5))))
    ;; diff
-   `(diff-added                                       ((,class (:foreground ,color-13 :background nil)) (t (:foreground ,color-8 :background nil))))
+   `(diff-added                                       ((,class (:foreground ,color-13)) (t (:foreground ,color-8))))
    `(diff-changed                                     ((t (:foreground ,color-13))))
-   `(diff-removed                                     ((,class (:foreground ,color-10 :background nil)) (t (:foreground ,color-8 :background nil))))
+   `(diff-removed                                     ((,class (:foreground ,color-10)) (t (:foreground ,color-8))))
    `(diff-refine-added                                ((t :inherit diff-added :weight bold)))
    `(diff-refine-change                               ((t :inherit diff-changed :weight bold)))
    `(diff-refine-removed                              ((t :inherit diff-removed :weight bold)))
@@ -900,15 +900,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-separator-face                          ((t (:foreground ,color-5 :background ,color-10))))
    `(speedbar-tag-face                                ((t (:foreground ,color-13))))
    ;; top tabs bar
-   `(tab-bar                                    ((t ( :background ,color-3))))
-   `(tab-bar-tab                                  ((t (:inherit default))))
-   `(tab-bar-tab-inactive                                ((t (:foreground ,color-9 :background ,color-7 ))))
+   `(tab-bar                                          ((t ( :background ,color-6))))
+   `(tab-bar-tab                                      ((t (:inherit default :height 1.0))))
+   `(tab-bar-tab-inactive                             ((t (:foreground ,color-9 :background ,color-7 ))))
    
    ;; tabbar
-   `(tabbar-default                                    ((t ( :background ,color-3))))
+   `(tabbar-default                                   ((t ( :background ,color-4 ))))
    `(tabbar-button                                    ((t (:foreground ,color-13 :background ,color-4))))
    `(tabbar-selected                                  ((t (:inherit default))))
-   `(tabbar-unselected                                ((t (:foreground ,color-9 :background ,color-6 ))))
+   `(tabbar-unselected                                ((t (:foreground ,color-8 :background ,color-5 ))))
 ;;centaur-tabs
    `(centaur-tabs-default                             ((t (:foreground ,color-13 :background ,color-4))))
    `(centaur-tabs-selected                            ((t (:foreground ,color-13 :background ,color-4 :underline nil))))
@@ -1222,6 +1222,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vc-annotate-background ,color-3)
    )
   )
+
 
 (provide 'tao-theme)
 
