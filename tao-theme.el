@@ -901,15 +901,24 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-tag-face                                ((t (:foreground ,color-13))))
    ;; top tabs bar
    `(tab-bar                                          ((t ( :background ,color-6))))
-   `(tab-bar-tab                                      ((t (:inherit default :height 1.0))))
+   `(tab-bar-tab                                      ((t (:background ,color-4 :foreground ,color-10 :height 1.0))))
    `(tab-bar-tab-inactive                             ((t (:foreground ,color-9 :background ,color-7 ))))
-   
-   ;; tabbar
+
+   ;; tab-line
+   `(tab-line                                         ((t ( :background ,color-6))))
+   `(tab-line-tab                                     ((t (:foreground ,color-13 :background ,color-4))))
+   `(tab-line-tab-current                             ((t (:background ,color-4 :foreground ,color-10))))
+   `(tab-line-tab-inactive                            ((t (:foreground ,color-8 :background ,color-5 ))))
+   `(tab-line-highlight                               ((t (:background ,color-4 :foreground ,color-10))))
+
+   ;; tabbar (deprecated)
    `(tabbar-default                                   ((t ( :background ,color-4 ))))
    `(tabbar-button                                    ((t (:foreground ,color-13 :background ,color-4))))
    `(tabbar-selected                                  ((t (:inherit default))))
    `(tabbar-unselected                                ((t (:foreground ,color-8 :background ,color-5 ))))
-;;centaur-tabs
+
+
+   ;;centaur-tabs
    `(centaur-tabs-default                             ((t (:foreground ,color-13 :background ,color-4))))
    `(centaur-tabs-selected                            ((t (:foreground ,color-13 :background ,color-4 :underline nil))))
    `(centaur-tabs-unselected                          ((t (:foreground ,color-8 :background ,color-5))))
