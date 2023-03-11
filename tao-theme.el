@@ -253,6 +253,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-treeview-old-face                     ((t (:foreground ,color-8))))
    `(newsticker-treeview-selection-face               ((t (:background ,color-3 :foreground ,color-13))))
    ;; Third-party
+   ;; treemacs
+   `(treemacs-directory-face                          ((t (:background ,color-4 :foreground ,color-13 :box nil))))
    ;; highlight-symbol
    `(highlight-symbol-face                            ((t (:background ,color-4))))
    ;; ace-jump
@@ -900,12 +902,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-separator-face                          ((t (:foreground ,color-5 :background ,color-10))))
    `(speedbar-tag-face                                ((t (:foreground ,color-13))))
    ;; top tabs bar
-   `(tab-bar                                          ((t ( :background ,color-8))))
-   `(tab-bar-tab                                      ((t (:background ,color-6 :foreground ,color-10 :height 1.0))))
-   `(tab-bar-tab-inactive                             ((t (:foreground ,color-8 :background ,color-7 ))))
+   `(tab-bar                                          ((t (:background ,color-8))))
+   `(tab-bar-tab                                      ((t (:background ,color-4 :foreground ,color-10 :height 1.0))))
+   `(tab-bar-tab-inactive                             ((t (:foreground ,color-9 :background ,color-7 ))))
 
    ;; tab-line
-   `(tab-line                                         ((t ( :background ,color-5))))
+   `(tab-line                                         ((t (:background ,color-6))))
    `(tab-line-tab                                     ((t (:background ,color-4 :foreground ,color-13))))
    `(tab-line-tab-current                             ((t (:background ,color-4 :foreground ,color-10))))
    `(tab-line-tab-inactive                            ((t (:background ,color-5 :foreground ,color-8))))
