@@ -24,6 +24,7 @@
 
 (and load-file-name (boundp 'custom-theme-load-path) (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))
 (register-definition-prefixes "tao-yin-theme" '("tao-yin"))
+
 
 ;;; End of scraped data
 

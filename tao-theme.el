@@ -254,7 +254,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-treeview-selection-face               ((t (:background ,color-3 :foreground ,color-13))))
    ;; Third-party
    ;; treemacs
-   `(treemacs-directory-face                          ((t (:background ,color-4 :foreground ,color-13 :box nil))))
+   `(treemacs-directory-face                          ((t (:foreground ,color-13 :box nil))))
    ;; highlight-symbol
    `(highlight-symbol-face                            ((t (:background ,color-4))))
    ;; ace-jump
@@ -563,8 +563,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-block-face                ((t ( :foreground ,color-10 :background ,color-6))))
 
    ;; hl-line-mode
-   `(hl-line-face                                     ((,class (:background ,color-5 :foreground ,color-11))))
-   `(hl-line                                          ((,class (:background ,color-5 :foreground ,color-11))))
+   `(hl-line-face                                     ((,class (:background ,color-3 :foreground ,color-11))))
+   `(hl-line                                          ((,class (:background ,color-3 :foreground ,color-11))))
    ;;
    `(idle-highlight                                   ((,class (:background ,color-7 :foreground ,color-11))))
    ;; hl-sexp
@@ -750,7 +750,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-document-info-keyword                        ((t (:foreground ,color-7 :height ,(tao-theme-height 0.8)))))
    `(org-checkbox-statistics-done                     ((t (:foreground ,color-14 :weight normal))))
    `(org-checkbox-statistics-todo                     ((t (:foreground ,color-14 :weight normal))))
-   `(org-heading                                      ((t (:foreground ,color-14 :weight normal :variable-pitch t ))))
+   `(org-heading                                      ((t (:foreground ,color-14 :weight normal :variable-pitch t :inherit variable-pitch ))))
    `(org-level-1                                      ((t ( :height ,(tao-theme-height 1.5) :inherit org-heading))))
    `(org-level-2                                      ((t ( :height ,(tao-theme-height 1.1) :inherit org-heading))))
    `(org-level-3                                      ((t ( :height ,(tao-theme-height 1.1) :inherit org-heading))))
@@ -1186,12 +1186,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(notmuch-wash-cited-text                       ((t (:inherit message-cited-text-1))))
    `(corfu-current                                 ((t (:inherit company-tooltip :background ,color-7 :foreground ,color-1))))
    `(completions-common-part                       ((t (:inherit company-tooltip-selection :foreground ,color-13))))
-   `(vertico-current                               ((t ( :background ,color-8  :foreground ,color-1))))
-   `(orderless-match-face-0                        ((t ( :foreground ,color-12))))
-   `(orderless-match-face-1                        ((t ( :foreground ,color-11 :bold t))))
-   `(orderless-match-face-2                        ((t ( :foreground ,color-10 :bold t))))
-   `(orderless-match-face-3                        ((t ( :foreground ,color-9 :bold t))))
-   `(eglot-highlight-symbol-face                   ((t ( :underline t))))
+   `(vertico-current                               ((t (:background ,color-8  :foreground ,color-1))))
+   `(orderless-match-face-0                        ((t (:foreground ,color-12))))
+   `(orderless-match-face-1                        ((t (:foreground ,color-11 :bold t))))
+   `(orderless-match-face-2                        ((t (:foreground ,color-10 :bold t))))
+   `(orderless-match-face-3                        ((t (:foreground ,color-9 :bold t))))
+   `(eglot-highlight-symbol-face                   ((t (:underline t))))
+   `(solaire-default-face                          ((t (:foreground ,color-10 :background ,color-5))))
    )
 
   ;; Theme Variables
