@@ -167,7 +167,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link-visited                                     ((t (:foreground ,color-11 :underline t :weight normal))))
    `(default                                          ((t (:foreground ,color-10 :background ,color-4 ))))
    `(italic                                           ((t (:italic t ))))
-   `(variable-pitch                                   ((t (:foreground ,color-9 :height ,(tao-theme-height 1.0) :variable-pitch t))))
+   `(variable-pitch                                   ((t (:foreground ,color-9 :height ,(tao-theme-height 1.1) :variable-pitch t))))
    `(parenthesis                                      ((t (:foreground ,color-7))))
    `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-4))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
@@ -220,7 +220,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic nil ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-9 :weight semi-bold))))
-   `(font-lock-comment-face                           ((t (:foreground ,color-8 :weight normal :italic t :variable-pitch t :height ,(tao-theme-height 1.1) ))))
+   `(font-lock-comment-face                           ((t (:foreground ,color-8 :weight normal :italic t :variable-pitch t :height ,(tao-theme-height 1.1) :inherit variable-pitch ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-6))))
    `(font-lock-constant-face                          ((t (:foreground ,color-11 :weight normal :italic nil))))
    `(font-lock-doc-face                               ((t (:foreground ,color-8 :weight normal :italic t))))
@@ -786,8 +786,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-block-background                             ((t (:foreground ,color-4 :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    `(org-block                                        ((t (:background ,color-4  :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    ;; outline
-   `(outline-1                                        ((t ( :height ,(tao-theme-height 1.5) :italic t :inherit org-heading :variable-pitch t))))
-   `(outline-2                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading :variable-pitch t :underline nil))))
+   `(outline-1                                        ((t ( :height ,(tao-theme-height 1.3) :italic t :inherit org-heading :variable-pitch t))))
+   `(outline-2                                        ((t ( :height ,(tao-theme-height 1.2) :italic t :inherit org-heading :variable-pitch t :underline nil))))
    `(outline-3                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading :variable-pitch t))))
    `(outline-4                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading :variable-pitch t :underline nil))))
    `(outline-5                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
@@ -902,16 +902,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-separator-face                          ((t (:foreground ,color-5 :background ,color-10))))
    `(speedbar-tag-face                                ((t (:foreground ,color-13))))
    ;; top tabs bar
-   `(tab-bar                                          ((t (:background ,color-8))))
+   `(tab-bar                                          ((t (:background ,color-1))))
    `(tab-bar-tab                                      ((t (:background ,color-4 :foreground ,color-10 :height 1.0))))
-   `(tab-bar-tab-inactive                             ((t (:foreground ,color-9 :background ,color-7 ))))
+   `(tab-bar-tab-inactive                             ((t (:background ,color-5 :foreground ,color-8))))
 
    ;; tab-line
-   `(tab-line                                         ((t (:background ,color-6))))
-   `(tab-line-tab                                     ((t (:background ,color-4 :foreground ,color-13))))
-   `(tab-line-tab-current                             ((t (:background ,color-4 :foreground ,color-10))))
-   `(tab-line-tab-inactive                            ((t (:background ,color-5 :foreground ,color-8))))
-   `(tab-line-highlight                               ((t (:background ,color-4 :foreground ,color-10))))
+   `(tab-line                                         ((t (:background ,color-6 :weight normal))))
+   `(tab-line-tab                                     ((t (:background ,color-4 :foreground ,color-13 :weight normal))))
+   `(tab-line-tab-special                             ((t (:weight normal))))
+   `(tab-line-tab-current                             ((t (:background ,color-4 :foreground ,color-13 :weight normal))))
+   `(tab-line-tab-inactive                            ((t (:background ,color-5 :foreground ,color-8 :weight normal))))
+   `(tab-line-highlight                               ((t (:background ,color-4 :foreground ,color-10 :weight normal))))
 
    ;; tabbar (deprecated)
    `(tabbar-default                                   ((t ( :background ,color-4 ))))
@@ -1127,6 +1128,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(custom-state                                   ((t (:foreground ,color-7))))
    `(custom-comment                                 ((t (:foreground ,color-8 :italic t :background ,color-4))))
    `(widget-field                                   ((t (:foreground ,color-8 :italic t :background ,color-4 :box (:color ,color-6)))))
+   `(widget-button                                   ((t (:foreground ,color-12 :weight normal :background ,color-4 :box nil))))
    `(origami-fold-replacement-face                  ((t (:foreground ,color-9 :bold nil))))
    ;; circe
    `(circe-highlight-nick-face                      ((t (:background ,color-6 :foreground ,color-11 :weight bold))))
