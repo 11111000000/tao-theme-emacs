@@ -220,10 +220,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic nil ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-9 :weight semi-bold))))
-   `(font-lock-comment-face                           ((t (:foreground ,color-8 :weight normal :italic t :variable-pitch t :height ,(tao-theme-height 1.1) :inherit variable-pitch ))))
+   `(font-lock-comment-face                           ((t (:foreground ,color-9 :weight normal :italic t :variable-pitch t :height ,(tao-theme-height 1.1) :inherit variable-pitch ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-6))))
    `(font-lock-constant-face                          ((t (:foreground ,color-11 :weight normal :italic nil))))
-   `(font-lock-doc-face                               ((t (:foreground ,color-8 :weight normal :italic t))))
+   `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight normal :italic t))))
    `(font-lock-function-name-face                     ((t (:foreground ,color-10 :box ,(tao-boxed color-8) :italic nil :weight normal  ))))
    `(font-lock-variable-name-face                     ((t (:foreground ,color-9 :italic nil :slant normal))))
    `(font-lock-negation-char-face                     ((t (:foreground ,color-14))))
@@ -904,10 +904,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; top tabs bar
    `(tab-bar                                          ((t (:background ,color-1))))
    `(tab-bar-tab                                      ((t (:background ,color-4 :foreground ,color-10 :height 1.0))))
-   `(tab-bar-tab-inactive                             ((t (:background ,color-5 :foreground ,color-8))))
-
+   `(tab-bar-tab-inactive                             ((t (:background ,color-7 :foreground ,color-9))))
    ;; tab-line
-   `(tab-line                                         ((t (:background ,color-6 :weight normal))))
+   `(tab-line                                         ((t (:background ,color-3 :weight normal))))
    `(tab-line-tab                                     ((t (:background ,color-4 :foreground ,color-13 :weight normal))))
    `(tab-line-tab-special                             ((t (:weight normal))))
    `(tab-line-tab-current                             ((t (:background ,color-4 :foreground ,color-13 :weight normal))))
@@ -1034,7 +1033,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; yascroll
    `(yascroll:thumb-text-area                         ((t (:background ,color-3))))
    `(yascroll:thumb-fringe                            ((t (:background ,color-3 :foreground ,color-3))))
-   `(minimap-active-region-background                 ((t (:background ,color-6 :foreground ,color-7))))
+   `(minimap-active-region-background                 ((t (:background ,color-1))))
    ;; html fold/unfold face
    `(html-fold-unfolded-face                          ((t (:background ,color-4))))
    `(html-fold-folded-face                            ((t (:foreground ,color-14 :bold t))))
@@ -1194,8 +1193,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(orderless-match-face-2                        ((t (:foreground ,color-10 :bold t))))
    `(orderless-match-face-3                        ((t (:foreground ,color-9 :bold t))))
    `(eglot-highlight-symbol-face                   ((t (:underline t))))
-   `(solaire-default-face                          ((t (:foreground ,color-10 :background ,color-5))))
-   )
+   `(solaire-default-face                          ((t (:foreground ,color-10 :background ,color-5)))))
 
   ;; Theme Variables
   (custom-theme-set-variables
