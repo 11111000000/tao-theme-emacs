@@ -255,6 +255,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; Third-party
    ;; treemacs
    `(treemacs-directory-face                          ((t (:foreground ,color-13 :box nil))))
+   `(treemacs-hl-line-face                          ((t (:background ,color-3 :foreground ,color-13 :box ,color-6))))
    ;; highlight-symbol
    `(highlight-symbol-face                            ((t (:background ,color-4))))
    ;; ace-jump
@@ -563,8 +564,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-block-face                ((t ( :foreground ,color-10 :background ,color-6))))
 
    ;; hl-line-mode
-   `(hl-line-face                                     ((,class (:background ,color-3 :foreground ,color-11))))
-   `(hl-line                                          ((,class (:background ,color-3 :foreground ,color-11))))
+   `(hl-line-face                                     ((,class (:background ,color-3))))
+   `(hl-line                                          ((,class (:background ,color-3))))
    ;;
    `(idle-highlight                                   ((,class (:background ,color-7 :foreground ,color-11))))
    ;; hl-sexp
