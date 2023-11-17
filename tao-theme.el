@@ -48,35 +48,35 @@
 (require 'cl-lib)
 
 (defgroup tao-theme nil
-  "tao-theme customization options")
+  "Tao-theme customization options.")
 
 (defcustom tao-theme-use-height nil
-  "Non-nil means tao-theme is allowed to customize height"
+  "Non-nil means tao-theme is allowed to customize height."
   :type 'boolean
   :group 'tao-theme)
 
 (defcustom tao-theme-use-boxes t
-  "Non-nil means tao-theme is allowed to use borders"
+  "Non-nil means tao-theme is allowed to use borders."
   :type 'boolean
   :group 'tao-theme)
 
 (defcustom tao-theme-use-sepia nil
-  "Non-nil means tao-theme should use sepia tones for grayscale"
+  "Non-nil means tao-theme should use sepia tones for grayscale."
   :type 'boolean
   :group 'tao-theme)
 
 (defcustom tao-theme-sepia-depth 10
-  "The depth to use for the sepia scale if enabled"
+  "The depth to use for the sepia scale if enabled."
   :type 'integer
   :group 'tao-theme)
 
 (defcustom tao-theme-sepia-saturation 1.03
-  "The saturation to use for the sepia scale if enabled"
+  "The saturation to use for the sepia scale if enabled."
   :type 'float
   :group 'tao-theme)
 
 (defcustom tao-theme-scale-fn 'tao-theme-golden-scale
-  "gen alist of two-digit numbers"
+  "gen alist of two-digit numbers."
   :type 'function
   :group 'tao-theme)
 
@@ -408,7 +408,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; `(flymake-infoline                                    ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-8) :inherit unspecified)) (t (:foreground ,color-10 :weight bold :underline t))))
    ;; `(flymake-note                                   ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-6) :inherit unspecified)) (t (:foreground ,color-7  :underline t))))
    `(flymake-errline     ((t (:underline (:style wave :color  ,color-10)))))
+   `(flymake-error     ((t (:underline (:style wave :color  ,color-10)))))
    `(flymake-warnline   ((t (:underline (:style wave :color  ,color-8)))))
+   `(flymake-warning   ((t (:underline (:style wave :color  ,color-8)))))
    `(flymake-note      ((t (:underline (:style wave :color  ,color-7)))))
    `(flymake-note      ((t (:underline (:style wave :color  ,color-6)))))
    ;; `(flymake-note                                     ((((supports :underline (:style wave))) (:underline (:style wave :color ,color-10) :inherit unspecified :foreground unspecified :background unspecified)) (t (:foreground ,color-9 :weight bold :underline))))
@@ -787,11 +789,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-block-background                             ((t (:foreground ,color-4 :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    `(org-block                                        ((t (:background ,color-4  :height ,(tao-theme-height 0.9) :inherit fixed-pitch))))
    ;; outline
-   `(outline-1                                        ((t ( :height ,(tao-theme-height 1.3) :italic t :inherit org-heading :variable-pitch t))))
-   `(outline-2                                        ((t ( :height ,(tao-theme-height 1.2) :italic t :inherit org-heading :variable-pitch t :underline nil))))
-   `(outline-3                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading :variable-pitch t))))
-   `(outline-4                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading :variable-pitch t :underline nil))))
-   `(outline-5                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
+   `(outline-1                                        ((t ( :height ,(tao-theme-height 1.3) :italic nil :inherit org-heading :variable-pitch t))))
+   `(outline-2                                        ((t ( :height ,(tao-theme-height 1.2) :italic nil :inherit org-heading :variable-pitch t :underline nil))))
+   `(outline-3                                        ((t ( :height ,(tao-theme-height 1.1) :italic nil :inherit org-heading :variable-pitch t))))
+   `(outline-4                                        ((t ( :height ,(tao-theme-height 1.1) :italic nil :inherit org-heading :variable-pitch t :underline nil))))
+   `(outline-5                                        ((t ( :height ,(tao-theme-height 1.1) :italic nil :inherit org-heading))))
    `(outline-6                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
    `(outline-7                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
    `(outline-8                                        ((t ( :height ,(tao-theme-height 1.1) :italic t :inherit org-heading))))
