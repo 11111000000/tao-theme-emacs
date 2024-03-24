@@ -219,7 +219,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vertical-border                                  ((t (:foreground ,color-7 :background ,color-4))))
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic nil ))))
-   `(font-lock-keyword-face                           ((t (:foreground ,color-9 :weight semi-bold))))
+   `(font-lock-keyword-face                           ((t (:foreground ,color-10 :weight semi-bold))))
    `(font-lock-comment-face                           ((t (:foreground ,color-9 :weight normal :italic t :variable-pitch t :height ,(tao-theme-height 1.1) :inherit variable-pitch ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-6))))
    `(font-lock-constant-face                          ((t (:foreground ,color-11 :weight normal :italic nil))))
@@ -230,8 +230,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-preprocessor-face                      ((t (:foreground ,color-11))))
    `(font-lock-regexp-grouping-construct              ((t (:foreground ,color-13 :weight bold))))
    `(font-lock-regexp-grouping-backslash              ((t (:foreground ,color-10 :weight bold))))
-   `(font-lock-string-face                            ((t (:foreground ,color-9 :italic t))))
-   `(font-lock-type-face                              ((t (:foreground ,color-9 :italic t))))
+   `(font-lock-string-face                            ((t (:foreground ,color-8 :italic t))))
+   `(font-lock-type-face                              ((t (:foreground ,color-7 :italic t))))
    `(font-lock-warning-face                           ((t (:inherit warning))))
    `(c-annotation-face                                ((t (:inherit font-lock-constant-face))))
    ;; newsticker
@@ -1195,7 +1195,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(orderless-match-face-1                        ((t (:foreground ,color-11 :bold t))))
    `(orderless-match-face-2                        ((t (:foreground ,color-10 :bold t))))
    `(orderless-match-face-3                        ((t (:foreground ,color-9 :bold t))))
-   `(eglot-highlight-symbol-face                   ((t (:underline t))))
+   `(eglot-highlight-symbol-face                   ((t (:underline nil :italic nil :foreground ,color-13))))
    `(solaire-default-face                          ((t (:foreground ,color-10 :background ,color-5)))))
 
   ;; Theme Variables
