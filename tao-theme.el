@@ -1189,13 +1189,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(notmuch-tree-no-match-date-face               ((t (:foreground ,color-8))))
    `(notmuch-wash-cited-text                       ((t (:inherit message-cited-text-1))))
    `(corfu-current                                 ((t (:inherit company-tooltip :background ,color-7 :foreground ,color-1))))
+   `(corfu-candidate-overlay-face                  ((t (:foreground ,color-6))))
    `(completions-common-part                       ((t (:inherit company-tooltip-selection :foreground ,color-13))))
    `(vertico-current                               ((t (:background ,color-8  :foreground ,color-1))))
    `(orderless-match-face-0                        ((t (:foreground ,color-12))))
    `(orderless-match-face-1                        ((t (:foreground ,color-11 :bold t))))
    `(orderless-match-face-2                        ((t (:foreground ,color-10 :bold t))))
    `(orderless-match-face-3                        ((t (:foreground ,color-9 :bold t))))
-   `(eglot-highlight-symbol-face                   ((t (:underline nil :italic nil :foreground ,color-13))))
+   `(eglot-highlight-symbol-face                   ((t (:underline nil :italic nil :bold t))))
+   `(eglot-inlay-hint-face                         ((t (:foreground ,color-7 :height 0.8 :italic t))))
+   `(eglot-diagnostic-tag-unnecessary-face         ((t (:italic t :underline ,color-5))))
+   `(git-commit-summary                            ((t (:underline nil :italic nil :foreground ,color-13))))
    `(solaire-default-face                          ((t (:foreground ,color-10 :background ,color-5)))))
 
   ;; Theme Variables
