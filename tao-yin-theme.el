@@ -35,9 +35,9 @@
 
 (deftheme tao-yin "The Tao color theme dark")
 
-(tao-with-color-variables
-  tao-theme-yin-palette
-  (tao-apply-custom-theme 'tao-yin))
+;; Устанавливаем лица для тёмной палитры:
+(tao-apply-theme-faces 'tao-yin (tao-theme-yin-palette))
+
 
 ;;; Footer
 
