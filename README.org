@@ -1,80 +1,123 @@
+* Tao Theme for Emacs
+
 #+BEGIN_QUOTE
  	Colors blind people's eyes;
 
          -- Lao Tzu, Tao Te Ching, Ch. 12	Sentence 1
 #+END_QUOTE
 
-* Tao theme
+Tao Theme provides two minimalist, **perceptually uniform grayscale** color themes for Emacs: `tao-yin` (dark) and `tao-yang` (light).  
+These themes are designed to eliminate eye strain, distraction, and unnecessary color highlights, focusing instead on structure, content, and subtle emphasis.  
 
- Two uncoloured color themes for Emacs: tao-yin and tao-yang.
+** Features
+
+- Pure grayscale palettes: no color distractions
+- Elegant, minimalist look for both dark (`yin`) and light (`yang`) preferences
+- DRY (Don't Repeat Yourself) face definitions with base face inheritance, covering both built-in and third-party packages (Org, Markdown, Magit, Company, Ivy, etc.)
+- All theme colors are **gamma-corrected** for perceptual uniformity
+- Customizable palette generator functions for advanced users
+- Excellent support for modern and legacy Emacs faces
 
 ** Installation
 
-Tao in [[https://melpa.org/#/tao-theme][MELPA]]
+Tao Theme is available on [[https://melpa.org/#/tao-theme][MELPA]].  
+Install with:
 
-`M-x package-install tao-theme`
+#+BEGIN_SRC emacs-lisp
+M-x package-install RET tao-theme RET
+#+END_SRC
 
-or alternatively:
+_Manual install_:  
+Download the source into your load-path and run:
 
-`M-x package-install-file tao-theme`
+#+BEGIN_SRC emacs-lisp
+M-x package-install-file RET tao-theme.el RET
+#+END_SRC
+
+To enable one of the themes in your `init.el`:
+
+#+BEGIN_SRC emacs-lisp
+(load-theme 'tao-yang t) ;; For light mode
+;; or
+(load-theme 'tao-yin t)  ;; For dark mode
+#+END_SRC
 
 ** Customization
 
- By default ~tao-theme-scale-fn~ is ~tao-theme-golden-scale~, and produce following colors:
+Tao Theme palettes are generated automatically. By default, the palette is perceptually uniform:
 
 #+BEGIN_EXAMPLE
- #FCFCFC #FAFAFA #F6F6F6 #F1F1F1 #E8E8E8 #DADADA #C3C3C3 #9E9E9E #616161 #3C3C3C #252525 #171717 #0E0E0E #090909 #050505
+#FCFCFC #FAFAFA #F6F6F6 #F1F1F1 #E8E8E8 #DADADA #C3C3C3 #9E9E9E #616161 #3C3C3C #252525 #171717 #0E0E0E #090909 #050505
 #+END_EXAMPLE
 
- You can change that: 
+You can tweak appearance and palette using the following variables (_set before loading the theme_):
 
- - ~tao-theme-scale-fn~ should return 16 2-digit numbers (/tao-theme-golden-scale/)
- - ~tao-theme-scale-filter-fn~ scale filter (/by default filter (< it #x05) (> it #xFC)/)
- - ~tao-theme-use-height~ (/nil/)
- - ~tao-theme-use-sepia~ (/nil/)
- - ~tao-theme-use-boxes~ (/t/)
- - ~tao-theme-sepia-depth~ (/10/)
- - ~tao-theme-sepia-saturation~ (/1.03/)
+- `tao-theme-scale-fn` — Palette generator (default: perceptual uniform grayscale)
+  - Example:  
+    `setq tao-theme-scale-fn #'tao-theme-perceptual-scale`
+  - Advanced: provide your own function returning a list of 12 intensity values (0–255).
+- `tao-theme-use-height` — Use variable heights on headings (`nil` to disable).
+- `tao-theme-use-sepia` — Enable sepia filter for warmer appearance (`nil`/`t`).
+- `tao-theme-sepia-depth` — Sepia intensity (default: `10`).
+- `tao-theme-sepia-saturation` — Sepia colorfulness (default: `1.03`).
+- `tao-theme-use-boxes` — Style some faces with :box attributes (`t`/`nil`).  
 
-** Integration 
+To experiment with your own palette, see the function `tao/print-colors` for a sample color swatch.
 
-~(defun tao-palette () (tao-theme-golden-grayscale-yin-palette))~, then you can use ~tao-with-color-variables~ macro:
+** Integration & Advanced Usage
 
-#+BEGIN_SRC emacs-lisp 
-(tao-with-color-variables tao-palette
+If you need to access tao palette values in your own face definitions or code, you can use the theme macros:
+
+#+BEGIN_SRC emacs-lisp
+(tao-with-color-variables (tao-theme-yin-palette)
   (progn
     (setq
-      hl-paren-colors (list color-14 color-11 color-9 color-7 color-6)
-      hl-paren-background-colors (list color-4 color-4 color-4 color-4 color-4))))
+      hl-paren-colors             (list (cdr (assoc :color-11 p))
+                                        (cdr (assoc :color-9 p))
+                                        (cdr (assoc :color-7 p)))
+      hl-paren-background-colors  (make-list 3 (cdr (assoc :color-4 p))))))
 #+END_SRC
 
-** Screenshots 
-*** Yang
+** Screenshots
+
+*** Yang — light mode
 [[https://i.imgur.com/ikdx7vl.png]]
-*** Yin
+
+*** Yin — dark mode
 [[https://i.imgur.com/KuUQoDM.png]]
 
-** Release Notes 
-*** 1.0.1
-  - [X] Fix and simplify original code
-  - [X] Remove dirty hacks
-  - [X] Add other hacks
+** Release Notes
+
+*** 1.1.1 (latest)
+ - Improved readability
+ - New Sepia mode (thanks @terlar)
+ - Many new faces and options
 
 *** 1.1.0
-  - [X] Readability
-  - [X] Variable/Fixed pitch
-  - [X] Fix org headings size
-  - [X] Syntax improvement
-  - [X] :box-es
-  - [X] Good Markdown faces
+ - Enhanced face readability and variants
+ - Variable/fixed pitch headlines
+ - Better Org/Markdown support
+ 
+*** 1.0.1
+ - Refactored & simplified
+ - Removed dirty hacks
+ - Added cleaner theming approaches
 
-*** 1.1.1
-  - [X] Fix readability
-  - [X] Sepia scale (thank you @terlar)
-  - [X] Many new faces
-  - [X] New options
+** Roadmap
+- [ ] Additional color scales (e.g. equal temperament, just intonation, etc.)
+- [ ] Improved support for frame background modes and terminal color constraints
+- [X] Commitment to simplicity and robustness
 
-** Roadmap [1/3]
-  - [ ] color scales: equal temperation, just intonation, etc;
-  - [ ] support for ~frame-background-mode~ and terminal
-  - [X] simplicity
+** Credits
+
+- Created by Peter
+- Contributors: Jasonm23, Steve Purcell, Jonas Bernoulli, Guilherme G., Tanner Hobson, Syohei YOSHIDA, Thibault, Terje Larsen, Tang Xinfa
+
+** License
+
+MIT
+
+---
+
+Enjoy the calm.
+
