@@ -17,7 +17,8 @@
 ;;; Code:
 
 (defun tao-theme-perceptual-scale ()
-  "Generate a perceptually uniform grayscale gradient (gamma-corrected, 12 numbers)."
+  "Generate a perceptually uniform grayscale gradient.
+(gamma-corrected, 12 numbers)."
   (let ((n 12)
         (gamma 1.8)  ; Lower gamma for smoother contrast
         (result nil))
@@ -27,7 +28,7 @@
         (push v result)))))
 
 (defun tao-theme--taiji-scale (scale)
-  "Invert a grayscale scale."
+  "Invert a grayscale SCALE."
   (mapcar (lambda (it) (- #xFF it)) scale))
 
 (defun tao-theme-yang-palette ()
@@ -41,8 +42,16 @@
    (tao-theme--taiji-scale (funcall tao-theme-scale-fn)))
   )
 
+(require 'cl-macs)
+
+(defcustom tao-theme-scale-fn #'tao-theme-perceptual-scale
+  "Function to generate 16 intensity values.
+for the grayscale scale (perceptual by default)."
+  :type 'function :group 'tao-theme)
+
 (defun tao-theme--make-palette (&optional scale)
-  "Return alist of (:color-0 ... :color-11), from darkest (black) to lightest (white).
+  "Return alist of (:color-0 ... :color-11).
+from darkest (black) to lightest (white).
 If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
   (let* ((actual-scale (or scale (funcall tao-theme-scale-fn)))
          (palette
@@ -52,10 +61,6 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
                                  (format "#%02X%02X%02X" v v v)))))
     palette))
 
-(defcustom tao-theme-scale-fn
-  #'tao-theme-perceptual-scale
-  "Function to generate 16 intensity values for the grayscale scale (perceptual by default)."
-  :type 'function :group 'tao-theme)
 
 (defgroup tao-theme nil "Tao Theme Groups." :group 'faces)
 
@@ -71,53 +76,18 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
     ,@body))
 
 ;; Declare Tao base faces for documentation & customizability
-(defface tao-active
-  '((t :inherit default))
-  "Active foreground/emphasis face for Tao theme.")
-
-(defface tao-bg
-  '((t :inherit default))
-  "Base background face for Tao theme.")
-
-(defface tao-bg-alt
-  '((t :inherit default))
-  "Alternate background face for Tao theme.")
-
-(defface tao-base
-  '((t :inherit default))
-  "Base neutral foreground face for Tao theme.")
-
-(defface tao-muted
-  '((t :inherit default))
-  "Muted/low-contrast face for Tao theme.")
-
-(defface tao-accent
-  '((t :inherit default))
-  "Accent/highlight face for Tao theme.")
-
-(defface tao-strong
-  '((t :inherit default))
-  "Strong emphasis face for Tao theme.")
-
-(defface tao-faint
-  '((t :inherit default))
-  "Faint/lowest-contrast face for Tao theme.")
-
-(defface tao-error
-  '((t :inherit default))
-  "Error face for Tao theme.")
-
-(defface tao-warning
-  '((t :inherit default))
-  "Warning face for Tao theme.")
-
-(defface tao-success
-  '((t :inherit default))
-  "Success/positive face for Tao theme.")
-
-(defface tao-link
-  '((t :inherit default))
-  "Link/URI face for Tao theme.")
+(defface tao-active '((t :inherit default)) "Active foreground/emphasis face for Tao theme.")
+(defface tao-bg '((t :inherit default)) "Base background face for Tao theme.")
+(defface tao-bg-alt '((t :inherit default)) "Alternate background face for Tao theme.")
+(defface tao-base '((t :inherit default)) "Base neutral foreground face for Tao theme.")
+(defface tao-muted '((t :inherit default)) "Muted/low-contrast face for Tao theme.")
+(defface tao-accent '((t :inherit default)) "Accent/highlight face for Tao theme.")
+(defface tao-strong '((t :inherit default)) "Strong emphasis face for Tao theme.")
+(defface tao-faint '((t :inherit default)) "Faint/lowest-contrast face for Tao theme.")
+(defface tao-error '((t :inherit default)) "Error face for Tao theme.")
+(defface tao-warning '((t :inherit default)) "Warning face for Tao theme.")
+(defface tao-success '((t :inherit default)) "Success/positive face for Tao theme.")
+(defface tao-link '((t :inherit default)) "Link/URI face for Tao theme.")
 
 (defun tao-apply-theme-faces (theme-name palette)
   "Apply the main Tao faces to THEME-NAME using PALETTE (alist)."
@@ -144,30 +114,30 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(fringe                      ((t (:inherit tao-bg-alt))))
      `(shadow                      ((t (:inherit tao-faint))))
      `(minibuffer-prompt           ((t (:inherit tao-accent :weight bold))))
-     `(region ((t (:background ,(tao :color-3)))))
+     `(region ((t (:background ,(tao :color-4)))))
      `(secondary-selection ((t (:background ,(tao :color-4)))))
-     `(highlight ((t (:background ,(tao :color-4)))))
+     `(highlight ((t (:background ,(tao :color-5)))))
      `(vertical-border ((t (:foreground ,(tao :color-6)))))
      `(cursor ((t (:background ,(tao :color-8)))))
      `(line-number                 ((t (:inherit tao-muted))))
      `(line-number-current-line    ((t (:inherit tao-active :weight bold))))
-     `(linum ((t (:inherit tao-faint))))
-     `(hl-paren-face ((t (:inherit tao-bg))))
-     `(paren-face-match ((t (:inherit tao-strong))))
-     `(paren-face-mismatch               ((t (:inherit tao-error :underline t))))
-     `(paren-face-no-match ((t (:inherit tao-faint))))
+     `(linum                       ((t (:inherit tao-faint))))
+     `(hl-paren-face               ((t (:inherit tao-bg))))
+     `(paren-face-match            ((t (:inherit tao-strong))))
+     `(paren-face-mismatch         ((t (:inherit tao-error :underline t))))
+     `(paren-face-no-match         ((t (:inherit tao-faint))))
      ;; Syntax/font-lock
-     `(font-lock-builtin-face         ((t (:inherit tao-active))))
-     `(font-lock-comment-face         ((t (:inherit tao-muted :slant italic))))
+     `(font-lock-builtin-face           ((t (:inherit tao-active))))
+     `(font-lock-comment-face           ((t (:inherit tao-muted :slant italic))))
      `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
-     `(font-lock-constant-face        ((t (:inherit tao-accent))))
-     `(font-lock-doc-face             ((t (:inherit tao-faint :slant italic))))
-     `(font-lock-function-name-face   ((t (:inherit tao-base :weight bold))))
-     `(font-lock-keyword-face         ((t (:inherit tao-strong))))
-     `(font-lock-string-face ((t (:inherit tao-success))))
-     `(font-lock-type-face            ((t (:inherit tao-strong))))
-     `(font-lock-variable-name-face   ((t (:inherit tao-base))))
-     `(font-lock-warning-face ((t (:inherit tao-warning))))
+     `(font-lock-constant-face          ((t (:inherit tao-accent))))
+     `(font-lock-doc-face               ((t (:inherit tao-faint :slant italic))))
+     `(font-lock-function-name-face     ((t (:inherit tao-base :weight bold))))
+     `(font-lock-keyword-face           ((t (:inherit tao-strong))))
+     `(font-lock-string-face            ((t (:inherit tao-success))))
+     `(font-lock-type-face              ((t (:inherit tao-strong))))
+     `(font-lock-variable-name-face     ((t (:inherit tao-base))))
+     `(font-lock-warning-face           ((t (:inherit tao-warning))))
      ;; Modeline, header
      `(mode-line               ((t (:background ,(tao :color-2) :foreground ,(tao :color-11) :box (:line-width -1 :color ,(tao :color-7)) :height 1.0))))
      `(mode-line-inactive      ((t (:background ,(tao :color-1) :foreground ,(tao :color-6) :box (:line-width -1 :color ,(tao :color-3)) :height 1.0))))
@@ -305,8 +275,8 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
                                          :slant italic))))
      ;; Flycheck, Flymake, Flyspell
      `(flycheck-error ((t (:inherit tao-error :underline (:style wave :color ,(tao :color-11) :position t)))))
-     `(flycheck-warning ((t (:inherit tao-warning :underline (:style wave :color ,(tao :color-10) :position t))))))
-     `(flycheck-info ((t (:inherit tao-active :underline (:style wave :color ,(tao :color-9))))))
+     `(flycheck-warning ((t (:inherit tao-warning :underline (:style wave :color ,(tao :color-10) :position t)))))
+     `(flycheck-info ((t (:inherit tao-active :underline (:style wave :color ,(tao :color-9) :position t)))))
      `(flyspell-incorrect ((t (:inherit tao-error :underline (:style wave :color ,(tao :color-11))))))
      `(flyspell-duplicate ((t (:inherit tao-warning :underline (:style wave :color ,(tao :color-10))))))
      `(flymake-error ((t (:inherit tao-error :underline (:style wave :color ,(tao :color-11))))))
@@ -496,7 +466,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(geiser-font-lock-doc-link        ((t (:inherit tao-link))))
      `(geiser-font-lock-error-link      ((t (:inherit tao-error :underline t))))
      `(geiser-font-lock-autodoc-identifier ((t (:inherit tao-strong))))
-     `(eglot-diagnostic-tag-unnecessary-face ((t (:inherit tao-faint :italic t :underline ,(tao :color-5)))))))
+     `(eglot-diagnostic-tag-unnecessary-face ((t (:inherit tao-faint :italic t :underline ,(tao :color-5))))))))
 
 ;;;###autoload
 (when load-file-name
