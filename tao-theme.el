@@ -11,7 +11,7 @@
 ;;         Lao Tzu - Tao Te Ching (Ch.  12, Sentence 1)
 
 ;; Tao theme: perceptually uniform grayscale with DRY faces and complete coverage of all legacy and modern Emacs faces and popular third-party packages.
-;; Palette: 16-level gamma-corrected uniform grayscale.
+;; Palette: 12-level gamma-corrected uniform grayscale.
 ;; ALL faces are proxies for small tao-* base faces.
 
 ;;; Code:
@@ -103,12 +103,12 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(tao-muted      ((t (:foreground ,(tao :color-8)))))
      `(tao-active     ((t (:foreground ,(tao :color-9)))))
      `(tao-accent     ((t (:foreground ,(tao :color-10)))))
-     `(tao-strong     ((t (:foreground ,(tao :color-9)) :weight bold)))
+     `(tao-strong     ((t (:foreground ,(tao :color-10) :weight bold))))
      `(tao-faint      ((t (:foreground ,(tao :color-7)))))
-     `(tao-error      ((t (:foreground ,(tao :color-11)) :background ,(tao :color-4) :weight bold)))
-     `(tao-warning    ((t (:foreground ,(tao :color-10)) :weight bold)))
-     `(tao-success    ((t (:foreground ,(tao :color-10)) :weight bold)))
-     `(tao-link       ((t (:foreground ,(tao :color-9)) :underline t)))
+     `(tao-error      ((t (:foreground ,(tao :color-11) :background ,(tao :color-4) :weight bold))))
+     `(tao-warning    ((t (:foreground ,(tao :color-11) :weight bold))))
+     `(tao-success    ((t (:foreground ,(tao :color-11) :italic t))))
+     `(tao-link       ((t (:foreground ,(tao :color-9) :underline t))))
      ;; Core faces, editor chrome
      `(default        ((t (:background ,(tao :color-3) :foreground ,(tao :color-10)))))
      `(fringe                      ((t (:inherit tao-bg-alt))))
@@ -135,7 +135,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(font-lock-function-name-face     ((t (:inherit tao-base :weight bold))))
      `(font-lock-keyword-face           ((t (:inherit tao-strong))))
      `(font-lock-string-face            ((t (:inherit tao-success))))
-     `(font-lock-type-face              ((t (:inherit tao-strong))))
+     `(font-lock-type-face              ((t (:inherit tao-faint :italic t))))
      `(font-lock-variable-name-face     ((t (:inherit tao-base))))
      `(font-lock-warning-face           ((t (:inherit tao-warning))))
      ;; Modeline, header
@@ -411,44 +411,43 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(powerline-active1        ((t (:inherit mode-line))))
      `(powerline-inactive2 ((t (:inherit mode-line-inactive))))
      `(tab-bar                  ((t (:background ,(tao :color-1)))))
-     `(tab-bar-tab              ((t (:background ,(tao :color-4)) :foreground ,(tao :color-10) :height 1.0)))
-     `(tab-bar-tab-inactive     ((t (:background ,(tao :color-7)) :foreground ,(tao :color-9))))
+     `(tab-bar-tab              ((t (:background ,(tao :color-4) :foreground ,(tao :color-10) :height 1.0))))
+     `(tab-bar-tab-inactive     ((t (:background ,(tao :color-7) :foreground ,(tao :color-9)))))
      `(tab-line                 ((t (:background ,(tao :color-3)))))
-     `(tab-line-tab             ((t (:background ,(tao :color-4)) :foreground ,(tao :color-9) :weight normal)))
-     `(tab-line-tab-current     ((t (:background ,(tao :color-4)) :foreground ,(tao :color-9))))
-     `(tab-line-tab-inactive    ((t (:background ,(tao :color-5)) :foreground ,(tao :color-8))))
-     `(tabbar-default ((t (:inherit tao-bg-alt))))
-     `(tabbar-button ((t (:inherit tao-link))))
-     `(tabbar-selected                   ((t (:inherit tao-link :weight bold))))
-     `(tabbar-unselected ((t (:inherit tao-faint))))
-     `(centaur-tabs-default ((t (:inherit tao-bg-alt))))
-     `(centaur-tabs-selected ((t (:inherit tao-strong))))
-     `(centaur-tabs-unselected ((t (:inherit tao-faint))))
-     `(bm-face ((t (:inherit tao-warning :background ,(tao :color-5)))))
-     `(bm-fringe-face ((t (:inherit tao-warning))))
+     `(tab-line-tab             ((t (:background ,(tao :color-4) :foreground ,(tao :color-9) :weight normal))))
+     `(tab-line-tab-current     ((t (:background ,(tao :color-4) :foreground ,(tao :color-9)))))
+     `(tab-line-tab-inactive    ((t (:background ,(tao :color-5) :foreground ,(tao :color-8)))))
+     `(tabbar-default           ((t (:inherit tao-bg-alt))))
+     `(tabbar-button            ((t (:inherit tao-link))))
+     `(tabbar-selected          ((t (:inherit tao-link :weight bold))))
+     `(tabbar-unselected        ((t (:inherit tao-faint))))
+     `(centaur-tabs-default     ((t (:inherit tao-bg-alt))))
+     `(centaur-tabs-selected    ((t (:inherit tao-strong))))
+     `(centaur-tabs-unselected  ((t (:inherit tao-faint))))
+     `(bm-face                  ((t (:inherit tao-warning :background ,(tao :color-5)))))
+     `(bm-fringe-face            ((t (:inherit tao-warning))))
      `(bm-fringe-persistent-face ((t (:inherit tao-warning :foreground ,(tao :color-2)))))
-     `(bm-persistent-face ((t (:inherit tao-warning :background ,(tao :color-3)))))
+     `(bm-persistent-face        ((t (:inherit tao-warning :background ,(tao :color-3)))))
      `(eldoc-highlight-function-argument ((t (:inherit tao-base :weight bold))))
-     `(eval-sexp-fu-flash ((t (:inherit tao-warning :background ,(tao :color-5)))))
-     `(eval-sexp-fu-flash-error ((t (:inherit tao-error :background ,(tao :color-6)))))
+     `(eval-sexp-fu-flash                ((t (:inherit tao-warning :background ,(tao :color-5)))))
+     `(eval-sexp-fu-flash-error          ((t (:inherit tao-error :background ,(tao :color-6)))))
      ;; Icomplete/Ido
      `(icomplete-first-match             ((t (:inherit tao-accent :weight bold))))
-     `(icomplete-selected ((t (:inherit tao-strong))))
-     `(ido-first-match ((t (:inherit tao-accent))))
+     `(icomplete-selected                ((t (:inherit tao-strong))))
+     `(ido-first-match                   ((t (:inherit tao-accent))))
      `(ido-only-match                    ((t (:inherit tao-accent :weight bold))))
-     `(ido-subdir ((t (:inherit tao-success))))
-     `(ido-indicator ((t (:inherit tao-accent :background ,(tao :color-7)))))
+     `(ido-subdir                        ((t (:inherit tao-success))))
+     `(ido-indicator                     ((t (:inherit tao-accent :background ,(tao :color-7)))))
      ;; Magit/Section
-     `(magit-section-heading-selection ((t (:inherit tao-strong :foreground ,(tao :color-10)))))
-     `(magit-section-highlight
-       ((t (:inherit tao-base :background ,(tao :color-6)))))
-     `(magit-item-highlight ((t (:inherit tao-bg-alt))))
+     `(magit-section-heading-selection   ((t (:inherit tao-strong :foreground ,(tao :color-10)))))
+     `(magit-section-highlight           ((t (:inherit tao-base :background ,(tao :color-6)))))
+     `(magit-item-highlight              ((t (:inherit tao-bg-alt))))
      `(magit-diff-file-heading-highlight ((t (:inherit tao-bg-alt))))
      ;; whitespace (extras)
-     `(whitespace-hspace ((t (:inherit tao-faint))))
-     `(whitespace-line ((t (:inherit tao-bg-alt))))
+     `(whitespace-hspace           ((t (:inherit tao-faint))))
+     `(whitespace-line             ((t (:inherit tao-bg-alt))))
      `(whitespace-space-before-tab ((t (:inherit tao-faint))))
-     `(whitespace-indentation ((t (:inherit tao-faint))))
+     `(whitespace-indentation      ((t (:inherit tao-faint))))
      `(whitespace-empty ((t (:inherit tao-faint))))
      `(whitespace-space-after-tab ((t (:inherit tao-faint))))
      ;; yascroll, neotree, tuareg, typescript, geiser, eglot, etc.
@@ -493,9 +492,32 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
                              (list 'face `(:foreground ,(alist-get color yang-colors)))))
       (display-buffer (current-buffer)))))
 
-;; (tao/print-colors)
-
-
+(defun tao/print-faces ()
+  "Print base tao-faces.
+Buffer named *Tao Faces*."
+  (interactive)
+  (let ((faces '(tao-bg
+                 tao-bg-alt
+                 tao-base
+                 tao-muted
+                 tao-active
+                 tao-accent
+                 tao-strong
+                 tao-faint
+                 tao-error
+                 tao-warning
+                 tao-success
+                 tao-link)))
+    (with-current-buffer (get-buffer-create "*Tao Faces*")
+      (erase-buffer)
+      (insert (propertize "Tao Base Faces:\n" 'face 'bold))
+      (dolist (face faces)
+        (let ((line (format "%s\n" (symbol-name face))))
+          (add-text-properties 0 (length line)
+                               (list 'face face)
+                               line)
+          (insert line)))
+      (display-buffer (current-buffer)))))
 
 (provide 'tao-theme)
 
