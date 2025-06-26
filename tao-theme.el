@@ -17,36 +17,63 @@
 ;;; Code:
 
 (defun tao-theme-perceptual-scale ()
-  "Generate a perceptually uniform grayscale gradient.
-(gamma-corrected, 12 numbers)."
-  (let ((n 12)
-        (gamma 1.8)  ; Lower gamma for smoother contrast
-        (result nil))
-    (dotimes (k n (sort result '>))
-      (let* ((L (/ (float k) (1- n)))
-             (v (round (* 255 (expt L (/ 1.0 gamma))))))
+  "Generate a perceptually uniform grayscale gradient *без* #000000 и #FFFFFF.
+Возвращает список из 12 целых 0–255; самые крайние значения ≈ 12 и ≈ 243."
+  (let* ((n 12)
+         (gamma 1.8)          ; более пологая гамма → ровнее контраст
+         (result nil))
+    ;; Берём (k+1)/(n+1): тем самым пропускаем два крайних деления,
+    ;; оставляя визуальный «запас» для реальных чёрного/белого.
+    (dotimes (k n (sort result '<))
+      (let* ((l (/ (float (1+ k)) (1+ n))) ; 1/(n+1)…n/(n+1)
+             (v (round (* 255 (expt l (/ 1.0 gamma))))))
         (push v result)))))
 
-(defun tao-theme--taiji-scale (scale)
-  "Invert a grayscale SCALE."
-  (mapcar (lambda (it) (- #xFF it)) scale))
+(defun tao-theme-lab-scale ()
+  "Generate a perceptually uniform grayscale gradient in CIE Lab
+без предельных 0 / 100 L*.  Шкала остаётся из 12 значений."
+  (require 'color)
+  (let ((n 12)
+        (result nil))
+    (dotimes (k n (sort result '<))
+      (pcase-let* ((l* (* 100.0 (/ (float (1+ k)) (1+ n)))) ; 100/(n+1)…n·100/(n+1)
+                   (`(,x ,y ,z) (color-lab-to-xyz l* 0 0))
+                   (`(,r ,g ,b) (color-xyz-to-srgb x y z)))
+        ;; для серого r=g=b, достаточно любой компоненты
+        (let ((v (round (* 255 (color-clamp r)))))
+          (push v result))))))
 
-(defun tao-theme-yang-palette ()
-  "Generate a palette for the light theme (yang): gradient from light to dark."
-  (tao-theme--make-palette
-   (funcall tao-theme-scale-fn)))
+(defun tao-theme--taiji-scale (scale)
+  "Return the same SCALE but в обратном порядке (preserves spacing)."
+  (reverse scale))
 
 (defun tao-theme-yin-palette ()
   "Generate a palette for the dark theme (yin): gradient from dark to light."
   (tao-theme--make-palette
+   (funcall tao-theme-scale-fn)))
+
+(defun tao-theme-yang-palette ()
+  "Generate a palette for the light theme (yang): gradient from lighs to dark."
+  (tao-theme--make-palette
    (tao-theme--taiji-scale (funcall tao-theme-scale-fn))))
 
 (require 'cl-macs)
+(require 'color)
 
-(defcustom tao-theme-scale-fn #'tao-theme-perceptual-scale
-  "Function to generate 16 intensity values.
-for the grayscale scale (perceptual by default)."
-  :type 'function :group 'tao-theme)
+(defcustom tao-theme-scale-fn #'tao-theme-lab-scale
+  "Function used to generate a list of 12 grayscale intensity values.
+
+Pre-defined choices
+ • `tao-theme-perceptual-scale` – gamma-corrected sRGB (fast, default);
+ • `tao-theme-lab-scale`        – uniform L* steps in CIE Lab
+   (more perceptually accurate).
+
+You may also supply any custom function that returns a list of 12
+integers in the range 0–255."
+  :type '(choice (const :tag "Gamma-corrected sRGB" tao-theme-perceptual-scale)
+                 (const :tag "CIELab L*"            tao-theme-lab-scale)
+                 (function :tag "Custom function"))
+  :group 'tao-theme)
 
 (defun tao-theme--make-palette (&optional scale)
   "Return alist of (:color-0 ... :color-11).
@@ -97,7 +124,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
     (custom-theme-set-faces
      theme-name
      ;; Base DRY faces
-     `(tao-bg                      ((t (:background ,(tao :color-3)))))
+     `(tao-bg                      ((t (:background ,(tao :color-1)))))
      `(tao-bg-alt                  ((t (:background ,(tao :color-2)))))
      `(tao-base                    ((t (:foreground ,(tao :color-9)))))
      `(tao-muted                   ((t (:foreground ,(tao :color-7)))))
@@ -105,13 +132,13 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(tao-active                  ((t (:foreground ,(tao :color-10)))))
      `(tao-accent                  ((t (:foreground ,(tao :color-11)))))
      `(tao-strong                  ((t (:foreground ,(tao :color-10) :weight bold))))
-     `(tao-inverse                 ((t (:foreground ,(tao :color-1)))))
+     `(tao-inverse                 ((t (:foreground ,(tao :color-0)))))
      `(tao-error                   ((t (:foreground ,(tao :color-11) :background ,(tao :color-4) :weight bold))))
      `(tao-warning                 ((t (:foreground ,(tao :color-7) :weight bold))))
-     `(tao-success                 ((t (:foreground ,(tao :color-10) :italic t))))
+     `(tao-success                 ((t (:foreground ,(tao :color-9) :bold t))))
      `(tao-link                    ((t (:foreground ,(tao :color-9) :underline t))))
      ;; Core faces, editor chrome
-     `(default                     ((t (:background ,(tao :color-3) :foreground ,(tao :color-10)))))
+     `(default                     ((t (:background ,(tao :color-1) :foreground ,(tao :color-10)))))
      `(fringe                      ((t (:inherit tao-bg))))
      `(shadow                      ((t (:inherit tao-faint))))
      `(minibuffer-prompt           ((t (:inherit tao-accent :weight bold))))
@@ -129,19 +156,19 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(paren-face-no-match         ((t (:inherit tao-faint :weight bold))))
      ;; Syntax/font-lock
      `(font-lock-builtin-face           ((t (:inherit tao-active))))
-     `(font-lock-comment-face           ((t (:inherit tao-faint :slant italic))))
+     `(font-lock-comment-face           ((t (:inherit tao-muted :slant italic))))
      `(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
      `(font-lock-constant-face          ((t (:inherit tao-accent))))
      `(font-lock-doc-face               ((t (:inherit tao-muted :slant italic))))
      `(font-lock-function-name-face     ((t (:inherit tao-accent))))
      `(font-lock-keyword-face           ((t (:inherit tao-strong))))
-     `(font-lock-string-face            ((t (:inherit tao-success))))
-     `(font-lock-type-face              ((t (:inherit tao-faint :italic t))))
+     `(font-lock-string-face            ((t (:inherit tao-success :slant italic))))
+     `(font-lock-type-face              ((t (:inherit tao-faint))))
      `(font-lock-variable-name-face     ((t (:inherit tao-base))))
      `(font-lock-warning-face           ((t (:inherit tao-warning))))
      ;; Modeline, header
-     `(mode-line               ((t (:background ,(tao :color-2) :foreground ,(tao :color-11) :box (:line-width -1 :color ,(tao :color-7)) :height 1.0))))
-     `(mode-line-inactive      ((t (:background ,(tao :color-1) :foreground ,(tao :color-6) :box (:line-width -1 :color ,(tao :color-3)) :height 1.0))))
+     `(mode-line               ((t (:background ,(tao :color-1) :foreground ,(tao :color-11) :box (:line-width -1 :color ,(tao :color-7)) :height 1.0))))
+     `(mode-line-inactive      ((t (:background ,(tao :color-1) :foreground ,(tao :color-6) :box (:line-width -1 :color ,(tao :color-2)) :height 1.0))))
      `(mode-line-buffer-id     ((t (:inherit tao-accent :weight bold))))
      `(header-line             ((t (:inherit mode-line :box nil :overline t))))
      ;; Buttons, highlights, link
@@ -149,7 +176,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(link-visited                 ((t (:inherit tao-link :slant italic))))
      `(button                       ((t (:inherit link))))
      `(help-key-binding             ((t (:inherit tao-accent))))
-     `(trailing-whitespace          ((t (:background ,(tao :color-3)))))
+     `(trailing-whitespace          ((t (:background ,(tao :color-2)))))
      ;; Show-paren
      `(show-paren-match        ((t (:inherit tao-strong :background ,(tao :color-5)))))
      `(show-paren-mismatch     ((t (:inherit tao-error))))
@@ -175,21 +202,32 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(compilation-info            ((t (:inherit tao-link))))
      `(compilation-mode-line-exit  ((t (:inherit tao-success))))
      `(compilation-mode-line-fail  ((t (:inherit tao-error))))
-     `(diff-added                  ((t (:foreground ,(tao :color-10)))))
-     `(diff-removed                ((t (:foreground ,(tao :color-11)))))
-     `(diff-changed                ((t (:inherit tao-accent))))
-     `(diff-file-header            ((t (:background ,(tao :color-4) :weight bold))))
-     `(diff-header                 ((t (:background ,(tao :color-3)))))
+     `(diff-added                  ((t (:foreground ,(tao :color-9)) ))
+                                  )
+     `(diff-removed                ((t (:foreground ,(tao :color-8)) ))
+                                  )
+     `(diff-changed                ((t (:inherit tao-accent :weight bold))))
+     `(diff-file-header            ((t (:background ,(tao :color-5) :weight bold))))
+     `(diff-header                 ((t (:background ,(tao :color-3))))
+                                  )
      `(diff-context                ((t (:inherit tao-muted))))
      ;; diff-hl
-     `(diff-hl-insert              ((t (:background ,(tao :color-10)))))
-     `(diff-hl-delete              ((t (:background ,(tao :color-11)))))
-     `(diff-hl-change              ((t (:background ,(tao :color-9)))))
+     `(diff-hl-insert              ((t (:background ,(tao :color-9)))))
+     `(diff-hl-delete              ((t (:background ,(tao :color-8)))))
+     `(diff-hl-change              ((t (:background ,(tao :color-7)))))
      ;; smerge
-     `(smerge-upper                ((t (:background ,(tao :color-8)))))
-     `(smerge-lower                ((t (:background ,(tao :color-9)))))
+     `(smerge-upper                ((t (:background ,(tao :color-7)))))
+     `(smerge-lower                ((t (:background ,(tao :color-8)))))
      `(smerge-markers              ((t (:background ,(tao :color-3)))))
      ;; DIRED/Dired+
+     `(ediff-current-diff-A ((t (:background ,(tao :color-6)))))
+     `(ediff-current-diff-B ((t (:background ,(tao :color-7)))))
+     `(ediff-current-diff-C ((t (:background ,(tao :color-8)))))
+     `(ediff-even-diff-A    ((t (:background ,(tao :color-2)))))
+     `(ediff-odd-diff-A     ((t (:background ,(tao :color-4)))))
+     `(ediff-fine-diff-A    ((t (:background ,(tao :color-11)))))
+     `(ediff-fine-diff-B    ((t (:background ,(tao :color-11)))))
+     `(ediff-fine-diff-C    ((t (:background ,(tao :color-11)))))
      `(dired-directory         ((t (:inherit tao-accent :weight bold))))
      `(dired-flagged           ((t (:inherit tao-error))))
      `(dired-header            ((t (:inherit tao-strong))))
@@ -243,7 +281,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(ediff-current-diff-A ((t (:background ,(tao :color-6)))))
      `(ediff-current-diff-B ((t (:background ,(tao :color-7)))))
      `(ediff-current-diff-C ((t (:background ,(tao :color-8)))))
-     `(ediff-even-diff-A    ((t (:background ,(tao :color-3)))))
+     `(ediff-even-diff-A    ((t (:background ,(tao :color-2)))))
      `(ediff-odd-diff-A     ((t (:background ,(tao :color-4)))))
      `(ediff-fine-diff-A    ((t (:background ,(tao :color-11)))))
      `(ediff-fine-diff-B    ((t (:background ,(tao :color-11)))))
@@ -306,7 +344,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(org-link                    ((t (:inherit tao-link))))
      `(org-done                    ((t (:inherit tao-success :weight bold))))
      `(org-todo                    ((t (:inherit tao-warning :weight bold))))
-     `(org-table                   ((t (:inherit tao-muted))))
+     `(org-table                   ((t (:inherit tao-muted :inherit 'fixed-pitch))))
      `(org-warning                 ((t (:inherit tao-warning))))
      `(org-scheduled               ((t (:inherit tao-success))))
      `(org-headline-done           ((t (:inherit tao-faint :strike-through t))))
@@ -337,7 +375,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(term-color-black   ((t (:foreground ,(tao :color-0) :background ,(tao :color-0)))))
      `(term-color-white   ((t (:foreground ,(tao :color-11) :background ,(tao :color-11)))))
      `(term-color-red     ((t (:foreground ,(tao :color-11) :background ,(tao :color-6)))))
-     `(term-color-green   ((t (:foreground ,(tao :color-10) :background ,(tao :color-3)))))
+     `(term-color-green   ((t (:foreground ,(tao :color-10) :background ,(tao :color-2)))))
      `(term-color-yellow  ((t (:foreground ,(tao :color-9) :background ,(tao :color-6)))))
      `(term-color-blue    ((t (:foreground ,(tao :color-11) :background ,(tao :color-7)))))
      `(term-color-cyan    ((t (:foreground ,(tao :color-8) :background ,(tao :color-10)))))
@@ -353,8 +391,8 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
                                   , (tao :color-8)
                                   , (tao :color-9)])
      ;; Misc/proxies (suite)
-     `(widget-field                  ((t (:background ,(tao :color-2)))))
-     `(hl-line                       ((t (:background ,(tao :color-2) :extend t))))
+     `(widget-field                  ((t (:background ,(tao :color-1)))))
+     `(hl-line                       ((t (:background ,(tao :color-1) :extend t))))
      `(highlight-symbol-face         ((t (:background ,(tao :color-5)))))
      `(error-face                    ((t (:inherit tao-error))))
      `(success-face                  ((t (:inherit tao-success))))
@@ -405,24 +443,28 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(macrostep-macro-face     ((t (:inherit tao-link))))
      `(powerline-active1        ((t (:inherit mode-line))))
      `(powerline-inactive2      ((t (:inherit mode-line-inactive))))
-     `(tab-bar                  ((t (:background ,(tao :color-1)))))
-     `(tab-bar-tab              ((t (:background ,(tao :color-3) :foreground ,(tao :color-11) :height 1.0))))
-     `(tab-bar-tab-inactive     ((t (:background ,(tao :color-1) :foreground ,(tao :color-5)))))
-     `(tab-line                 ((t (:background ,(tao :color-3)))))
-     `(tab-line-tab             ((t (:background ,(tao :color-4) :foreground ,(tao :color-9) :weight normal))))
+     `(tab-bar                  ((t (:background ,(tao :color-0)))))
+     `(tab-bar-tab              ((t (:background ,(tao :color-1) :foreground ,(tao :color-11) :height 1.0))))
+     `(tab-bar-tab-inactive     ((t (:background ,(tao :color-0) :foreground ,(tao :color-5)))))
+     `(tab-line                 ((t (:background ,(tao :color-1) :italic nil))))
+     `(tab-line-tab             ((t (:background ,(tao :color-1) :foreground ,(tao :color-11) :weight normal))))
      `(tab-line-tab-current     ((t (:background ,(tao :color-4) :foreground ,(tao :color-9)))))
-     `(tab-line-tab-inactive    ((t (:background ,(tao :color-5) :foreground ,(tao :color-8)))))
+     `(tab-line-tab-inactive    ((t (:background ,(tao :color-2) :foreground ,(tao :color-9)))))
      `(tabbar-default           ((t (:inherit tao-bg-alt))))
      `(tabbar-button            ((t (:inherit tao-link))))
      `(tabbar-selected          ((t (:inherit tao-link :weight bold))))
      `(tabbar-unselected        ((t (:inherit tao-faint))))
+     ;; Window divider (muted/faint)
+     `(window-divider                ((t (:inherit tao-faint))))
+     `(window-divider-first-pixel    ((t (:inherit tao-faint))))
+     `(window-divider-last-pixel     ((t (:inherit tao-faint))))
      `(centaur-tabs-default     ((t (:inherit tao-bg-alt))))
      `(centaur-tabs-selected    ((t (:inherit tao-strong))))
      `(centaur-tabs-unselected  ((t (:inherit tao-faint))))
      `(bm-face                  ((t (:inherit tao-warning :background ,(tao :color-5)))))
      `(bm-fringe-face            ((t (:inherit tao-warning))))
-     `(bm-fringe-persistent-face ((t (:inherit tao-warning :foreground ,(tao :color-2)))))
-     `(bm-persistent-face        ((t (:inherit tao-warning :background ,(tao :color-3)))))
+     `(bm-fringe-persistent-face ((t (:inherit tao-warning :foreground ,(tao :color-1)))))
+     `(bm-persistent-face        ((t (:inherit tao-warning :background ,(tao :color-2)))))
      `(eldoc-highlight-function-argument ((t (:inherit tao-base :weight bold))))
      `(eval-sexp-fu-flash                ((t (:inherit tao-warning :background ,(tao :color-5)))))
      `(eval-sexp-fu-flash-error          ((t (:inherit tao-error :background ,(tao :color-6)))))
@@ -451,7 +493,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(neotree-dir-link-face            ((t (:inherit tao-strong))))
      `(neotree-expand-btn-face          ((t (:inherit tao-link :weight bold))))
      `(neotree-file-link-face           ((t (:inherit tao-faint))))
-     `(neotree-root-dir-face            ((t (:inherit tao-muted :background ,(tao :color-2)))))
+     `(neotree-root-dir-face            ((t (:inherit tao-muted :background ,(tao :color-1)))))
      `(prolog-face                      ((t (:inherit tao-accent))))
      `(tuareg-font-lock-operator-face   ((t (:inherit tao-base))))
      `(tuareg-font-lock-governing-face  ((t (:inherit tao-link))))
