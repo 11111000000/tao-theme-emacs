@@ -172,7 +172,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hl-paren-face                                    ((t (:foreground ,color-12 :background ,color-4))))
    `(cursor                                           ((t (:foreground ,color-13 :background ,color-14))))
    `(escape-glyph                                     ((t (:foreground ,color-13 :bold t))))
-   `(header-line                                      ((t (:inherit mode-line))))
+   `(header-line                                      ((t (:inherit default  :background ,color-4))))
    `(fringe                                           ((t (:foreground ,color-7 :weight normal))))
    `(highlight                                        ((t (:background ,color-4 :foreground ,color-14))))
    `(success                                          ((t (:foreground ,color-9 :weight bold))))
@@ -220,7 +220,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; font lock
    `(font-lock-builtin-face                           ((t (:foreground ,color-13 :italic nil  :weight semi-bold ))))
    `(font-lock-keyword-face                           ((t (:foreground ,color-12 :weight normal))))
-   `(font-lock-comment-face                           ((t (:foreground ,color-9 :weight normal :italic nil :variable-pitch t :height ,(tao-theme-height 1.1) :inherit variable-pitch ))))
+   `(font-lock-comment-face                           ((t (:foreground ,color-8 :weight normal :italic t :variable-pitch t :height ,(tao-theme-height 1.1) :inherit variable-pitch ))))
    `(font-lock-comment-delimiter-face                 ((t (:foreground ,color-6))))
    `(font-lock-constant-face                          ((t (:foreground ,color-11 :weight normal :italic nil))))
    `(font-lock-doc-face                               ((t (:foreground ,color-9 :weight normal :italic t))))
