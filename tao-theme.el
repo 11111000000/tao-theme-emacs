@@ -170,7 +170,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(mode-line               ((t (:background ,(tao :color-1) :foreground ,(tao :color-11) :box (:line-width -1 :color ,(tao :color-7)) :height 1.0))))
      `(mode-line-inactive      ((t (:background ,(tao :color-1) :foreground ,(tao :color-6) :box (:line-width -1 :color ,(tao :color-2)) :height 1.0))))
      `(mode-line-buffer-id     ((t (:inherit tao-accent :weight bold))))
-     `(header-line             ((t (:inherit mode-line :box nil :overline t))))
+     `(header-line             ((t (:inherit mode-line :box (:line-width -1 :color ,(tao :color-1)) :overline nil))))
      ;; Buttons, highlights, link
      `(link                         ((t (:inherit tao-link))))
      `(link-visited                 ((t (:inherit tao-link :slant italic))))
