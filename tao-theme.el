@@ -604,7 +604,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(geiser-font-lock-doc-link        ((t (:inherit tao-link))))
      `(geiser-font-lock-error-link      ((t (:inherit tao-error :underline t))))
      `(geiser-font-lock-autodoc-identifier ((t (:inherit tao-strong))))
-     `(eglot-diagnostic-tag-unnecessary-face ((t (:inherit tao-faint :italic t :underline t))))))))
+     `(eglot-diagnostic-tag-unnecessary-face ((t (:inherit tao-faint :italic t :underline t)))))))
 
 ;;;###autoload
 (when load-file-name
