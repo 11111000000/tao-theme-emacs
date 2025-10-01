@@ -35,7 +35,7 @@
 
 (deftheme tao-yin "The Tao color theme dark")
 
-;; Устанавливаем лица для тёмной палитры:
+;; Apply theme faces for the dark (yin) palette
 (tao-apply-theme-faces 'tao-yin (tao-theme-yin-palette))
 
 

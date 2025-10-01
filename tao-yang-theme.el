@@ -35,7 +35,7 @@
 
 (deftheme tao-yang "The Tao color theme light")
 
-;; Устанавливаем лица для светлой палитры:
+;; Apply theme faces for the light (yang) palette
 (tao-apply-theme-faces 'tao-yang (tao-theme-yang-palette))
 
 ;;; Footer

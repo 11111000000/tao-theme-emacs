@@ -17,21 +17,21 @@
 ;;; Code:
 
 (defun tao-theme-perceptual-scale ()
-  "Generate a perceptually uniform grayscale gradient *без* #000000 и #FFFFFF.
-Возвращает список из 12 целых 0–255; самые крайние значения ≈ 12 и ≈ 243."
+  "Generate a perceptually uniform grayscale gradient without pure black/white.
+Returns a list of 12 integers 0–255; extreme values ≈ 12 and ≈ 243."
   (let* ((n 12)
-         (gamma 1.8)          ; более пологая гамма → ровнее контраст
+         (gamma 2)          ; gentler gamma → more even contrast steps
          (result nil))
-    ;; Берём (k+1)/(n+1): тем самым пропускаем два крайних деления,
-    ;; оставляя визуальный «запас» для реальных чёрного/белого.
+    ;; Use (k+1)/(n+1): this skips the two extreme divisions,
+    ;; leaving visual "margin" for true black/white when needed.
     (dotimes (k n (sort result '<))
       (let* ((l (/ (float (1+ k)) (1+ n))) ; 1/(n+1)…n/(n+1)
              (v (round (* 255 (expt l (/ 1.0 gamma))))))
         (push v result)))))
 
 (defun tao-theme-lab-scale ()
-  "Generate a perceptually uniform grayscale gradient in CIE Lab
-без предельных 0 / 100 L*.  Шкала остаётся из 12 значений."
+  "Generate a perceptually uniform grayscale gradient in CIE Lab space.
+Avoids extreme 0 / 100 L* endpoints. Scale remains 12 values."
   (require 'color)
   (let ((n 12)
         (result nil))
@@ -39,7 +39,7 @@
       (pcase-let* ((l* (* 100.0 (/ (float (1+ k)) (1+ n)))) ; 100/(n+1)…n·100/(n+1)
                    (`(,x ,y ,z) (color-lab-to-xyz l* 0 0))
                    (`(,r ,g ,b) (color-xyz-to-srgb x y z)))
-        ;; для серого r=g=b, достаточно любой компоненты
+        ;; For grayscale r=g=b, any component suffices
         (let ((v (round (* 255 (color-clamp r)))))
           (push v result))))))
 
@@ -157,7 +157,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(tao-inverse                 ((,class (:foreground ,(tao :color-0)))
                                     (,class-tty (:foreground "black" :background "white"))
                                     (,class-tty-8 (:foreground "black" :background "white"))))
-     `(tao-error                   ((,class (:foreground ,(tao :color-11) :background ,(tao :color-4) :weight bold))
+     `(tao-error                   ((,class (:foreground ,(tao :color-9)))
                                     (,class-tty (:foreground "brightred" :weight bold))
                                     (,class-tty-8 (:foreground "red" :weight bold))))
      `(tao-warning                 ((,class (:foreground ,(tao :color-7) :weight bold))
@@ -345,6 +345,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(ivy-minibuffer-match-face-4      ((t (:inherit tao-success :weight bold))))
      ;; Magit
      `(magit-section-title  ((t (:inherit tao-strong))))
+     `(magit-section-highlight  ((t (:inherit default :background ,(tao :color-2)))))
      `(magit-branch         ((t (:inherit tao-accent))))
      `(magit-log-author     ((t (:inherit tao-faint :slant italic))))
      `(magit-tag            ((t (:inherit tao-accent))))
@@ -379,22 +380,22 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(message-separator       ((t (:inherit tao-faint))))
      `(message-cited-text      ((t (:inherit tao-muted :slant italic))))
      ;; Flycheck, Flymake, Flyspell
-     `(flycheck-error     ((t (:inherit tao-error :underline (:style wave :color ,(tao :color-11) :position t)))))
-     `(flycheck-warning   ((t (:inherit tao-warning :underline (:style wave :color ,(tao :color-10) :position t)))))
-     `(flycheck-info      ((t (:inherit tao-active :underline (:style wave :color ,(tao :color-9) :position t)))))
-     `(flyspell-incorrect ((t (:inherit tao-error :underline (:style wave :color ,(tao :color-11))))))
-     `(flyspell-duplicate ((t (:inherit tao-warning :underline (:style wave :color ,(tao :color-10))))))
-     `(flymake-error      ((t (:inherit tao-error :underline (:style wave :color ,(tao :color-11))))))
-     `(flymake-warning    ((t (:inherit tao-warning :underline (:style wave :color ,(tao :color-10))))))
-     `(flymake-note       ((t (:inherit tao-active :underline (:style wave :color ,(tao :color-10))))))
+     `(flycheck-error     ((t (:inherit tao-error   :underline (:style wave :position t)))))
+     `(flycheck-warning   ((t (:inherit tao-warning :underline (:style wave :position t)))))
+     `(flycheck-info      ((t (:inherit tao-active  :underline (:style wave :position t)))))
+     `(flyspell-incorrect ((t (:inherit tao-error   :underline (:style wave)))))
+     `(flyspell-duplicate ((t (:inherit tao-warning :underline (:style wave)))))
+     `(flymake-error      ((t (:inherit tao-error   :underline (:style wave)))))
+     `(flymake-warning    ((t (:inherit tao-warning :underline (:style wave)))))
+     `(flymake-note       ((t (:inherit tao-active  :underline (:style wave)))))
      ;; LSP, eglot, lsp-ui
      `(lsp-face-highlight-read ((t (:background ,(tao :color-6)))))
-     `(lsp-headerline-breadcrumb-path-error-face    ((t (:underline (:style wave :color ,(tao :color-11))))))
-     `(lsp-headerline-breadcrumb-path-warning-face  ((t (:underline (:style wave :color ,(tao :color-10))))))
-     `(lsp-headerline-breadcrumb-path-info-face     ((t (:underline (:style wave :color ,(tao :color-10))))))
-     `(lsp-headerline-breadcrumb-symbols-error-face ((t (:underline (:style wave :color ,(tao :color-11))))))
-     `(lsp-headerline-breadcrumb-symbols-warning-face ((t (:underline (:style wave :color ,(tao :color-10))))))
-     `(lsp-headerline-breadcrumb-symbols-info-face    ((t (:underline (:style wave :color ,(tao :color-10))))))
+     `(lsp-headerline-breadcrumb-path-error-face      ((t (:inherit tao-error   :underline (:style wave)))))
+     `(lsp-headerline-breadcrumb-path-warning-face    ((t (:inherit tao-warning :underline (:style wave)))))
+     `(lsp-headerline-breadcrumb-path-info-face       ((t (:inherit tao-active  :underline (:style wave)))))
+     `(lsp-headerline-breadcrumb-symbols-error-face   ((t (:inherit tao-error   :underline (:style wave)))))
+     `(lsp-headerline-breadcrumb-symbols-warning-face ((t (:inherit tao-warning :underline (:style wave)))))
+     `(lsp-headerline-breadcrumb-symbols-info-face    ((t (:inherit tao-active  :underline (:style wave)))))
      `(lsp-ui-sideline-symbol                         ((t (:inherit tao-accent :slant italic))))
      `(lsp-ui-sideline-current-symbol                 ((t (:background ,(tao :color-8)))))
      `(lsp-ui-sideline-code-action                    ((t (:inherit tao-accent :box t))))
@@ -464,7 +465,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
                                   , (tao :color-9)])
      ;; Misc/proxies (suite)
      `(widget-field                  ((t (:background ,(tao :color-1)))))
-     `(hl-line                       ((t (:background ,(tao :color-1) :extend t))))
+     `(hl-line                       ((t (:background ,(tao :color-2)))))
      `(highlight-symbol-face         ((t (:background ,(tao :color-5)))))
      `(error-face                    ((t (:inherit tao-error))))
      `(success-face                  ((t (:inherit tao-success))))
@@ -515,9 +516,12 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(macrostep-macro-face     ((t (:inherit tao-link))))
      `(powerline-active1        ((t (:inherit mode-line))))
      `(powerline-inactive2      ((t (:inherit mode-line-inactive))))
+     `(pro-tabs-face            ((t (:background ,(tao :color-0)))))
+     `(pro-tabs-active-face     ((t (:background ,(tao :color-1) :foreground ,(tao :color-8) :height 1.0))))
+     `(pro-tabs-inactive-face   ((t (:background ,(tao :color-2) :foreground ,(tao :color-5)))))
      `(tab-bar                  ((t (:background ,(tao :color-0)))))
-     `(tab-bar-tab              ((t (:background ,(tao :color-1) :foreground ,(tao :color-11) :height 1.0))))
-     `(tab-bar-tab-inactive     ((t (:background ,(tao :color-0) :foreground ,(tao :color-5)))))
+     `(tab-bar-tab              ((t (:background ,(tao :color-1) :foreground ,(tao :color-8) :height 1.0))))
+     `(tab-bar-tab-inactive     ((t (:background ,(tao :color-0) :foreground ,(tao :color-3)))))
      `(tab-line                 ((t (:background ,(tao :color-1) :italic nil))))
      `(tab-line-tab             ((t (:background ,(tao :color-1) :foreground ,(tao :color-11) :weight normal))))
      `(tab-line-tab-current     ((t (:background ,(tao :color-4) :foreground ,(tao :color-9)))))
@@ -566,6 +570,32 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(neotree-expand-btn-face          ((t (:inherit tao-link :weight bold))))
      `(neotree-file-link-face           ((t (:inherit tao-faint))))
      `(neotree-root-dir-face            ((t (:inherit tao-muted :background ,(tao :color-1)))))
+
+     ;; Treemacs (analogous/parallel to neotree faces)
+     `(treemacs-root-face                   ((t (:inherit tao-muted :background ,(tao :color-1) :weight bold))))
+     `(treemacs-root-local-face             ((t (:inherit tao-muted :background ,(tao :color-1)))))
+     `(treemacs-directory-face              ((t (:inherit tao-strong))))
+     `(treemacs-directory-collapsed-face    ((t (:inherit tao-strong))))
+     `(treemacs-file-face                   ((t (:inherit tao-base))))
+     `(treemacs-dotfile-face                ((t (:inherit tao-faint))))
+     `(treemacs-glyph-face                  ((t (:inherit tao-accent))))
+     `(treemacs-tags-face                   ((t (:inherit tao-faint))))
+     `(treemacs-fringe-indicator-face       ((t (:inherit tao-faint))))
+     `(treemacs-term-node-face              ((t (:inherit tao-muted))))
+
+     ;; Git states in treemacs
+     `(treemacs-git-unmodified-face         ((t (:inherit tao-faint))))
+     `(treemacs-git-added-face              ((t (:inherit tao-success))))
+     `(treemacs-git-modified-face           ((t (:inherit tao-warning))))
+     `(treemacs-git-renamed-face            ((t (:inherit tao-accent))))
+     `(treemacs-git-untracked-face          ((t (:inherit tao-accent))))
+     `(treemacs-git-conflict-face           ((t (:inherit tao-error :weight bold))))
+     `(treemacs-git-ignored-face            ((t (:inherit tao-faint))))
+
+     ;; Selection / focus — make the current buffer/node clearly visible
+     `(treemacs-focused-file-face           ((t (:background ,(tao :color-4) :foreground ,(tao :color-9) :weight bold))))
+     `(treemacs-selected-face               ((t (:background ,(tao :color-4) :foreground ,(tao :color-9) :weight bold))))
+     `(treemacs-file-highlight-face         ((t (:background ,(tao :color-4) :foreground ,(tao :color-9) :weight bold))))
      `(prolog-face                      ((t (:inherit tao-accent))))
      `(tuareg-font-lock-operator-face   ((t (:inherit tao-base))))
      `(tuareg-font-lock-governing-face  ((t (:inherit tao-link))))
@@ -574,7 +604,7 @@ If optional SCALE is given, use it instead of (funcall tao-theme-scale-fn)."
      `(geiser-font-lock-doc-link        ((t (:inherit tao-link))))
      `(geiser-font-lock-error-link      ((t (:inherit tao-error :underline t))))
      `(geiser-font-lock-autodoc-identifier ((t (:inherit tao-strong))))
-     `(eglot-diagnostic-tag-unnecessary-face ((t (:inherit tao-faint :italic t :underline ,(tao :color-5))))))))
+     `(eglot-diagnostic-tag-unnecessary-face ((t (:inherit tao-faint :italic t :underline t))))))))
 
 ;;;###autoload
 (when load-file-name
